@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Unbuilt</title>
+<meta name="description" content="What the Unbuilt census is, how it was compiled, what the columns mean, and where it will be wrong.">
+<meta property="og:title" content="About — Unbuilt">
+<meta property="og:description" content="What the Unbuilt census is, how it was compiled, what the columns mean, and where it will be wrong.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='2'%20y='8'%20width='12'%20height='16'%20fill='%23262A22'/%3E%3Crect%20x='18'%20y='8'%20width='12'%20height='16'%20fill='none'%20stroke='%233A5A94'%20stroke-width='2.5'%20stroke-dasharray='4%203'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">Unbuilt<small>a census of human making</small></a>
+    <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="fields.html">Fields</a>
+          <a href="search.html">Search</a>
+          <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="hero slim">
+  <div class="wrap">
+    <h1>About the census</h1>
+    <p class="lede">What this is, how it was put together, and where it will be wrong.</p>
+  </div>
+</section>
+<section class="prose wrap">
+  <h2>What this is</h2>
+  <p>
+    Unbuilt is a census of human making. It lists ideas in twelve fields and splits each
+    field three ways: things the world already has plenty of, things that exist but were
+    never finished properly, and things it is still missing. The premise is simple — in
+    every field, most people build the same ten things, because those ten things are
+    visible. The interesting work hides in the outlined and dashed cards, which are
+    invisible precisely because nobody has made them yet — or nobody has made them whole.
+  </p>
+
+  <h2>What the three columns mean</h2>
+  <p>
+    <strong>Already built</strong> means the shelf is full: mature products, many funded
+    competitors, no unsolved problem left worth your years. The crowdedness marks are
+    judgement, not measurement — five squares means you would be entering the most crowded
+    room in the field.
+  </p>
+  <p>
+    <strong>Half-built</strong> means it exists, but not properly: too expensive, locked to
+    one country or vendor, painful to use, or stuck at pilot scale. These are often the
+    best openings on the census — the riskiest question, "does anyone actually want this?",
+    is already answered by whatever exists, and the assignment is to finish what stalled.
+    Each card says what is missing and why it stalled.
+  </p>
+  <p>
+    <strong>Not built yet</strong> means not built well enough, cheaply enough, or
+    available where most people live. It is not a claim that nobody ever tried. Many of
+    these gaps are open for good reasons — regulation, thin margins, missing data — and
+    the page says which reason blocks each one. A gap with a blocker is an assignment, not
+    a warning.
+  </p>
+
+  <h2>How it was compiled</h2>
+  <p>
+    The census was written in October 2026, combining public reporting with judgement.
+    Saturation claims were cross-checked against 2026 sources, including
+    preuve.ai's ranked list of AI startup ideas, a long Hacker News debate on why founders
+    avoid novel problems, and the Lemelson Foundation's work on hardware invention for
+    underserved markets. Everything else — the crowdedness marks, the difficulty marks, the
+    "closest attempt" attributions — is editorial opinion and should be treated as such.
+  </p>
+  <ul>
+    <li><a href="https://preuve.ai/blog/startup-ideas-2026">preuve.ai — AI startup ideas 2026, ranked</a></li>
+    <li><a href="https://news.ycombinator.com/item?id=37431950">Hacker News — why most startups don't solve novel problems</a></li>
+    <li><a href="https://www.lemelson.org/unlocking-the-potential-of-hardware-based-invention-to-solve-global-development-challenges">Lemelson Foundation — hardware invention for global development</a></li>
+  </ul>
+
+  <h2>Limits, stated plainly</h2>
+  <p>
+    This census goes stale the moment you read it. Someone may have started on a dashed
+    card last week; two people may have finished one this morning. Before committing years
+    to anything here, search for products, message the makers of the closest attempt, and
+    assume the world moved since this was written. Being second with a real difference
+    still beats being first into a crowd — but both beat building number four thousand and
+    one.
+  </p>
+
+  <h2>Colophon</h2>
+  <p>
+    The whole site is static HTML generated by one Python script, set in Archivo and
+    Source Serif 4, with no trackers and no cookies. The generator lives in
+    <code>build.py</code>; edit the census data there and rebuild.
+  </p>
+</section>
+</main>
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <p class="brand-f">Unbuilt</p>
+      <p>A census of human making: what the world already has on its shelves, and what it is still missing. Read the solid cards to avoid the crowd, the dashed ones to find an empty lane.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Site</h2>
+      <div class="foot-nav">
+        <a href="index.html">Home</a>
+        <a href="fields.html">All fields</a>
+        <a href="search.html">Search the census</a>
+        <a href="about.html">Methodology</a>
+      </div>
+    </nav>
+    <div>
+      <h2>Fields</h2>
+      <div class="foot-fields"><a href="fields/software.html">Software</a> <a href="fields/ai.html">AI</a> <a href="fields/hardware.html">Hardware</a> <a href="fields/health.html">Health</a> <a href="fields/climate.html">Climate</a> <a href="fields/education.html">Education</a> <a href="fields/money.html">Money</a> <a href="fields/food.html">Food</a> <a href="fields/civic.html">Cities</a> <a href="fields/robotics.html">Robotics</a> <a href="fields/access.html">Accessibility</a> <a href="fields/media.html">Internet</a></div>
+    </div>
+  </div>
+  <div class="colophon">
+    <div class="wrap">
+      Compiled October 2026 from public reporting and a lot of squinting. Set in Archivo and Source Serif 4. Static pages, no trackers. If you build something from a dashed card, come back and tell the census.
+    </div>
+  </div>
+</footer>
+<script src="assets/census.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
