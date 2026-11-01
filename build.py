@@ -339,6 +339,7 @@ def nav_links(prefix, active):
         ("index.html", "Home"),
         ("fields.html", "Fields"),
         ("search.html", "Search"),
+        ("shelves.html", "Shelves"),
         ("about.html", "About"),
     ]
     out = []
@@ -392,6 +393,7 @@ def site_footer(prefix):
         <a href="{prefix}index.html">Home</a>
         <a href="{prefix}fields.html">All fields</a>
         <a href="{prefix}search.html">Search the census</a>
+        <a href="{prefix}shelves.html">Search the shelves</a>
         <a href="{prefix}about.html">Methodology</a>
       </div>
     </nav>
@@ -410,6 +412,27 @@ def site_footer(prefix):
 
 def short_name(name):
     return name.split(" & ")[0] if " & " in name else name
+
+
+def catalog_info():
+    """Read assets/catalog.json if the pipeline has run; (count, generated) or None."""
+    try:
+        import json
+        with open(os.path.join(OUT, "assets", "catalog.json"), encoding="utf-8") as fh:
+            c = json.load(fh)
+        return c["count"], c["generated"]
+    except Exception:
+        return None
+
+
+def shelves_teaser():
+    info = catalog_info()
+    if info:
+        return (f"Opinion says a space is crowded; a catalog proves it. {info[0]:,} real, "
+                f"published apps and packages — Flathub, F-Droid, the App Store, Google Play "
+                f"and npm — collected {info[1]}, searchable by name, category and maker.")
+    return ("Real, published apps and packages from Flathub, F-Droid, the App Store, Google "
+            "Play and npm, collected by pipeline/ingest.py and searchable on the shelves page.")
 
 
 def meter_html(kind, n, label):
@@ -571,6 +594,14 @@ def build_home():
   </div>
 </section>
 
+<section class="sec" id="shelves">
+  <div class="wrap">
+    <h2>The shelves</h2>
+    <p class="sub">{shelves_teaser()}</p>
+    <div class="actions"><a class="btn" href="shelves.html">Search the shelves</a></div>
+  </div>
+</section>
+
 <section class="sec">
   <div class="wrap">
     <h2>How to use the census</h2>
@@ -666,6 +697,7 @@ def build_search():
 </section>
 <section>
   <div class="wrap">
+    <p class="howto-more">This page searches the census of ideas — editorial calls. To search real, published apps, use the <a href="shelves.html">shelves</a>.</p>
     <div class="toolbar-page">
       <input id="q" type="search" placeholder="Search {TOTAL} ideas…" aria-label="Search ideas">
       <span class="shown" id="shown" aria-live="polite"></span>
@@ -679,8 +711,44 @@ def build_search():
         "", "Search", main)
 
 
+# ---------------------------------------------------------------- shelves page
+def build_shelves():
+    info = catalog_info()
+    if info:
+        lede = (f"Opinion says a space is crowded; a catalog proves it. These are real, published "
+                f"apps and packages — {info[0]:,} of them, collected {info[1]} from Flathub, "
+                f"F-Droid, the Apple App Store, Google Play and npm. Search before you build.")
+    else:
+        lede = ("A catalog of real, published apps and packages — evidence for what already "
+                "exists. Build it with pipeline/ingest.py and pipeline/build_site_index.py.")
+    main = f"""<section class="hero slim">
+  <div class="wrap">
+    <h1>The shelves</h1>
+    <p class="lede">{lede}</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="shelves-status" id="loadstate" aria-live="polite">Loading the catalog…</p>
+    <div class="toolbar-page">
+      <input id="q" type="search" placeholder="Search real apps — try “notes”, “budget”, “meditation”…" aria-label="Search published apps" disabled>
+      <span class="shown" id="shown" aria-live="polite"></span>
+    </div>
+    <div class="results" id="results" aria-label="Catalog results"></div>
+  </div>
+</section>
+<script>
+{SHELVES_JS}</script>"""
+    return page(
+        "The shelves — Unbuilt",
+        "Search real, published apps and packages from Flathub, F-Droid, the App Store, Google Play and npm — evidence of what is already built.",
+        "", "Shelves", main)
+
+
 # ---------------------------------------------------------------- about page
 def build_about():
+    info = catalog_info()
+    play_note = f" — {info[0]:,} listings in all, collected {info[1]}" if info else ""
     main = """<section class="hero slim">
   <div class="wrap">
     <h1>About the census</h1>
@@ -734,6 +802,18 @@ def build_about():
     <li><a href="https://news.ycombinator.com/item?id=37431950">Hacker News — why most startups don't solve novel problems</a></li>
     <li><a href="https://www.lemelson.org/unlocking-the-potential-of-hardware-based-invention-to-solve-global-development-challenges">Lemelson Foundation — hardware invention for global development</a></li>
   </ul>
+
+  <h2>The shelves, and where they come from</h2>
+  <p>
+    The Shelves page backs "already built" with real catalogs rather than memory:
+    Flathub and F-Droid in full from their open metadata dumps, the Apple App Store through
+    its official Search API, popular npm packages through the registry API, and Google Play
+    through capped, popularity-ranked searches{play_note}. The raw snapshots live in
+    <code>data/raw/</code>, the full merged catalog in <code>data/catalog.db</code>, and the
+    site ships a capped index at <code>assets/catalog.json</code>. Rerun
+    <code>pipeline/ingest.py</code> and <code>pipeline/build_site_index.py</code> to refresh
+    it — the census of ideas is editorial, but the shelves are measured.
+  </p>
 
   <h2>Limits, stated plainly</h2>
   <p>
@@ -922,6 +1002,8 @@ a{color:inherit}
 .r-side.b{color:var(--red)}
 .r-side.h{color:var(--ink)}
 .r-side.u{color:var(--blue-deep)}
+.result .src{color:var(--ink)}
+.shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
 .r-title{font-weight:800}
 .r-field{font-size:.78rem;color:var(--muted)}
 .r-what{grid-column:2/4;font-size:.9rem;color:#454B3C;max-width:75ch}
@@ -1148,6 +1230,99 @@ APP_JS = """(function () {
 })();
 """
 
+SHELVES_JS = """(function () {
+  "use strict";
+  var input = document.getElementById("q");
+  var list = document.getElementById("results");
+  var shown = document.getElementById("shown");
+  var status = document.getElementById("loadstate");
+  var CAT = null, INDEX = null, timer = null;
+
+  fetch("assets/catalog.json").then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (c) {
+    CAT = c;
+    INDEX = c.apps.map(function (a) {
+      return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
+    });
+    status.textContent = CAT.count.toLocaleString() + " apps on the shelves, collected " +
+      CAT.generated + " from Flathub, F-Droid, the App Store, Google Play and npm";
+    input.disabled = false;
+    render();
+  }).catch(function () {
+    status.textContent = "The catalog could not be loaded. Build it with pipeline/ingest.py and " +
+      "pipeline/build_site_index.py, then serve this folder over HTTP.";
+  });
+
+  function render() {
+    if (!CAT) return;
+    var qy = input.value.trim().toLowerCase();
+    var hits = [];
+    if (qy.length >= 2) {
+      for (var i = 0; i < INDEX.length; i++) {
+        var it = INDEX[i], s = 0;
+        if (it[0].indexOf(qy) === 0) s = 4;
+        else if (it[0].indexOf(qy) !== -1) s = 3;
+        else if (it[1].indexOf(qy) !== -1) s = 1;
+        if (s) hits.push([s, it[2]]);
+      }
+      hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
+      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " apps";
+    } else {
+      shown.textContent = CAT.count.toLocaleString() + " apps";
+    }
+    list.innerHTML = "";
+    if (qy.length < 2) {
+      var hint = document.createElement("p");
+      hint.className = "shown-more";
+      hint.textContent = "Type at least two letters — app names, categories, makers. " +
+        "This is the evidence shelf for what already exists, not opinion.";
+      list.appendChild(hint);
+      return;
+    }
+    if (!hits.length) {
+      var empty = document.createElement("p");
+      empty.className = "shown-more";
+      empty.textContent = "No listing matches. It may live outside these five catalogs — " +
+        "or it may genuinely not exist yet, which is what the dashed columns are for.";
+      list.appendChild(empty);
+      return;
+    }
+    hits.slice(0, 50).forEach(function (pair) {
+      var a0 = pair[1];
+      var a = document.createElement("a");
+      a.className = "result";
+      if (a0[4]) { a.href = a0[4]; a.target = "_blank"; a.rel = "noopener"; }
+      var src = document.createElement("span");
+      src.className = "r-side src";
+      src.textContent = a0[2];
+      var title = document.createElement("span");
+      title.className = "r-title";
+      title.textContent = a0[0];
+      var fld = document.createElement("span");
+      fld.className = "r-field";
+      fld.textContent = a0[3];
+      var what = document.createElement("span");
+      what.className = "r-what";
+      what.textContent = a0[1] + (a0[5] ? " (" + a0[5] + ")" : "");
+      a.appendChild(src); a.appendChild(title); a.appendChild(fld); a.appendChild(what);
+      list.appendChild(a);
+    });
+    if (hits.length > 50) {
+      var more = document.createElement("p");
+      more.className = "shown-more";
+      more.textContent = "First 50 shown — narrow the search to see the rest.";
+      list.appendChild(more);
+    }
+  }
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(render, 150);
+  });
+})();
+"""
+
 
 def census_js():
     fields = []
@@ -1178,6 +1353,7 @@ def main():
     write("index.html", build_home())
     write("fields.html", build_fields_index())
     write("search.html", build_search())
+    write("shelves.html", build_shelves())
     write("about.html", build_about())
     write("404.html", build_404())
     for i, f in enumerate(FIELDS):

@@ -23,6 +23,7 @@
           <a href="index.html">Home</a>
           <a href="fields.html">Fields</a>
           <a href="search.html">Search</a>
+          <a href="shelves.html">Shelves</a>
           <a href="about.html" aria-current="page">About</a>
     </nav>
   </div>
@@ -82,6 +83,18 @@
     <li><a href="https://www.lemelson.org/unlocking-the-potential-of-hardware-based-invention-to-solve-global-development-challenges">Lemelson Foundation — hardware invention for global development</a></li>
   </ul>
 
+  <h2>The shelves, and where they come from</h2>
+  <p>
+    The Shelves page backs "already built" with real catalogs rather than memory:
+    Flathub and F-Droid in full from their open metadata dumps, the Apple App Store through
+    its official Search API, popular npm packages through the registry API, and Google Play
+    through capped, popularity-ranked searches{play_note}. The raw snapshots live in
+    <code>data/raw/</code>, the full merged catalog in <code>data/catalog.db</code>, and the
+    site ships a capped index at <code>assets/catalog.json</code>. Rerun
+    <code>pipeline/ingest.py</code> and <code>pipeline/build_site_index.py</code> to refresh
+    it — the census of ideas is editorial, but the shelves are measured.
+  </p>
+
   <h2>Limits, stated plainly</h2>
   <p>
     This census goes stale the moment you read it. Someone may have started on a dashed
@@ -112,6 +125,7 @@
         <a href="index.html">Home</a>
         <a href="fields.html">All fields</a>
         <a href="search.html">Search the census</a>
+        <a href="shelves.html">Search the shelves</a>
         <a href="about.html">Methodology</a>
       </div>
     </nav>

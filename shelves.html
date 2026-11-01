@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The shelves — Unbuilt</title>
+<meta name="description" content="Search real, published apps and packages from Flathub, F-Droid, the App Store, Google Play and npm — evidence of what is already built.">
+<meta property="og:title" content="The shelves — Unbuilt">
+<meta property="og:description" content="Search real, published apps and packages from Flathub, F-Droid, the App Store, Google Play and npm — evidence of what is already built.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='2'%20y='8'%20width='12'%20height='16'%20fill='%23262A22'/%3E%3Crect%20x='18'%20y='8'%20width='12'%20height='16'%20fill='none'%20stroke='%233A5A94'%20stroke-width='2.5'%20stroke-dasharray='4%203'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">Unbuilt<small>a census of human making</small></a>
+    <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="fields.html">Fields</a>
+          <a href="search.html">Search</a>
+          <a href="shelves.html" aria-current="page">Shelves</a>
+          <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="hero slim">
+  <div class="wrap">
+    <h1>The shelves</h1>
+    <p class="lede">Opinion says a space is crowded; a catalog proves it. These are real, published apps and packages — 20,000 of them, collected 2026-11-01 from Flathub, F-Droid, the Apple App Store, Google Play and npm. Search before you build.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="shelves-status" id="loadstate" aria-live="polite">Loading the catalog…</p>
+    <div class="toolbar-page">
+      <input id="q" type="search" placeholder="Search real apps — try “notes”, “budget”, “meditation”…" aria-label="Search published apps" disabled>
+      <span class="shown" id="shown" aria-live="polite"></span>
+    </div>
+    <div class="results" id="results" aria-label="Catalog results"></div>
+  </div>
+</section>
+<script>
+(function () {
+  "use strict";
+  var input = document.getElementById("q");
+  var list = document.getElementById("results");
+  var shown = document.getElementById("shown");
+  var status = document.getElementById("loadstate");
+  var CAT = null, INDEX = null, timer = null;
+
+  fetch("assets/catalog.json").then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (c) {
+    CAT = c;
+    INDEX = c.apps.map(function (a) {
+      return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
+    });
+    status.textContent = CAT.count.toLocaleString() + " apps on the shelves, collected " +
+      CAT.generated + " from Flathub, F-Droid, the App Store, Google Play and npm";
+    input.disabled = false;
+    render();
+  }).catch(function () {
+    status.textContent = "The catalog could not be loaded. Build it with pipeline/ingest.py and " +
+      "pipeline/build_site_index.py, then serve this folder over HTTP.";
+  });
+
+  function render() {
+    if (!CAT) return;
+    var qy = input.value.trim().toLowerCase();
+    var hits = [];
+    if (qy.length >= 2) {
+      for (var i = 0; i < INDEX.length; i++) {
+        var it = INDEX[i], s = 0;
+        if (it[0].indexOf(qy) === 0) s = 4;
+        else if (it[0].indexOf(qy) !== -1) s = 3;
+        else if (it[1].indexOf(qy) !== -1) s = 1;
+        if (s) hits.push([s, it[2]]);
+      }
+      hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
+      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " apps";
+    } else {
+      shown.textContent = CAT.count.toLocaleString() + " apps";
+    }
+    list.innerHTML = "";
+    if (qy.length < 2) {
+      var hint = document.createElement("p");
+      hint.className = "shown-more";
+      hint.textContent = "Type at least two letters — app names, categories, makers. " +
+        "This is the evidence shelf for what already exists, not opinion.";
+      list.appendChild(hint);
+      return;
+    }
+    if (!hits.length) {
+      var empty = document.createElement("p");
+      empty.className = "shown-more";
+      empty.textContent = "No listing matches. It may live outside these five catalogs — " +
+        "or it may genuinely not exist yet, which is what the dashed columns are for.";
+      list.appendChild(empty);
+      return;
+    }
+    hits.slice(0, 50).forEach(function (pair) {
+      var a0 = pair[1];
+      var a = document.createElement("a");
+      a.className = "result";
+      if (a0[4]) { a.href = a0[4]; a.target = "_blank"; a.rel = "noopener"; }
+      var src = document.createElement("span");
+      src.className = "r-side src";
+      src.textContent = a0[2];
+      var title = document.createElement("span");
+      title.className = "r-title";
+      title.textContent = a0[0];
+      var fld = document.createElement("span");
+      fld.className = "r-field";
+      fld.textContent = a0[3];
+      var what = document.createElement("span");
+      what.className = "r-what";
+      what.textContent = a0[1] + (a0[5] ? " (" + a0[5] + ")" : "");
+      a.appendChild(src); a.appendChild(title); a.appendChild(fld); a.appendChild(what);
+      list.appendChild(a);
+    });
+    if (hits.length > 50) {
+      var more = document.createElement("p");
+      more.className = "shown-more";
+      more.textContent = "First 50 shown — narrow the search to see the rest.";
+      list.appendChild(more);
+    }
+  }
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(render, 150);
+  });
+})();
+</script>
+</main>
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <p class="brand-f">Unbuilt</p>
+      <p>A census of human making: what the world already has on its shelves, and what it is still missing. Read the solid cards to avoid the crowd, the dashed ones to find an empty lane.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Site</h2>
+      <div class="foot-nav">
+        <a href="index.html">Home</a>
+        <a href="fields.html">All fields</a>
+        <a href="search.html">Search the census</a>
+        <a href="shelves.html">Search the shelves</a>
+        <a href="about.html">Methodology</a>
+      </div>
+    </nav>
+    <div>
+      <h2>Fields</h2>
+      <div class="foot-fields"><a href="fields/software.html">Software</a> <a href="fields/ai.html">AI</a> <a href="fields/hardware.html">Hardware</a> <a href="fields/health.html">Health</a> <a href="fields/climate.html">Climate</a> <a href="fields/education.html">Education</a> <a href="fields/money.html">Money</a> <a href="fields/food.html">Food</a> <a href="fields/civic.html">Cities</a> <a href="fields/robotics.html">Robotics</a> <a href="fields/access.html">Accessibility</a> <a href="fields/media.html">Internet</a></div>
+    </div>
+  </div>
+  <div class="colophon">
+    <div class="wrap">
+      Compiled October 2026 from public reporting and a lot of squinting. Set in Archivo and Source Serif 4. Static pages, no trackers. If you build something from a dashed card, come back and tell the census.
+    </div>
+  </div>
+</footer>
+<script src="assets/census.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

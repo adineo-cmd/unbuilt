@@ -35,6 +35,22 @@ done — never hand-edit the generated HTML.
 
 There is no backend, no build step beyond Python 3, and no trackers.
 
+## The shelves (catalog data)
+
+The **Shelves** page searches real, published apps — evidence for "already built":
+
+```bash
+python3 pipeline/ingest.py                  # Flathub, F-Droid, App Store, npm (open catalogs)
+python3 pipeline/ingest.py --only play      # Google Play, capped (needs: pip install google-play-scraper)
+python3 pipeline/build_site_index.py        # merge -> assets/catalog.json + data/catalog.db
+```
+
+Flathub and F-Droid are pulled in full from open metadata; the App Store via Apple's
+official Search API; npm via the registry's search API; Google Play via capped,
+popularity-ranked searches (Play has no bulk API and aggressive scraping violates its
+terms — keep the caps modest). `data/` is local-only (gitignored); the site ships a
+capped `assets/catalog.json`.
+
 ## Honest limits
 
 "Not built" means not built well enough, cheaply enough, or where most people live —
