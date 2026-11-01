@@ -37,19 +37,22 @@ There is no backend, no build step beyond Python 3, and no trackers.
 
 ## The shelves (catalog data)
 
-The **Shelves** page searches real, published apps — evidence for "already built":
+The **Shelves** page searches real, published apps, devices and products — evidence
+for "already built":
 
 ```bash
-python3 pipeline/ingest.py                  # Flathub, F-Droid, App Store, npm (open catalogs)
+python3 pipeline/ingest.py                  # all open catalogs
 python3 pipeline/ingest.py --only play      # Google Play, capped (needs: pip install google-play-scraper)
 python3 pipeline/build_site_index.py        # merge -> assets/catalog.json + data/catalog.db
 ```
 
-Flathub and F-Droid are pulled in full from open metadata; the App Store via Apple's
-official Search API; npm via the registry's search API; Google Play via capped,
-popularity-ranked searches (Play has no bulk API and aggressive scraping violates its
-terms — keep the caps modest). `data/` is local-only (gitignored); the site ships a
-capped `assets/catalog.json`.
+Sources: Flathub and F-Droid in full (open metadata), the App Store via Apple's official
+Search API, npm via the registry's search API, **iFixit's full hardware device-repair
+tree** (open API), **openFDA's regulated medical-device database** (official US open
+data), **Arduino's embedded-library index**, **Steam** via community search, **Open Food
+Facts** products, and Google Play via capped, popularity-ranked searches (Play has no
+bulk API and aggressive scraping violates its terms — keep the caps modest). `data/` is
+local-only (gitignored); the site ships a capped `assets/catalog.json`.
 
 ## Honest limits
 

@@ -414,25 +414,42 @@ def short_name(name):
     return name.split(" & ")[0] if " & " in name else name
 
 
+SOURCE_DISPLAY = {
+    "flathub": "Flathub", "fdroid": "F-Droid", "itunes": "App Store",
+    "play": "Google Play", "npm": "npm", "ifixit": "iFixit", "fda": "FDA devices",
+    "arduino": "Arduino", "steam": "Steam", "off": "Open Food Facts",
+}
+
+
 def catalog_info():
-    """Read assets/catalog.json if the pipeline has run; (count, generated) or None."""
+    """Read assets/catalog.json if the pipeline has run; catalog dict or None."""
     try:
         import json
         with open(os.path.join(OUT, "assets", "catalog.json"), encoding="utf-8") as fh:
-            c = json.load(fh)
-        return c["count"], c["generated"]
+            return json.load(fh)
     except Exception:
         return None
 
 
+def source_names(catalog):
+    keys = sorted(catalog.get("sources", {}), key=lambda k: -catalog["sources"].get(k, 0))
+    names = [SOURCE_DISPLAY.get(k, k) for k in keys]
+    if not names:
+        return ""
+    if len(names) == 1:
+        return names[0]
+    return ", ".join(names[:-1]) + " and " + names[-1]
+
+
 def shelves_teaser():
-    info = catalog_info()
-    if info:
-        return (f"Opinion says a space is crowded; a catalog proves it. {info[0]:,} real, "
-                f"published apps and packages — Flathub, F-Droid, the App Store, Google Play "
-                f"and npm — collected {info[1]}, searchable by name, category and maker.")
-    return ("Real, published apps and packages from Flathub, F-Droid, the App Store, Google "
-            "Play and npm, collected by pipeline/ingest.py and searchable on the shelves page.")
+    c = catalog_info()
+    if c:
+        return (f"Opinion says a space is crowded; a catalog proves it. {c['count']:,} real, "
+                f"published apps, devices and products — {source_names(c)} — collected "
+                f"{c['generated']}, searchable by name, category and maker.")
+    return ("Real, published apps, devices and products from ten catalogs — Flathub, F-Droid, "
+            "the App Store, Google Play, npm, iFixit, FDA devices, Arduino, Steam and Open Food "
+            "Facts — collected by pipeline/ingest.py and searchable on the shelves page.")
 
 
 def meter_html(kind, n, label):
@@ -713,14 +730,14 @@ def build_search():
 
 # ---------------------------------------------------------------- shelves page
 def build_shelves():
-    info = catalog_info()
-    if info:
+    c = catalog_info()
+    if c:
         lede = (f"Opinion says a space is crowded; a catalog proves it. These are real, published "
-                f"apps and packages — {info[0]:,} of them, collected {info[1]} from Flathub, "
-                f"F-Droid, the Apple App Store, Google Play and npm. Search before you build.")
+                f"apps, devices and products — {c['count']:,} of them, collected {c['generated']} "
+                f"from {source_names(c)}. Search before you build.")
     else:
-        lede = ("A catalog of real, published apps and packages — evidence for what already "
-                "exists. Build it with pipeline/ingest.py and pipeline/build_site_index.py.")
+        lede = ("A catalog of real, published apps, devices and products — evidence for what "
+                "already exists. Build it with pipeline/ingest.py and pipeline/build_site_index.py.")
     main = f"""<section class="hero slim">
   <div class="wrap">
     <h1>The shelves</h1>
@@ -730,8 +747,9 @@ def build_shelves():
 <section>
   <div class="wrap">
     <p class="shelves-status" id="loadstate" aria-live="polite">Loading the catalog…</p>
+    <div class="srcchips" id="srcchips" aria-label="Filter by source"></div>
     <div class="toolbar-page">
-      <input id="q" type="search" placeholder="Search real apps — try “notes”, “budget”, “meditation”…" aria-label="Search published apps" disabled>
+      <input id="q" type="search" placeholder="Search real apps, devices, products — try “hearing aid”, “tractor”, “notes”…" aria-label="Search published products" disabled>
       <span class="shown" id="shown" aria-live="polite"></span>
     </div>
     <div class="results" id="results" aria-label="Catalog results"></div>
@@ -747,8 +765,6 @@ def build_shelves():
 
 # ---------------------------------------------------------------- about page
 def build_about():
-    info = catalog_info()
-    play_note = f" — {info[0]:,} listings in all, collected {info[1]}" if info else ""
     main = """<section class="hero slim">
   <div class="wrap">
     <h1>About the census</h1>
@@ -807,12 +823,16 @@ def build_about():
   <p>
     The Shelves page backs "already built" with real catalogs rather than memory:
     Flathub and F-Droid in full from their open metadata dumps, the Apple App Store through
-    its official Search API, popular npm packages through the registry API, and Google Play
-    through capped, popularity-ranked searches{play_note}. The raw snapshots live in
-    <code>data/raw/</code>, the full merged catalog in <code>data/catalog.db</code>, and the
-    site ships a capped index at <code>assets/catalog.json</code>. Rerun
-    <code>pipeline/ingest.py</code> and <code>pipeline/build_site_index.py</code> to refresh
-    it — the census of ideas is editorial, but the shelves are measured.
+    its official Search API, popular npm packages through the registry API, Steam's games
+    catalog, and — for hardware — iFixit's complete device-repair tree, openFDA's regulated
+    medical-device database, Arduino's embedded-library registry and Open Food Facts'
+    product database. Google Play contributes capped, popularity-ranked searches: Play has
+    no bulk API, and scraping all of it would violate its terms, so the pipeline stops at
+    capped results. The raw snapshots live in <code>data/raw/</code>, the full merged
+    catalog in <code>data/catalog.db</code>, and the site ships a capped index at
+    <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
+    <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
+    editorial, but the shelves are measured.
   </p>
 
   <h2>Limits, stated plainly</h2>
@@ -1004,6 +1024,13 @@ a{color:inherit}
 .r-side.u{color:var(--blue-deep)}
 .result .src{color:var(--ink)}
 .shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
+.srcchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.chip{
+  font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:var(--card);border:1px solid var(--line);padding:.15rem .6rem;cursor:pointer;
+}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.on{color:var(--ink);border-color:var(--ink);font-weight:700}
 .r-title{font-weight:800}
 .r-field{font-size:.78rem;color:var(--muted)}
 .r-what{grid-column:2/4;font-size:.9rem;color:#454B3C;max-width:75ch}
@@ -1232,11 +1259,15 @@ APP_JS = """(function () {
 
 SHELVES_JS = """(function () {
   "use strict";
+  var DISPLAY = {flathub: "Flathub", fdroid: "F-Droid", itunes: "App Store", play: "Google Play",
+    npm: "npm", ifixit: "iFixit", fda: "FDA devices", arduino: "Arduino",
+    steam: "Steam", off: "Open Food Facts"};
   var input = document.getElementById("q");
   var list = document.getElementById("results");
   var shown = document.getElementById("shown");
   var status = document.getElementById("loadstate");
-  var CAT = null, INDEX = null, timer = null;
+  var chips = document.getElementById("srcchips");
+  var CAT = null, INDEX = null, active = {}, timer = null;
 
   fetch("assets/catalog.json").then(function (r) {
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -1246,8 +1277,26 @@ SHELVES_JS = """(function () {
     INDEX = c.apps.map(function (a) {
       return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
     });
-    status.textContent = CAT.count.toLocaleString() + " apps on the shelves, collected " +
-      CAT.generated + " from Flathub, F-Droid, the App Store, Google Play and npm";
+    var keys = Object.keys(CAT.sources).sort(function (a, b) {
+      return CAT.sources[b] - CAT.sources[a];
+    });
+    keys.forEach(function (k) {
+      active[k] = true;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip on";
+      b.setAttribute("aria-pressed", "true");
+      b.textContent = (DISPLAY[k] || k) + " " + CAT.sources[k].toLocaleString();
+      b.addEventListener("click", function () {
+        active[k] = !active[k];
+        b.classList.toggle("on", active[k]);
+        b.setAttribute("aria-pressed", String(!!active[k]));
+        render();
+      });
+      chips.appendChild(b);
+    });
+    status.textContent = CAT.count.toLocaleString() + " apps, devices and products on the " +
+      "shelves, collected " + CAT.generated + " from " + keys.length + " catalogs";
     input.disabled = false;
     render();
   }).catch(function () {
@@ -1261,22 +1310,24 @@ SHELVES_JS = """(function () {
     var hits = [];
     if (qy.length >= 2) {
       for (var i = 0; i < INDEX.length; i++) {
-        var it = INDEX[i], s = 0;
+        var it = INDEX[i];
+        if (!active[it[2][2]]) continue;
+        var s = 0;
         if (it[0].indexOf(qy) === 0) s = 4;
         else if (it[0].indexOf(qy) !== -1) s = 3;
         else if (it[1].indexOf(qy) !== -1) s = 1;
         if (s) hits.push([s, it[2]]);
       }
       hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
-      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " apps";
+      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " entries";
     } else {
-      shown.textContent = CAT.count.toLocaleString() + " apps";
+      shown.textContent = CAT.count.toLocaleString() + " entries";
     }
     list.innerHTML = "";
     if (qy.length < 2) {
       var hint = document.createElement("p");
       hint.className = "shown-more";
-      hint.textContent = "Type at least two letters — app names, categories, makers. " +
+      hint.textContent = "Type at least two letters — app names, device models, categories, makers. " +
         "This is the evidence shelf for what already exists, not opinion.";
       list.appendChild(hint);
       return;
@@ -1284,7 +1335,7 @@ SHELVES_JS = """(function () {
     if (!hits.length) {
       var empty = document.createElement("p");
       empty.className = "shown-more";
-      empty.textContent = "No listing matches. It may live outside these five catalogs — " +
+      empty.textContent = "No listing matches. It may live outside these catalogs — " +
         "or it may genuinely not exist yet, which is what the dashed columns are for.";
       list.appendChild(empty);
       return;
@@ -1296,7 +1347,7 @@ SHELVES_JS = """(function () {
       if (a0[4]) { a.href = a0[4]; a.target = "_blank"; a.rel = "noopener"; }
       var src = document.createElement("span");
       src.className = "r-side src";
-      src.textContent = a0[2];
+      src.textContent = DISPLAY[a0[2]] || a0[2];
       var title = document.createElement("span");
       title.className = "r-title";
       title.textContent = a0[0];

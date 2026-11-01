@@ -32,14 +32,15 @@
 <section class="hero slim">
   <div class="wrap">
     <h1>The shelves</h1>
-    <p class="lede">Opinion says a space is crowded; a catalog proves it. These are real, published apps and packages — 20,000 of them, collected 2026-11-01 from Flathub, F-Droid, the Apple App Store, Google Play and npm. Search before you build.</p>
+    <p class="lede">Opinion says a space is crowded; a catalog proves it. These are real, published apps, devices and products — 30,000 of them, collected 2026-11-01 from Arduino, FDA devices, F-Droid, Flathub, iFixit, App Store, npm, Google Play, Open Food Facts and Steam. Search before you build.</p>
   </div>
 </section>
 <section>
   <div class="wrap">
     <p class="shelves-status" id="loadstate" aria-live="polite">Loading the catalog…</p>
+    <div class="srcchips" id="srcchips" aria-label="Filter by source"></div>
     <div class="toolbar-page">
-      <input id="q" type="search" placeholder="Search real apps — try “notes”, “budget”, “meditation”…" aria-label="Search published apps" disabled>
+      <input id="q" type="search" placeholder="Search real apps, devices, products — try “hearing aid”, “tractor”, “notes”…" aria-label="Search published products" disabled>
       <span class="shown" id="shown" aria-live="polite"></span>
     </div>
     <div class="results" id="results" aria-label="Catalog results"></div>
@@ -48,11 +49,15 @@
 <script>
 (function () {
   "use strict";
+  var DISPLAY = {flathub: "Flathub", fdroid: "F-Droid", itunes: "App Store", play: "Google Play",
+    npm: "npm", ifixit: "iFixit", fda: "FDA devices", arduino: "Arduino",
+    steam: "Steam", off: "Open Food Facts"};
   var input = document.getElementById("q");
   var list = document.getElementById("results");
   var shown = document.getElementById("shown");
   var status = document.getElementById("loadstate");
-  var CAT = null, INDEX = null, timer = null;
+  var chips = document.getElementById("srcchips");
+  var CAT = null, INDEX = null, active = {}, timer = null;
 
   fetch("assets/catalog.json").then(function (r) {
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -62,8 +67,26 @@
     INDEX = c.apps.map(function (a) {
       return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
     });
-    status.textContent = CAT.count.toLocaleString() + " apps on the shelves, collected " +
-      CAT.generated + " from Flathub, F-Droid, the App Store, Google Play and npm";
+    var keys = Object.keys(CAT.sources).sort(function (a, b) {
+      return CAT.sources[b] - CAT.sources[a];
+    });
+    keys.forEach(function (k) {
+      active[k] = true;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip on";
+      b.setAttribute("aria-pressed", "true");
+      b.textContent = (DISPLAY[k] || k) + " " + CAT.sources[k].toLocaleString();
+      b.addEventListener("click", function () {
+        active[k] = !active[k];
+        b.classList.toggle("on", active[k]);
+        b.setAttribute("aria-pressed", String(!!active[k]));
+        render();
+      });
+      chips.appendChild(b);
+    });
+    status.textContent = CAT.count.toLocaleString() + " apps, devices and products on the " +
+      "shelves, collected " + CAT.generated + " from " + keys.length + " catalogs";
     input.disabled = false;
     render();
   }).catch(function () {
@@ -77,22 +100,24 @@
     var hits = [];
     if (qy.length >= 2) {
       for (var i = 0; i < INDEX.length; i++) {
-        var it = INDEX[i], s = 0;
+        var it = INDEX[i];
+        if (!active[it[2][2]]) continue;
+        var s = 0;
         if (it[0].indexOf(qy) === 0) s = 4;
         else if (it[0].indexOf(qy) !== -1) s = 3;
         else if (it[1].indexOf(qy) !== -1) s = 1;
         if (s) hits.push([s, it[2]]);
       }
       hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
-      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " apps";
+      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " entries";
     } else {
-      shown.textContent = CAT.count.toLocaleString() + " apps";
+      shown.textContent = CAT.count.toLocaleString() + " entries";
     }
     list.innerHTML = "";
     if (qy.length < 2) {
       var hint = document.createElement("p");
       hint.className = "shown-more";
-      hint.textContent = "Type at least two letters — app names, categories, makers. " +
+      hint.textContent = "Type at least two letters — app names, device models, categories, makers. " +
         "This is the evidence shelf for what already exists, not opinion.";
       list.appendChild(hint);
       return;
@@ -100,7 +125,7 @@
     if (!hits.length) {
       var empty = document.createElement("p");
       empty.className = "shown-more";
-      empty.textContent = "No listing matches. It may live outside these five catalogs — " +
+      empty.textContent = "No listing matches. It may live outside these catalogs — " +
         "or it may genuinely not exist yet, which is what the dashed columns are for.";
       list.appendChild(empty);
       return;
@@ -112,7 +137,7 @@
       if (a0[4]) { a.href = a0[4]; a.target = "_blank"; a.rel = "noopener"; }
       var src = document.createElement("span");
       src.className = "r-side src";
-      src.textContent = a0[2];
+      src.textContent = DISPLAY[a0[2]] || a0[2];
       var title = document.createElement("span");
       title.className = "r-title";
       title.textContent = a0[0];

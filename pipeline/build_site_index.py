@@ -101,8 +101,8 @@ def main():
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "count": len(shipped),
         "total": len(merged),
-        "sources": {s: sum(1 for r in merged if r["source"] == s)
-                    for s in sorted({r["source"] for r in merged})},
+        "sources": {s: sum(1 for r in shipped if r["source"] == s)
+                    for s in sorted({r["source"] for r in shipped})},
         "apps": [[r["name"], r["summary"], r["source"], r["category"], r["url"], r["developer"]]
                  for r in shipped],
     }

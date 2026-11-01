@@ -16,6 +16,11 @@ Sources:
             rate-limited; Play has no official bulk API — use modestly,
             it is against Google's ToS to scrape aggressively)
   npm       npm registry top packages by popularity (open search API)
+  ifixit    every hardware device in iFixit's repair catalog (open API)
+  fda       regulated medical devices from openFDA (official US open data)
+  arduino   embedded/firmware libraries from Arduino's library index (open)
+  steam     Steam games and software via community search (per term)
+  off       real food products from Open Food Facts (open API, capped)
 
 Usage:
   python3 pipeline/ingest.py                  # everything except play
@@ -332,12 +337,231 @@ def fetch_play(n_hits=150):
     return save("play", apps)
 
 
+# ---------------------------------------------------------------- ifixit
+def fetch_ifixit():
+    """Every hardware device in iFixit's repair catalog, from its open API.
+
+    /api/2.0/categories returns the full nested device tree; every key is a
+    real device, family or category people repair. Leaves get device URLs.
+    """
+    print("  downloading device tree...")
+    tree = get_json("https://www.ifixit.com/api/2.0/categories", timeout=120)
+    apps, seen = [], set()
+
+    def walk(node, top):
+        if isinstance(node, dict):
+            for key, child in node.items():
+                key = (key or "").strip()
+                if not key:
+                    continue
+                walk(child, key if top is None else top)
+        # a leaf device: record it once we know its top-level category
+
+    def walk2(node, top, path):
+        if isinstance(node, dict):
+            for key, child in node.items():
+                key = (key or "").strip()
+                if not key or key in seen:
+                    continue
+                seen.add(key)
+                cat = top or ""
+                apps.append({
+                    "id": key.lower().replace(" ", "-"),
+                    "name": key,
+                    "summary": f"Repair guide subject on iFixit ({path})" if child is None else f"Device family on iFixit ({path})",
+                    "description": "",
+                    "category": cat,
+                    "developer": "",
+                    "url": ("https://www.ifixit.com/Device/" + urllib.parse.quote(key)) if child is None else "",
+                })
+                walk2(child, cat, path if child is None else key)
+        return
+
+    walk2(tree, None, "")
+    return save("ifixit", apps)
+
+
+# ---------------------------------------------------------------- fda
+def fetch_fda():
+    """Regulated medical devices from openFDA's device classification database.
+
+    Official US government open data — every device type the FDA regulates.
+    """
+    apps, seen, skip = [], set(), 0
+    while True:
+        url = f"https://api.fda.gov/device/classification.json?limit=100&skip={skip}"
+        try:
+            data = get_json(url)
+        except Exception as e:  # noqa: BLE001
+            print(f"    skip={skip}: {e}", file=sys.stderr)
+            break
+        results = data.get("results") or []
+        if not results:
+            break
+        for r in results:
+            name = (r.get("device_name") or "").strip()
+            if not name or name in seen:
+                continue
+            seen.add(name)
+            reg = (r.get("regulation_number") or "").strip()
+            part = reg.split(".")[0] if reg else ""
+            apps.append({
+                "id": r.get("product_code") or name.lower(),
+                "name": name,
+                "summary": f"FDA class {r.get('device_class', '?')} regulated device type",
+                "description": "",
+                "category": (r.get("medical_specialty") or "").strip() or "Medical devices",
+                "developer": "",
+                "url": (f"https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part/{part}"
+                        if part else ""),
+            })
+        skip += len(results)
+        print(f"    {skip} of {data.get('meta', {}).get('results', {}).get('total', '?')}")
+        time.sleep(0.3)
+        if skip > 20000:
+            break
+    return save("fda", apps)
+
+
+# ---------------------------------------------------------------- arduino
+def fetch_arduino():
+    """Embedded/firmware libraries from Arduino's public library index."""
+    data = get_json("https://downloads.arduino.cc/libraries/library_index.json", timeout=120)
+    libs, seen = {}, set()
+    for lib in data.get("libraries", []):
+        name = (lib.get("name") or "").strip()
+        if not name:
+            continue
+        if name in libs:  # keep the newest release (index is version-sorted)
+            continue
+        libs[name] = lib
+    apps = []
+    for name, lib in libs.items():
+        if name.lower() in seen:
+            continue
+        seen.add(name.lower())
+        cat = (lib.get("category") or "").strip()
+        apps.append({
+            "id": name,
+            "name": name,
+            "summary": clean(lib.get("sentence"), 300),
+            "description": clean(lib.get("paragraph")),
+            "category": cat or "Embedded library",
+            "developer": clean(lib.get("owner") or "", 100),
+            "url": (lib.get("website") or "").strip(),
+        })
+    return save("arduino", apps)
+
+
+STEAM_TERMS = [
+    "games", "rpg", "strategy", "simulation", "roguelike", "puzzle", "platformer",
+    "shooter", "horror", "racing", "sports", "football", "chess", "card game",
+    "city builder", "farming", "flight simulator", "space", "zombies", "anime",
+    "pixel", "vr", "survival", "sandbox", "tower defense", "metroidvania",
+    "golf", "rhythm", "typing", "programming", "hacking", "cooking", "fishing",
+    "war", "multiplayer", "co-op", "mmorpg", "darts", "pool", "wrestling",
+    "skateboarding", "skiing", "baseball", "cricket", "tennis", "boxing",
+]
+
+
+# ---------------------------------------------------------------- steam
+def fetch_steam():
+    """Steam games and software via the community search API, per term.
+
+    The official GetAppList endpoint is name-only; this surfaces the popular
+    titles with logos for a spread of gaming and software terms.
+    """
+    apps, seen = [], set()
+    for i, term in enumerate(STEAM_TERMS):
+        url = "https://steamcommunity.com/actions/SearchApps/" + urllib.parse.quote(term)
+        try:
+            results = get_json(url)
+        except Exception as e:  # noqa: BLE001
+            print(f"    {term}: {e}", file=sys.stderr)
+            continue
+        got = 0
+        for r in results or []:
+            aid = str(r.get("appid") or "")
+            name = (r.get("name") or "").strip()
+            if not aid or not name or aid in seen:
+                continue
+            seen.add(aid)
+            apps.append({
+                "id": aid,
+                "name": name,
+                "summary": "",
+                "description": "",
+                "category": "Steam game / software",
+                "developer": "",
+                "url": "https://store.steampowered.com/app/" + aid,
+            })
+            got += 1
+        print(f"    [{i + 1}/{len(STEAM_TERMS)}] {term}: {got}")
+        time.sleep(0.8)
+    return save("steam", apps)
+
+
+# ---------------------------------------------------------------- off
+def fetch_off(pages=60):
+    """Real food products from Open Food Facts' open API (capped)."""
+    apps, seen, fails = [], set(), 0
+    for page in range(1, pages + 1):
+        q = urllib.parse.urlencode({
+            "page": page, "page_size": 100,
+            "fields": "code,product_name,brands,categories_en",
+        })
+        url = "https://world.openfoodfacts.org/api/v2/search?" + q
+        try:
+            data = get_json(url)
+        except Exception as e:  # noqa: BLE001
+            print(f"    page {page}: {e}", file=sys.stderr)
+            fails += 1
+            if fails >= 3:
+                break
+            continue
+        fails = 0
+        products = data.get("products") or []
+        if not products:
+            break
+        new = 0
+        for r in products:
+            name = (r.get("product_name") or "").strip()
+            if not name:
+                continue
+            key = (name.lower(), (r.get("brands") or "").lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            code = (r.get("code") or "").strip()
+            cats = (r.get("categories_en") or "").split(",")
+            apps.append({
+                "id": code,
+                "name": name,
+                "summary": clean(r.get("brands"), 150),
+                "description": "",
+                "category": (cats[0].replace("en:", "").strip() if cats and cats[0] else "Food product"),
+                "developer": clean(r.get("brands"), 100),
+                "url": f"https://world.openfoodfacts.org/product/{code}" if code else "",
+            })
+            new += 1
+        print(f"    page {page}: +{new}")
+        if new < 10:
+            break
+        time.sleep(1.5)
+    return save("off", apps)
+
+
 SOURCES = {
     "flathub": fetch_flathub,
     "fdroid": fetch_fdroid,
     "itunes": fetch_itunes,
     "npm": fetch_npm,
     "play": fetch_play,
+    "ifixit": fetch_ifixit,
+    "fda": fetch_fda,
+    "arduino": fetch_arduino,
+    "steam": fetch_steam,
+    "off": fetch_off,
 }
 
 

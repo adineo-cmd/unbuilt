@@ -145,6 +145,13 @@ a{color:inherit}
 .r-side.u{color:var(--blue-deep)}
 .result .src{color:var(--ink)}
 .shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
+.srcchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.chip{
+  font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:var(--card);border:1px solid var(--line);padding:.15rem .6rem;cursor:pointer;
+}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.on{color:var(--ink);border-color:var(--ink);font-weight:700}
 .r-title{font-weight:800}
 .r-field{font-size:.78rem;color:var(--muted)}
 .r-what{grid-column:2/4;font-size:.9rem;color:#454B3C;max-width:75ch}
