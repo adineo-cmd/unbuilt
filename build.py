@@ -28,6 +28,7 @@ FIELDS = [
             {"t": "Cross-provider digital inheritance", "w": "A dead-man's switch that legally hands every account to the person you choose.", "why": "Each provider handles death alone; nobody spans them.", "closest": "Per-account inactive-account settings.", "d": 2, "tags": ["legal", "unsexy"]},
             {"t": "Explain-my-bill", "w": "Photograph any bill — medical, utility, telecom — and get an itemized audit plus a dispute letter.", "why": "Bill confusion is load-bearing revenue; auditing it is nobody's product.", "closest": "Rocket Money, subscriptions only.", "d": 3, "tags": ["consumer", "AI-assisted"]},
             {"t": "The personal API", "w": "One versioned endpoint you own that exposes your data — contacts, health, purchases — to apps you approve, with scopes and revocation.", "why": "Every app wants to be the hub of your data; nobody wants to be the spoke.", "closest": "Quantified-self exports, app by app.", "d": 4, "tags": ["wildcard", "data", "standards"]},
+            {"t": "Undo for the internet", "w": "A personal undo ledger: everything you sent or posted, recallable where protocols allow, marked as retracted everywhere else.", "why": "Email's thirty-year-old recall is a joke, and platforms monetize permanence.", "closest": "Per-platform delete buttons with no memory.", "d": 3, "tags": ["wildcard", "privacy", "standards"]},
         ],
     },
     {
@@ -105,6 +106,7 @@ FIELDS = [
             {"t": "Used-cell grading scanner", "w": "A handheld tool that prices a used EV pack, cell by cell, in minutes.", "why": "Unlocks the whole second-life market — which is why it is hard.", "closest": "Lab-grade bench testers.", "d": 4, "tags": ["hardware", "circular"]},
             {"t": "Crop-switching planner", "w": "For farmers whose climate zone just moved: what to plant for the next decade.", "why": "The buyers are rural and the sales cycle is years.", "closest": "Academic papers.", "d": 3, "tags": ["agriculture", "long-cycle"]},
             {"t": "Appliance-to-grid orchestrator", "w": "A consumer box that bids your home's flexibility — heater, charger, battery — into grid programs automatically.", "why": "Needs the home-energy loop closed first, plus a utility willing to pay homes.", "closest": "Utility pilots with proprietary hardware.", "d": 5, "tags": ["wildcard", "energy", "hardware"]},
+            {"t": "Flood-honest insurance", "w": "Parcel-level hydrology shown to every buyer before purchase, priced into the policy, updated yearly.", "why": "Insurers know the risk; sellers and buyers don't, until the water does.", "closest": "Coarse FEMA zones that lag reality.", "d": 3, "tags": ["wildcard", "climate", "consumer"]},
         ],
     },
     {
@@ -178,6 +180,7 @@ FIELDS = [
             {"t": "The local-law changelog", "w": "Zoning, taxes and rules for your street, versioned and monitored like code.", "why": "Twenty thousand municipalities, hostile formats.", "closest": "State-level legislative scanners.", "d": 3, "tags": ["legal", "govtech"]},
             {"t": "Community broadband kit", "w": "Mesh hardware, billing and an operations playbook a neighbourhood can actually run.", "why": "Telecoms lobby, volunteer burnout, capital costs.", "closest": "Municipal pilots.", "d": 4, "tags": ["infrastructure", "cooperative"]},
             {"t": "Emergency routing beyond one number", "w": "An open dispatch layer for regions where 911 or 112 barely answers.", "why": "The people who need it most can't pay for it.", "closest": "Nothing credible.", "d": 5, "tags": ["safety", "global"]},
+            {"t": "Council meetings, transcribed and searchable", "w": "Every public meeting auto-transcribed, indexed and alertable — who said what about your street, forever.", "why": "Decisions are made in rooms that keep no usable record.", "closest": "Grainy streams nobody watches.", "d": 3, "tags": ["govtech", "civic"]},
         ],
     },
     {
@@ -234,8 +237,193 @@ FIELDS = [
             {"t": "Mid-scroll fact-check", "w": "Claim-level context attached to what's passing by, before you share it.", "why": "Platforms monetize speed; a pause is a design insult to them.", "closest": "Post-viral labels.", "d": 3, "tags": ["trust", "media"]},
             {"t": "Modern forum software", "w": "The 2005 stack that runs niche communities, rebuilt to make hosting them sustainable.", "why": "The builders left; the communities stayed.", "closest": "Discourse — better, still heavy.", "d": 2, "tags": ["community", "open-source"]},
             {"t": "A comment layer you own", "w": "Portable comments anchored to any URL — your thread travels with you, not with the site.", "why": "Sites monetize the conversation; a portable one removes their reason to host it.", "closest": "Embedded widgets that die with the vendor.", "d": 4, "tags": ["wildcard", "social", "standards"]},
+            {"t": "The news pass", "w": "One subscription, every publisher, pooled by what you actually read — a Spotify for journalism.", "why": "Publishers won't pool while paywalls trickle income; the deaths come first.", "closest": "Bundles of two or three big titles.", "d": 4, "tags": ["wildcard", "journalism", "business"]},
         ],
     },
+{
+  "id": "law", "name": "Law & justice",
+  "note": "The machinery of justice runs on paper, patience and paywalls. Ordinary people are on their own.",
+  "built": [
+    ["Legal research databases", "Case law and statutes behind four-hundred-dollar monthly paywalls.", "Built for firms, priced against individuals.", 5],
+    ["Contract template marketplaces", "Templates of varying quality, sold by download.", "You still have to guess which clause will hurt you.", 4],
+    ["Court case lookup portals", "Where available, one county at a time.", "Fifty states, forty interfaces, zero standards.", 4],
+    ["DIY incorporation tools", "Forming an LLC finally takes minutes.", "Forming was never the hard part; the next ten years are.", 4],
+    ["Immigration form preparers", "Consultants who retype your answers into the same PDFs.", "An industry that exists because the forms are unreadable.", 3],
+  ],
+  "unbuilt": [
+    {"t": "The plain-language law layer", "w": "Every statute, lease and contract rendered in precise plain language, with the binding text one tap away.", "why": "Plain language is easy; precision without a lawyer's liability is the hard part.", "closest": "Summary sites that disclaim everything.", "d": 3, "tags": ["wildcard", "justice", "AI"]},
+    {"t": "Court records as open infrastructure", "w": "One public API for filings, dockets and outcomes across every jurisdiction.", "why": "Clerks sell bulk data in incompatible formats, if they digitize at all.", "closest": "RECAP's crowdsourced collection, US-centric.", "d": 5, "tags": ["justice", "infrastructure"]},
+    {"t": "Dispute-resolution insurance", "w": "Prepaid cover that handles a landlord, employer or insurer dispute end to end.", "why": "Legal insurance exists in Europe; productized dispute handling doesn't.", "closest": "Membership schemes with lawyer directories.", "d": 4, "tags": ["wildcard", "justice", "insurance"]},
+    {"t": "The small-claims copilot", "w": "Walks you from demand letter to judgment: filing, evidence, service, hearing script.", "why": "The process is learnable but deliberately intimidating.", "closest": "Half-maintained state guide articles.", "d": 3, "tags": ["justice", "consumer"]},
+  ],
+  "half": [
+    {"t": "Online dispute resolution", "w": "Mediation and arbitration platforms exist in pilots and a few courts.", "missing": "A default channel most disputes can actually reach.", "why": "Courts adopt technology at geological pace, and liability scares vendors.", "d": 4, "tags": ["justice", "regulated"]},
+    {"t": "Legal-aid triage that works", "w": "Hotlines and directories exist.", "missing": "Real matching by case type, income, language and open capacity.", "why": "Legal aid is chronically underfunded; matching software is nobody's grant line.", "d": 3, "tags": ["justice", "under-served"]},
+    {"t": "Tenant-rights enforcement kits", "w": "Letter generators and know-your-rights sites exist.", "missing": "Case tracking, evidence bundles and outcomes data by landlord.", "why": "Enforcement is local, fragmented and politically loaded.", "d": 3, "tags": ["justice", "consumer"]},
+    {"t": "Push-button record expungement", "w": "Clearing old records is possible in most states, mostly by hand.", "missing": "Automatic expungement where eligibility is already the law.", "why": "The data lives in fifty incompatible clerk systems.", "d": 4, "tags": ["justice", "govtech"]},
+  ],
+},
+{
+  "id": "textiles", "name": "Textiles & clothing",
+  "note": "The most recycled fibre in your closet is none of them. Fashion measures everything except what matters.",
+  "built": [
+    ["Ultra-fast fashion", "A new SKU every second, shipped across the planet.", "The trend cycle is now the product.", 5],
+    ["Sneaker resale platforms", "StockX turned shoes into tickers.", "Speculation with laces.", 4],
+    ["Virtual try-on filters", "Cameras drape clothes on your mirror selfie.", "Fit confidence still ends at the checkout button.", 4],
+    ["Athleisure direct-to-consumer", "A thousand logos on the same three factories.", "Differentiated by marketing spend.", 4],
+    ["Indie sewing patterns", "PDF patterns for a thriving home-sewing hobby.", "Thriving because the industry forgot how to fit people.", 3],
+  ],
+  "unbuilt": [
+    {"t": "The garment passport, enforced at resale", "w": "A scannable record of fibre, factory, repairs and previous owners, required before a garment changes hands.", "why": "The EU is drafting one; the enforcement layer and consumer surface don't exist.", "closest": "Digital-passport pilots in luxury fashion.", "d": 4, "tags": ["wildcard", "circular", "standards"]},
+    {"t": "Made-to-measure at ready-to-wear prices", "w": "One factory run, cut to your measured pattern, at jeans prices not tailoring prices.", "why": "MTM economics work at three hundred dollars a shirt; nobody cracked forty-dollar jeans.", "closest": "MTM startups at five times the price.", "d": 5, "tags": ["manufacturing", "consumer"]},
+    {"t": "The care-label truth engine", "w": "Scan a garment; get the real wash, dry and iron outcome from aggregated wear data, not the tag's legal minimum.", "why": "Tags protect manufacturers, not clothes.", "closest": "Static care-symbol guides.", "d": 3, "tags": ["wildcard", "consumer", "crowdsourced"]},
+    {"t": "The wardrobe operating system", "w": "Your whole closet inventoried from photos and receipts: weather-aware outfits, repair reminders, resale handoff.", "why": "Everyone's closet data is trapped in camera rolls and memory.", "closest": "Capsule-planning apps for the disciplined.", "d": 4, "tags": ["consumer", "AI"]},
+  ],
+  "half": [
+    {"t": "Clothing resale automation", "w": "Resale platforms work if you photograph, price and ship everything yourself.", "missing": "One-tap listing: identify the garment, price it, publish everywhere.", "why": "Garment identification at scale is an unsolved vision problem.", "d": 3, "tags": ["circular", "AI"]},
+    {"t": "Fit prediction that kills returns", "w": "Every store has a fit quiz; roughly a third of online clothing comes back anyway.", "missing": "A fit model that travels between brands with you.", "why": "Size charts are lies told in inches, and each brand guards its own.", "d": 4, "tags": ["consumer", "AI"]},
+    {"t": "Fibre-to-fibre textile recycling", "w": "Recycling plants exist in pilot scale.", "missing": "Collection and sorting at the scale of the discard pile.", "why": "Sorting blended fabrics by fibre is slow, wet and unprofitable — so far.", "d": 5, "tags": ["climate", "circular"]},
+    {"t": "Brand-backed clothing repair", "w": "Tailors exist; brands offer none.", "missing": "Mail-in repair with guaranteed pricing, built into the brand's own store.", "why": "New sales fund the marketing; repairs don't.", "d": 2, "tags": ["circular", "consumer"]},
+  ],
+},
+{
+  "id": "death", "name": "Death & legacy",
+  "note": "Everyone enters this market exactly once. The infrastructure is paperwork, grief and passwords.",
+  "built": [
+    ["Will-writing software", "State-specific templates, cheap and instant.", "The will is the easy ten percent; execution is the ninety.", 4],
+    ["Funeral directories", "Listings for homes and services.", "A market where the buyer has days and zero leverage.", 3],
+    ["Life insurance marketplaces", "Comparison sites and e-signature policies.", "Underwriting improved; claiming still means paperwork during grief.", 4],
+    ["Genealogy platforms", "Billions of records, DNA matches, family trees.", "Solved, and monetized forever.", 5],
+    ["Memorial pages and crowdfunds", "Facebook memorials, GoFundMe funerals.", "Grief as engagement metrics.", 4],
+  ],
+  "unbuilt": [
+    {"t": "The estate operating system", "w": "From death certificate to final distribution: checklist, letters, filings, account shutdowns, tax — one console that proves your authority.", "why": "Executors are amateurs doing a professional job once, in grief.", "closest": "Probate lawyers at three to seven percent of the estate.", "d": 4, "tags": ["wildcard", "legal", "unsexy"]},
+    {"t": "Heirloom provenance and routing", "w": "Objects carry their stories and their designated next owners; disputes resolve before they start.", "why": "The data lives in family lore and dies with the owners.", "closest": "Genealogy for people; nothing for objects.", "d": 3, "tags": ["wildcard", "consumer"]},
+    {"t": "Organ-and-body donation logistics", "w": "One registry that actually honors your wishes across hospitals, researchers and medical schools.", "why": "Wishes are recorded on license cards that emergency rooms rarely read.", "closest": "State registries that don't interoperate.", "d": 4, "tags": ["wildcard", "health", "regulated"]},
+    {"t": "Probate-free small estates", "w": "A standard, portable small-estate instrument that banks and registries accept across borders.", "why": "Small estates drown in the same process as large ones.", "closest": "Affidavits that some banks accept, some of the time.", "d": 4, "tags": ["legal", "policy"]},
+  ],
+  "half": [
+    {"t": "Digital estate settlement", "w": "Password managers name emergency contacts; banks have death protocols.", "missing": "One executor console: find accounts, close them, transfer assets, prove authority.", "why": "Every provider has a different proof-of-death ritual.", "d": 4, "tags": ["unsexy", "legal"]},
+    {"t": "Advance directives that travel", "w": "Living wills exist in drawers and hospital portals.", "missing": "Interoperable directives any emergency room can read in seconds.", "why": "Health IT interoperability fails even for living patients.", "d": 4, "tags": ["health", "legal"]},
+    {"t": "Green burial at scale", "w": "Conservation cemeteries and human composting exist in a few jurisdictions.", "missing": "Permits, pricing and supply chains that make it a normal option everywhere.", "why": "Funeral regulation is local and incumbency-protected.", "d": 4, "tags": ["climate", "regulated"]},
+    {"t": "Grief support beyond app-store litter", "w": "Bereavement apps and therapy directories exist.", "missing": "Stepped care tied to the actual loss, funded by employers or insurers.", "why": "Grief has no retention curve, so no subscription survives.", "d": 3, "tags": ["mental health", "consumer"]},
+  ],
+},
+{
+  "id": "ocean", "name": "Ocean & water",
+  "note": "Two-thirds of the planet runs on paper charts, guesswork and goodwill.",
+  "built": [
+    ["Recreational sonar and charts", "Fish-finders and chartplotters, mature.", "For those who can afford the boat.", 4],
+    ["Beach water-quality dashboards", "County advisories, updated sometimes.", "Sampling is weekly; bacteria doesn't check the schedule.", 3],
+    ["Reef-keeping gear", "A mature global hobby supply.", "Thriving while wild reefs decline.", 4],
+    ["Ship-tracking apps", "AIS data made public and pretty.", "Transparency for hobbyists; enforcement still sleeps.", 4],
+    ["The ocean-documentary machine", "Streamable awe, endlessly.", "Awareness at one hundred percent; agency at zero.", 4],
+  ],
+  "unbuilt": [
+    {"t": "The groundwater truth layer", "w": "Real-time aquifer levels for every well region, public, like weather.", "why": "Wells are private, regulators are understaffed, and the data is politically radioactive.", "closest": "Scattered government gauge networks.", "d": 4, "tags": ["wildcard", "water", "policy"]},
+    {"t": "The fishery co-op operating system", "w": "Quotas, landings, payments and rules for small fishing cooperatives in one place.", "why": "The buyers are boats with no connectivity and thin margins.", "closest": "Paper logbooks and national portals.", "d": 4, "tags": ["wildcard", "food", "global"]},
+    {"t": "Live hazard maps for swimmers", "w": "Rip currents and hazards fused from crowds, cameras and models — surf forecasts, but for swimmers.", "why": "Lifeguards cover a sliver of coastline; drownings don't check.", "closest": "Surf forecasts made for surfers.", "d": 3, "tags": ["wildcard", "safety", "crowdsourced"]},
+    {"t": "The land-change alarm", "w": "Any wetland or coast parcel converted illegally triggers a public alert within days, from satellite feeds.", "why": "Detection exists; the alarm wired to enforcement doesn't.", "closest": "Global Forest Watch, trees only.", "d": 4, "tags": ["wildcard", "climate", "trust"]},
+  ],
+  "half": [
+    {"t": "Street-level flood warnings", "w": "National agencies model storm surge; alerts arrive city-wide.", "missing": "House-specific flood warnings with preparation checklists.", "why": "Hydrology is local; alerting infrastructure is national.", "d": 3, "tags": ["safety", "climate"]},
+    {"t": "Small-scale desalination", "w": "Industrial plants work; village-scale units pilot.", "missing": "Under-two-thousand-dollar, maintainable, solar-driven brackish-water units.", "why": "Membranes foul, brine needs a home, and the buyers are poorest.", "d": 5, "tags": ["water", "hardware"]},
+    {"t": "Seafood provenance you can scan", "w": "Eco-labels exist and confuse.", "missing": "Scan-the-fish verification from vessel to counter.", "why": "Supply chains blur at sea, often deliberately.", "d": 4, "tags": ["food", "trust"]},
+    {"t": "Cleanup gear for the thousand rivers", "w": "River interceptors and beach robots pilot in a few spots.", "missing": "Cheap local versions for every river that feeds the plastic.", "why": "The physics is easy; the economics and maintenance aren't.", "d": 4, "tags": ["climate", "hardware"]},
+  ],
+},
+{
+  "id": "parenting", "name": "Parenting & childcare",
+  "note": "The most important job runs on group chats, spreadsheets and sleep deprivation.",
+  "built": [
+    ["Baby monitors", "Video, audio, breathing detection.", "Solved, with a subscription on top.", 5],
+    ["Parenting advice content", "Infinite, contradictory, monetized.", "Advice is abundant; confidence is not.", 5],
+    ["Screen-time controls", "Every OS ships a version; every kid routes around it.", "An arms race parents lose.", 4],
+    ["Sitter marketplaces", "Directories with reviews.", "Trust still travels by word of mouth.", 4],
+    ["School communication apps", "Grades, homework and announcements, digitized.", "Three apps per school, none interoperable.", 4],
+  ],
+  "unbuilt": [
+    {"t": "The childcare co-op operating system", "w": "Rota, trust credits, background checks and insurance for parent-run shared childcare.", "why": "Co-ops solve affordability but drown in scheduling and liability.", "closest": "Spreadsheets and goodwill.", "d": 3, "tags": ["wildcard", "community", "policy"]},
+    {"t": "Developmental-milestone early warning", "w": "Unobtrusive routine observation that flags delays months earlier, wired to services that respond.", "why": "Screening happens at checkups; the gaps between them are where delays hide.", "closest": "Questionnaires at wellness visits.", "d": 4, "tags": ["wildcard", "health", "regulated"]},
+    {"t": "Parental leave for the self-employed", "w": "Benefits, coverage and income continuity for the gig parent, portable across platforms.", "why": "Rich-country leave systems assume an employer; gig parents get nothing.", "closest": "State pilots and country-specific hacks.", "d": 4, "tags": ["wildcard", "policy", "labour"]},
+    {"t": "Screen time that negotiates", "w": "The control that teaches: kids earn and allocate with transparent rules, not secret spyware.", "why": "Surveillance sells better than teaching.", "closest": "Parental controls as punishment.", "d": 3, "tags": ["wildcard", "consumer", "education"]},
+  ],
+  "half": [
+    {"t": "Real childcare availability search", "w": "Directories list daycares; waitlists are phone trees.", "missing": "Live open slots and computed subsidies across providers.", "why": "Supply is so scarce that providers don't compete for searchers.", "d": 3, "tags": ["consumer", "policy"]},
+    {"t": "Co-parenting logistics", "w": "Shared-calendar apps for separated parents exist.", "missing": "Expenses, custody swaps, school communications, documented for court if needed.", "why": "The buyers are mid-conflict; retention is the conflict.", "d": 3, "tags": ["family", "consumer"]},
+    {"t": "Pediatric triage with real escalation", "w": "Symptom checkers bury parents in 'consult a doctor'.", "missing": "Nurse-line quality at app price, tied to clinics that can actually see the child.", "why": "Liability again — capped at a brochure.", "d": 4, "tags": ["health", "regulated"]},
+    {"t": "Hand-me-down networks", "w": "Marketplace groups move kids' items informally.", "missing": "Automatic safety-recall screening and size-up cycles per child.", "why": "Recall databases are terrible to match against.", "d": 2, "tags": ["circular", "consumer"]},
+  ],
+},
+{
+  "id": "travel", "name": "Travel & borders",
+  "note": "You can book a room in thirty seconds. Crossing a border still takes a folder of paper.",
+  "built": [
+    ["Flight and hotel meta-search", "Skyscanner and its rivals, mature.", "The booking is solved; everything around it isn't.", 5],
+    ["Loyalty apps", "Points, tiers, upsells.", "Loyalty runs one direction.", 5],
+    ["Travel eSIMs", "Data abroad, cheap and instant.", "The rare thing that genuinely got better.", 4],
+    ["Camera translation", "Menus and signs, solved for major languages.", "The paper still defeats it.", 4],
+    ["Airport queue and lounge apps", "Security times and lounge booking.", "Comfort for the frequent; the queue for everyone else.", 3],
+  ],
+  "unbuilt": [
+    {"t": "Border-wait forecasts", "w": "Actual crossing times for every land border, by hour, like traffic.", "why": "The wait data exists in booths, not in public.", "closest": "Community anecdotes on forums.", "d": 3, "tags": ["wildcard", "travel", "crowdsourced"]},
+    {"t": "The residency-application copilot", "w": "Country-pair specific: document checklist, translations, appointments, deadlines, all tracked.", "why": "Each consulate is its own puzzle, and the data decays monthly.", "closest": "Expensive immigration lawyers.", "d": 4, "tags": ["wildcard", "travel", "regulated"]},
+    {"t": "Travel insurance that pays itself", "w": "Delays and cancellations detected from your tickets; the payout lands before you do.", "why": "Parametric travel products exist in tiny pilots; distribution is the wall.", "closest": "Claims forms in triplicate.", "d": 4, "tags": ["wildcard", "insurance", "travel"]},
+    {"t": "Live civic translation", "w": "Point at any official form or sign anywhere; get the exact meaning and what to do next, in your language.", "why": "Camera translation does words; it doesn't do procedures.", "closest": "Lens guessing at meaning.", "d": 3, "tags": ["wildcard", "travel", "AI"]},
+  ],
+  "half": [
+    {"t": "Honest visa answers", "w": "Airline check-in uses Timatic; consumer sites approximate.", "missing": "A personalized, current, provably-correct answer for your passport and dates.", "why": "Rules change weekly and every wrong answer carries liability.", "d": 4, "tags": ["travel", "regulated"]},
+    {"t": "Travel-document wallets", "w": "Boarding passes live in phone wallets; visas, insurance and vaccines are still folders.", "missing": "One verifiable wallet accepted at every border desk.", "why": "Borders trust stamps, not screens — so far.", "d": 4, "tags": ["travel", "standards"]},
+    {"t": "Overland trip planning", "w": "Flight routing is solved; trains, buses and border hops across countries live in forum lore.", "missing": "A routing engine for ground truth: connections, visas, bed availability.", "why": "The data is fragmented across operators with no APIs.", "d": 4, "tags": ["travel", "consumer"]},
+    {"t": "Lost-luggage recovery", "w": "Airlines misplace tens of millions of bags a year; tracing is opaque.", "missing": "Passenger-side tracking and automatic claims with evidence.", "why": "The airline owns the data until it loses the bag.", "d": 3, "tags": ["travel", "consumer"]},
+  ],
+},
+{
+  "id": "space", "name": "Space",
+  "note": "Launch got ten times cheaper. What the payloads do once they arrive is still handmade.",
+  "built": [
+    ["Satellite imagery marketplaces", "The whole ground, photographed daily, for a price.", "Sold to governments and hedge funds first.", 4],
+    ["Consumer satellite messengers", "SOS and texting from anywhere on Earth.", "A safety niche at premium prices.", 4],
+    ["Orbital consumer broadband", "Constellation internet that actually works.", "Solved for rural; priced for early adopters.", 5],
+    ["Smart telescope mounts", "Plate-solving astronomy for hobbyists.", "The hobby's renaissance.", 4],
+    ["Launch-tracking apps", "Schedules, webcasts, countdowns.", "Fandom, not infrastructure.", 3],
+  ],
+  "unbuilt": [
+    {"t": "Space-weather warnings that mean something", "w": "GPS outages, radiation alerts and aurora forecasts fused into one public feed with consequences per user.", "why": "Solar data is public; nobody translates it to 'your tractor GPS will lie for an hour'.", "closest": "Aurora alerts for hobbyists.", "d": 3, "tags": ["wildcard", "space", "safety"]},
+    {"t": "Satellite data cooperatives", "w": "Small nations and NGOs pool constellation access instead of renting from billionaires.", "why": "Collective procurement needs trust and lawyers before satellites.", "closest": "Bilateral data-sharing treaties.", "d": 5, "tags": ["wildcard", "space", "global"]},
+    {"t": "Orbital-debris insurance", "w": "Collision-risk underwriting for small satellites, priced from real conjunction data.", "why": "The actuarial data is locked inside defense agencies.", "closest": "Self-insurance by hope.", "d": 5, "tags": ["wildcard", "space", "insurance"]},
+    {"t": "The open satellite-bus standard", "w": "A swappable, documented bus so payloads plug in like expansion cards.", "why": "Every mission rebuilds its own plumbing, again.", "closest": "CubeSat standards that stop at size.", "d": 5, "tags": ["wildcard", "space", "open-source"]},
+  ],
+  "half": [
+    {"t": "Open ground-station networks", "w": "Volunteers track satellites with home antennas.", "missing": "Coverage and reliability an operator can build a mission on.", "why": "Volunteer infrastructure begging for institutional funding.", "d": 4, "tags": ["space", "open-source"]},
+    {"t": "Imagery analytics for small farms", "w": "Vegetation maps exist in rich-market agriculture apps.", "missing": "Field-level, weekly, actionable and affordable in poor countries.", "why": "The imagery is priced for the people who need it least.", "d": 3, "tags": ["space", "agriculture"]},
+    {"t": "Debris avoidance as a service", "w": "Military catalogs track debris; alerts are terse and late.", "missing": "Conjunction alerts with maneuver planning, priced for three-person teams.", "why": "Smallsat operators can't afford orbital-mechanics staff.", "d": 4, "tags": ["space", "safety"]},
+    {"t": "Routine orbital servicing", "w": "Refueling and repair demos have docked.", "missing": "Priced, multi-vendor logistics that a satellite can book.", "why": "Every satellite is a bespoke fuel tank.", "d": 5, "tags": ["space", "hardware"]},
+  ],
+},
+{
+  "id": "arts", "name": "Arts & culture",
+  "note": "Culture gets documented after it dies. Living artists are on their own.",
+  "built": [
+    ["Streaming catalogues", "Nearly all recorded music, instantly.", "Payouts that famously don't feed artists.", 5],
+    ["Art marketplaces", "Online galleries and drops, speculation included.", "Solved payments, unsolved taste.", 4],
+    ["Museum virtual tours", "Pandemic-era tours, still online.", "The gift shop is better monetized.", 3],
+    ["Commission platforms", "Portraits, logos and fursuits to order.", "Race-to-the-bottom pricing for real skill.", 4],
+    ["Fan-subscription tools", "Memberships, merch and releases.", "The top one percent solve their careers; the middle class doesn't.", 4],
+  ],
+  "unbuilt": [
+    {"t": "The apprenticeship hall for dying crafts", "w": "Matched, funded, certified transmission of the last generation's skills — dry-stone walls to lute-making.", "why": "The masters are retiring faster than the paperwork can find them.", "closest": "UNESCO lists that document the dying instead of funding it.", "d": 4, "tags": ["wildcard", "culture", "education"]},
+    {"t": "Language recording at planetary scale", "w": "Every living language's last fluent speakers recorded, transcribed and made teachable — a moonshot grammar.", "why": "Linguists know; funding moves at dissertation speed.", "closest": "Endangered-language archives, underfunded.", "d": 5, "tags": ["wildcard", "culture", "global"]},
+    {"t": "Public-art commissioning rails", "w": "A city posts a wall and a budget; artists bid with portfolios; the public watches the process.", "why": "Commissions run on relationships and call-for-artists PDFs nobody reads.", "closest": "PDF calls and insider emails.", "d": 3, "tags": ["wildcard", "culture", "cities"]},
+    {"t": "Royalties for the unlisted", "w": "Venues auto-report setlists; session musicians are credited and paid by default.", "why": "The money exists; the plumbing pays only the top.", "closest": "Honor-system setlist apps.", "d": 4, "tags": ["wildcard", "culture", "unsexy"]},
+  ],
+  "half": [
+    {"t": "The living artist's rights console", "w": "Estate foundations manage famous dead artists.", "missing": "The mid-career artist's catalogue, licences and royalties in one place.", "why": "Lawyers cost more than the catalogue earns — until suddenly they don't.", "d": 3, "tags": ["culture", "unsexy"]},
+    {"t": "Provenance buyers trust", "w": "Blockchain certificates exist, mostly ignored.", "missing": "Verification that works at the gallery wall, without the gatekeeper.", "why": "The art world runs on gatekeepers, not databases.", "d": 4, "tags": ["culture", "trust"]},
+    {"t": "Repatriation research tooling", "w": "Museums audit colonial-era collections by hand.", "missing": "Tooling that traces an object's ownership chain across archives automatically.", "why": "The records are scattered across a dozen languages and centuries.", "d": 4, "tags": ["culture", "policy"]},
+    {"t": "Mid-tier touring economics", "w": "Gig-listing apps exist; the economics don't.", "missing": "Routing, guarantees and split sheets that make small tours viable.", "why": "The margin between the venue and the van is already negative.", "d": 3, "tags": ["culture", "marketplaces"]},
+  ],
+},
 ]
 
 # Half-built ideas: something exists, but never finished properly.
@@ -273,6 +461,7 @@ HALF = {
         {"t": "Sleep science in products", "w": "Wearables measure sleep stages with decent accuracy.", "missing": "Interventions that actually fix sleep, instead of scoring it.", "why": "Measurement is easy; behaviour change is not a gadget.", "d": 3, "tags": ["consumer", "behaviour"]},
         {"t": "Antibiotic alternatives", "w": "Phage therapy and CRISPR antimicrobials work in case studies and labs.", "missing": "A pipeline that gets them through trials, into factories and onto pharmacy shelves.", "why": "Pharma economics punish narrow cures that resistance can outdate.", "d": 5, "tags": ["biotech", "regulated"]},
         {"t": "Hearing aids you can actually program", "w": "Over-the-counter hearing aids shipped after the FDA created the class in 2022.", "missing": "Self-fit tuning that measurably beats a $200 preset, with real-ear verification at home.", "why": "Fitting is the audiologist's moat; vendors ship presets, not outcomes.", "d": 3, "tags": ["hardware", "regulated"]},
+        {"t": "Home wound care with a clinician loop", "w": "Tele-dermatology reviews wound photos remotely today.", "missing": "Sensor dressings and guided changes that catch infection before the emergency room does.", "why": "Diabetics lose limbs to delay; the dressing is still changed blind.", "d": 4, "tags": ["health", "hardware"]},
     ],
     "climate": [
         {"t": "Green hydrogen", "w": "Electrolyzers exist, and pilots ship hydrogen-made ammonia and steel.", "missing": "Cost parity with fossil hydrogen at scale, plus the pipelines to move it.", "why": "Cheap solar keeps out-competing it for electrons.", "d": 4, "tags": ["energy", "industrial"]},
@@ -338,6 +527,11 @@ HALF = {
         {"t": "Local-first photo libraries", "w": "Self-hosted photo platforms with AI search exist and are excellent.", "missing": "One-click setup and phone integration for people who have never opened a terminal.", "why": "The buyers are non-technical; the maintainers are volunteers.", "d": 3, "tags": ["open-source", "privacy"]},
     ],
 }
+
+# Newer fields embed their half-built lists directly; fold them into HALF.
+for f in FIELDS:
+    if "half" in f:
+        HALF[f["id"]] = f["half"]
 
 TOTAL_BUILT = sum(len(f["built"]) for f in FIELDS)
 TOTAL_HALF = sum(len(HALF[f["id"]]) for f in FIELDS)
@@ -609,13 +803,13 @@ def build_home():
     main = f"""<section class="hero">
   <div class="wrap">
     <h1>Everyone is building the same ten things.</h1>
-    <p class="lede">
-      This is a census of what humanity has made and what it hasn't — across software,
-      hardware, health, energy, farming, cities, robotics and more. Every field splits in
-      three: <em>the solid column is the shelf that's already overloaded</em>;
-      <em>the outlined column is what exists but was never finished properly</em>; and
-      <em>the dashed column is the empty lane</em>.
-    </p>
+      <p class="lede">
+        This is a census of what humanity has made and what it hasn't — across software,
+        hardware, health, energy, farming, law, oceans, parenting, space and more. Every
+        field splits in three: <em>the solid column is the shelf that's already
+        overloaded</em>; <em>the outlined column is what exists but was never finished
+        properly</em>; and <em>the dashed column is the empty lane</em>.
+      </p>
     <div class="stats">
       <div class="stat"><b>{TOTAL}</b><span>ideas catalogued</span></div>
       <div class="stat"><b>{TOTAL_BUILT}</b><span>already built — stop adding</span></div>
@@ -656,7 +850,7 @@ def build_home():
 
 <section class="sec" id="fields">
   <div class="wrap">
-    <h2>The twelve fields</h2>
+    <h2>The {len(FIELDS)} fields</h2>
     <p class="sub">Each field page holds the same bargain: five crowded ideas to avoid, five open ones to consider.</p>
     <div class="tiles">
       {tiles("")}
@@ -818,7 +1012,7 @@ def build_shelves():
 
 # ---------------------------------------------------------------- about page
 def build_about():
-    main = """<section class="hero slim">
+    main = f"""<section class="hero slim">
   <div class="wrap">
     <h1>About the census</h1>
     <p class="lede">What this is, how it was put together, and where it will be wrong.</p>
@@ -827,9 +1021,9 @@ def build_about():
 <section class="prose wrap">
   <h2>What this is</h2>
   <p>
-    Unbuilt is a census of human making. It lists ideas in twelve fields and splits each
-    field three ways: things the world already has plenty of, things that exist but were
-    never finished properly, and things it is still missing. The premise is simple — in
+    Unbuilt is a census of human making. It lists ideas in {len(FIELDS)} fields and splits
+    each field three ways: things the world already has plenty of, things that exist but
+    were never finished properly, and things it is still missing. The premise is simple — in
     every field, most people build the same ten things, because those ten things are
     visible. The interesting work hides in the outlined and dashed cards, which are
     invisible precisely because nobody has made them yet — or nobody has made them whole.

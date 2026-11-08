@@ -856,6 +856,673 @@
     "Immich Wear (F-Droid)",
     "FerrumPix (Flathub)"
    ]
+  },
+  "c-software-u6": {
+   "queries": [
+    "undo send",
+    "recall message",
+    "unsend"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-climate-u6": {
+   "queries": [
+    "flood risk",
+    "flood map",
+    "flood insurance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-civic-u5": {
+   "queries": [
+    "city council",
+    "public meeting",
+    "council meeting"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-media-u7": {
+   "queries": [
+    "paywall",
+    "news subscription"
+   ],
+   "total": 2,
+   "examples": [
+    "AMARadio (F-Droid)",
+    "Water Reminder & Tracker App (Google Play)"
+   ]
+  },
+  "c-health-h6": {
+   "queries": [
+    "wound care",
+    "wound dressing",
+    "tele dermatology"
+   ],
+   "total": 11,
+   "examples": [
+    "Wound Care (iFixit)",
+    "Wound Dressing Kit (FDA devices)",
+    "Wound Dressing With Animal-Derived Material(S) (FDA devices)"
+   ]
+  },
+  "c-law-u0": {
+   "queries": [
+    "plain language",
+    "legal jargon",
+    "law explained"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-u1": {
+   "queries": [
+    "court docket",
+    "court filing",
+    "federal court"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-u2": {
+   "queries": [
+    "legal insurance",
+    "legal protection",
+    "legal expenses"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-u3": {
+   "queries": [
+    "small claims",
+    "demand letter"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-h0": {
+   "queries": [
+    "online dispute",
+    "mediation",
+    "arbitration"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-h1": {
+   "queries": [
+    "legal aid",
+    "pro bono",
+    "lawyer referral"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-h2": {
+   "queries": [
+    "tenant rights",
+    "eviction",
+    "landlord"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-law-h3": {
+   "queries": [
+    "expungement",
+    "record sealing",
+    "criminal record"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-textiles-u0": {
+   "queries": [
+    "digital product passport",
+    "garment passport",
+    "product passport"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-textiles-u1": {
+   "queries": [
+    "made to measure",
+    "custom tailoring",
+    "custom fit"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-textiles-u2": {
+   "queries": [
+    "care label",
+    "laundry symbol",
+    "washing instruction"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-textiles-u3": {
+   "queries": [
+    "wardrobe",
+    "closet organizer",
+    "outfit planner"
+   ],
+   "total": 7,
+   "examples": [
+    "Wardrobe (Flathub)",
+    "maCat (F-Droid)",
+    "Meesho: Online Shopping (App Store)"
+   ]
+  },
+  "c-textiles-h0": {
+   "queries": [
+    "resale",
+    "thrift",
+    "second hand"
+   ],
+   "total": 5,
+   "examples": [
+    "ThriftBooks: New & Used Books (App Store)",
+    "ThredUp: Online Thrift Store (App Store)",
+    "@databricks/sql (npm)"
+   ]
+  },
+  "c-textiles-h1": {
+   "queries": [
+    "size chart",
+    "fit finder",
+    "body measurement"
+   ],
+   "total": 2,
+   "examples": [
+    "Body Measurement & Weight Loss (Google Play)",
+    "Weight Tracker - WeightLog (Google Play)"
+   ]
+  },
+  "c-textiles-h2": {
+   "queries": [
+    "textile recycling",
+    "fabric recycling",
+    "clothing recycling"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-textiles-h3": {
+   "queries": [
+    "clothing repair",
+    "tailor",
+    "sewing service"
+   ],
+   "total": 3,
+   "examples": [
+    "Tailor (Flathub)",
+    "Scan Tailor (Flathub)",
+    "Patagonia Clothing (iFixit)"
+   ]
+  },
+  "c-death-u0": {
+   "queries": [
+    "probate",
+    "estate administration",
+    "letters testamentary"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-u1": {
+   "queries": [
+    "heirloom",
+    "keepsake",
+    "family treasure"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-u2": {
+   "queries": [
+    "organ donation",
+    "body donation",
+    "donor registry"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-u3": {
+   "queries": [
+    "small estate",
+    "probate avoid"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-h0": {
+   "queries": [
+    "digital estate",
+    "estate settlement",
+    "after death"
+   ],
+   "total": 1,
+   "examples": [
+    "Journey to the Center of Hawkthorne (Flathub)"
+   ]
+  },
+  "c-death-h1": {
+   "queries": [
+    "advance directive",
+    "living will",
+    "palliative"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-h2": {
+   "queries": [
+    "green burial",
+    "human composting",
+    "natural burial"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-death-h3": {
+   "queries": [
+    "grief",
+    "bereavement",
+    "mourning"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-u0": {
+   "queries": [
+    "groundwater",
+    "aquifer",
+    "well water"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-u1": {
+   "queries": [
+    "fishery",
+    "fishing quota",
+    "catch log"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-u2": {
+   "queries": [
+    "rip current",
+    "beach flag",
+    "swim safety"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-u3": {
+   "queries": [
+    "wetland",
+    "mangrove",
+    "land use change"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-h0": {
+   "queries": [
+    "flood warning",
+    "storm surge",
+    "tide alert"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-h1": {
+   "queries": [
+    "desalination",
+    "water purification",
+    "reverse osmosis"
+   ],
+   "total": 20,
+   "examples": [
+    "Reverse Osmosis Filter (iFixit)",
+    "Water Purification Systems (iFixit)",
+    "Subsystem, Water Purification (FDA devices)"
+   ]
+  },
+  "c-ocean-h2": {
+   "queries": [
+    "sustainable seafood",
+    "fish provenance",
+    "seafood label"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ocean-h3": {
+   "queries": [
+    "river cleanup",
+    "ocean plastic",
+    "beach cleaning"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-u0": {
+   "queries": [
+    "childcare co op",
+    "babysitting swap",
+    "parent rota"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-u1": {
+   "queries": [
+    "developmental milestone",
+    "early intervention",
+    "baby development"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-u2": {
+   "queries": [
+    "parental leave",
+    "maternity benefit",
+    "self employed leave"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-u3": {
+   "queries": [
+    "screen time",
+    "parental control"
+   ],
+   "total": 19,
+   "examples": [
+    "Screen Time (F-Droid)",
+    "Screen Time (F-Droid)",
+    "StayFree - Screen Time (Google Play)"
+   ]
+  },
+  "c-parenting-h0": {
+   "queries": [
+    "daycare",
+    "childcare",
+    "nursery school"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-h1": {
+   "queries": [
+    "co parenting",
+    "custody schedule",
+    "shared custody"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-parenting-h2": {
+   "queries": [
+    "pediatric",
+    "child symptom",
+    "baby health"
+   ],
+   "total": 18,
+   "examples": [
+    "Pediatric Position Holder (FDA devices)",
+    "Pediatric Hemodialysis System (FDA devices)",
+    "Hausted Pediatric Stretcher (iFixit)"
+   ]
+  },
+  "c-parenting-h3": {
+   "queries": [
+    "hand me down",
+    "baby clothes",
+    "kids items"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-u0": {
+   "queries": [
+    "border wait",
+    "customs queue",
+    "border crossing"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-u1": {
+   "queries": [
+    "visa application",
+    "residency permit",
+    "immigration paperwork"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-u2": {
+   "queries": [
+    "travel insurance",
+    "trip delay",
+    "trip cancellation"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-u3": {
+   "queries": [
+    "document translation",
+    "form translation",
+    "sign translation"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-h0": {
+   "queries": [
+    "visa requirements",
+    "visa policy",
+    "timatic"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-travel-h1": {
+   "queries": [
+    "travel wallet",
+    "vaccine passport",
+    "digital identity"
+   ],
+   "total": 1,
+   "examples": [
+    "Yivi (F-Droid)"
+   ]
+  },
+  "c-travel-h2": {
+   "queries": [
+    "overland",
+    "train planner",
+    "bus travel"
+   ],
+   "total": 3,
+   "examples": [
+    "OurBus: Book Bus Tickets (App Store)",
+    "FlixBus: Book Bus Tickets (App Store)"
+   ]
+  },
+  "c-travel-h3": {
+   "queries": [
+    "lost luggage",
+    "baggage tracking",
+    "delayed bag"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-u0": {
+   "queries": [
+    "space weather",
+    "aurora forecast",
+    "gps outage"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-u1": {
+   "queries": [
+    "satellite data",
+    "earth observation",
+    "imagery cooperative"
+   ],
+   "total": 3,
+   "examples": [
+    "SatDump (F-Droid)",
+    "Iridium SBD (Arduino)",
+    "IridiumSBDi2c (Arduino)"
+   ]
+  },
+  "c-space-u2": {
+   "queries": [
+    "satellite insurance",
+    "space insurance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-u3": {
+   "queries": [
+    "satellite bus",
+    "cubesat",
+    "spacecraft platform"
+   ],
+   "total": 1,
+   "examples": [
+    "artemis-cubesat (Arduino)"
+   ]
+  },
+  "c-space-h0": {
+   "queries": [
+    "ground station",
+    "satnogs",
+    "satellite antenna"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-h1": {
+   "queries": [
+    "satellite imagery",
+    "ndvi",
+    "crop monitoring"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-h2": {
+   "queries": [
+    "space debris",
+    "satellite conjunction",
+    "debris avoidance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-space-h3": {
+   "queries": [
+    "satellite servicing",
+    "orbital refueling",
+    "on orbit servicing"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-u0": {
+   "queries": [
+    "heritage craft",
+    "dying craft",
+    "artisan apprentice"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-u1": {
+   "queries": [
+    "endangered language",
+    "language preservation",
+    "language archive"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-u2": {
+   "queries": [
+    "public art",
+    "art commission",
+    "call for artists"
+   ],
+   "total": 1,
+   "examples": [
+    "PublicArtExplorer (F-Droid)"
+   ]
+  },
+  "c-arts-u3": {
+   "queries": [
+    "setlist",
+    "performance royalty",
+    "session musician"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-h0": {
+   "queries": [
+    "artist rights",
+    "art catalogue",
+    "royalty management"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-h1": {
+   "queries": [
+    "art provenance",
+    "certificate of authenticity"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-h2": {
+   "queries": [
+    "repatriation",
+    "provenance research",
+    "museum collection"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-arts-h3": {
+   "queries": [
+    "gig listing",
+    "live music",
+    "tour planning"
+   ],
+   "total": 2,
+   "examples": [
+    "Relisten — all live music (App Store)",
+    "nugs: Live Music Lives Here (App Store)"
+   ]
   }
  }
 }
