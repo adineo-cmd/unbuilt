@@ -27,6 +27,7 @@ FIELDS = [
             {"t": "The honest slow-internet explainer", "w": "Tells you exactly which hop, device or ISP is eating your packets, in plain words.", "why": "ISPs prefer blame to remain a matter of opinion.", "closest": "traceroute — for engineers only.", "d": 3, "tags": ["networking", "consumer"]},
             {"t": "Cross-provider digital inheritance", "w": "A dead-man's switch that legally hands every account to the person you choose.", "why": "Each provider handles death alone; nobody spans them.", "closest": "Per-account inactive-account settings.", "d": 2, "tags": ["legal", "unsexy"]},
             {"t": "Explain-my-bill", "w": "Photograph any bill — medical, utility, telecom — and get an itemized audit plus a dispute letter.", "why": "Bill confusion is load-bearing revenue; auditing it is nobody's product.", "closest": "Rocket Money, subscriptions only.", "d": 3, "tags": ["consumer", "AI-assisted"]},
+            {"t": "The personal API", "w": "One versioned endpoint you own that exposes your data — contacts, health, purchases — to apps you approve, with scopes and revocation.", "why": "Every app wants to be the hub of your data; nobody wants to be the spoke.", "closest": "Quantified-self exports, app by app.", "d": 4, "tags": ["wildcard", "data", "standards"]},
         ],
     },
     {
@@ -45,6 +46,8 @@ FIELDS = [
             {"t": "Models for the other 6,000 languages", "w": "On-device speech and text for languages with fewer than ten million speakers.", "why": "No market signal, enormous human value — the classic gap.", "closest": "Research weights with no product.", "d": 4, "tags": ["open-source", "under-served"]},
             {"t": "Bureaucracy copilot", "w": "Permits, appeals, visas, forms: every procedure as an executable, current checklist.", "why": "The data changes constantly and nobody maintains it.", "closest": "TurboTax — taxes only.", "d": 3, "tags": ["consumer", "unsexy"]},
             {"t": "Independent model crash tests", "w": "Published safety ratings for AI systems, like NCAP for cars.", "why": "Nobody funds the referee until regulators force one.", "closest": "Vendor-run benchmark coalitions.", "d": 4, "tags": ["trust", "policy"]},
+            {"t": "Voice-likeness consent registry", "w": "An opt-in registry that binds your voice to licensed uses, so clones are provable and payable.", "why": "Cloning shipped before consent did; the registry is the missing layer.", "closest": "Watermarking research, no registry.", "d": 3, "tags": ["wildcard", "AI", "policy"]},
+            {"t": "Answer insurance", "w": "Underwritten liability cover for decisions made on AI-generated advice — medical, legal, financial.", "why": "Insurers need loss data that does not exist yet, so nobody prices it.", "closest": "Professional indemnity, humans only.", "d": 5, "tags": ["wildcard", "trust", "insurance"]},
         ],
     },
     {
@@ -63,6 +66,7 @@ FIELDS = [
             {"t": "Second-life battery walls", "w": "Graded, warrantied packs from crashed EVs powering homes at half price.", "why": "Grading used cells safely at consumer price is still unsolved.", "closest": "B2B pilots and hobbyists.", "d": 4, "tags": ["energy", "circular"]},
             {"t": "Repairability scanner", "w": "Point your phone at an appliance; get the teardown, parts list and prices.", "why": "Needs a crowdsourced parts database that doesn't exist yet.", "closest": "iFixit manuals, not scans.", "d": 3, "tags": ["circular", "crowdsourced"]},
             {"t": "The ten-dollar water tester", "w": "A reusable, phone-powered probe for lead, bacteria and salinity.", "why": "Lab testing costs $50 a sample and weeks of waiting.", "closest": "Test strips with wide error bars.", "d": 4, "tags": ["health", "global"]},
+            {"t": "A repair-data standard", "w": "A signed, machine-readable dossier per SKU: teardown, parts list, torque values, error codes, firmware end-date.", "why": "Manufacturers sell diagnostics to licensed networks, not to owners.", "closest": "Scattered PDF manuals, none machine-readable.", "d": 4, "tags": ["wildcard", "circular", "standards"]},
         ],
     },
     {
@@ -81,6 +85,7 @@ FIELDS = [
             {"t": "A real interaction checker", "w": "Your complete medication and supplement list, checked against national data, in plain language.", "why": "The data exists; the interface assumes a pharmacist.", "closest": "Printouts and static web pages.", "d": 2, "tags": ["safety", "unsexy"]},
             {"t": "Phage-therapy logistics", "w": "Matching antibiotic-resistant infections to bacteriophage banks, worldwide.", "why": "A regulatory no-man's-land with a handful of cases per hospital.", "closest": "A few research centres.", "d": 5, "tags": ["biotech", "regulated"]},
             {"t": "Triage by actual availability", "w": "Therapists matched by real open slots, price and specialism, not directory ads.", "why": "Directories earn from listings, not from the match working.", "closest": "A phone book with reviews.", "d": 3, "tags": ["mental health", "consumer"]},
+            {"t": "Care coordination for aging parents", "w": "One shared, live plan across siblings, doctors and pharmacies: meds, appointments, money, decline markers.", "why": "The patient is elderly and offline; the buyers are scattered, busy siblings.", "closest": "Group chats and paper binders.", "d": 3, "tags": ["wildcard", "under-served", "consumer"]},
         ],
     },
     {
@@ -99,6 +104,7 @@ FIELDS = [
             {"t": "Grid-interactive water heating", "w": "Your heater as a battery the grid pays you to borrow.", "why": "Utilities move at regulatory speed; hardware startups avoid them.", "closest": "Proprietary utility pilots.", "d": 3, "tags": ["energy", "regulated"]},
             {"t": "Used-cell grading scanner", "w": "A handheld tool that prices a used EV pack, cell by cell, in minutes.", "why": "Unlocks the whole second-life market — which is why it is hard.", "closest": "Lab-grade bench testers.", "d": 4, "tags": ["hardware", "circular"]},
             {"t": "Crop-switching planner", "w": "For farmers whose climate zone just moved: what to plant for the next decade.", "why": "The buyers are rural and the sales cycle is years.", "closest": "Academic papers.", "d": 3, "tags": ["agriculture", "long-cycle"]},
+            {"t": "Appliance-to-grid orchestrator", "w": "A consumer box that bids your home's flexibility — heater, charger, battery — into grid programs automatically.", "why": "Needs the home-energy loop closed first, plus a utility willing to pay homes.", "closest": "Utility pilots with proprietary hardware.", "d": 5, "tags": ["wildcard", "energy", "hardware"]},
         ],
     },
     {
@@ -135,6 +141,7 @@ FIELDS = [
             {"t": "The medical-bill auditor", "w": "Automatic overcharge detection and negotiation for hospital bills.", "why": "The counterparty owns the pricing data.", "closest": "Human advocates, per case.", "d": 3, "tags": ["consumer", "US"]},
             {"t": "Direct cross-border payroll", "w": "One company pays thirty contractors in twelve countries, compliant, without an employer-of-record markup.", "why": "Compliance is real work; incumbents monetize opacity.", "closest": "EOR platforms with steep fees.", "d": 3, "tags": ["fintech", "unsexy"]},
             {"t": "Insurance for informal economies", "w": "Parametric products priced for a homestead — flood, drought, theft — paid out in days.", "why": "Distribution and trust, not actuarial science, are the blockers.", "closest": "Weather-index pilots.", "d": 4, "tags": ["global", "insurance"]},
+            {"t": "Portable gig reputation", "w": "Your ratings and work history follow you between platforms, verifiable, yours.", "why": "Platforms own the ratings on purpose — the lock-in is the business model.", "closest": "Per-platform profiles that die when you leave.", "d": 4, "tags": ["wildcard", "labour", "policy"]},
         ],
     },
     {
@@ -207,6 +214,7 @@ FIELDS = [
             {"t": "Wheelchair routing everywhere", "w": "Curb cuts, ramp angles and elevator outages, live, in every map app.", "why": "Crowdsourced coverage dies without a champion who needs it daily.", "closest": "Partial coverage in big cities.", "d": 3, "tags": ["maps", "crowdsourced"]},
             {"t": "A screen-reader-first social network", "w": "Not 'compatible with' — designed in audio and braille from the first commit.", "why": "Nobody has inverted the default and shipped it.", "closest": "Nothing.", "d": 3, "tags": ["social", "accessibility"]},
             {"t": "Memory prosthetics for brain injury", "w": "Task scaffolding and context memory built with patients, not around them.", "why": "Generic apps assume every brain ships with standard firmware.", "closest": "To-do lists that don't know what ABI is.", "d": 3, "tags": ["health", "under-served"]},
+            {"t": "Patient-language translator", "w": "Maps what patients actually say — 'bone-deep tired', 'my gut is in knots' — onto clinical scales their doctor reads.", "why": "Symptom checkers ask clinical questions; patients answer in their own words.", "closest": "Symptom checkers that grade your vocabulary.", "d": 3, "tags": ["wildcard", "health", "AI"]},
         ],
     },
     {
@@ -225,6 +233,7 @@ FIELDS = [
             {"t": "The consent agent", "w": "Your browser negotiates cookies and trackers once, per your rules, everywhere.", "why": "Sites fight it and laws disagree — the classic blocked gap.", "closest": "Half-kept 'Do Not Track'.", "d": 4, "tags": ["privacy", "browser"]},
             {"t": "Mid-scroll fact-check", "w": "Claim-level context attached to what's passing by, before you share it.", "why": "Platforms monetize speed; a pause is a design insult to them.", "closest": "Post-viral labels.", "d": 3, "tags": ["trust", "media"]},
             {"t": "Modern forum software", "w": "The 2005 stack that runs niche communities, rebuilt to make hosting them sustainable.", "why": "The builders left; the communities stayed.", "closest": "Discourse — better, still heavy.", "d": 2, "tags": ["community", "open-source"]},
+            {"t": "A comment layer you own", "w": "Portable comments anchored to any URL — your thread travels with you, not with the site.", "why": "Sites monetize the conversation; a portable one removes their reason to host it.", "closest": "Embedded widgets that die with the vendor.", "d": 4, "tags": ["wildcard", "social", "standards"]},
         ],
     },
 ]
@@ -238,6 +247,7 @@ HALF = {
         {"t": "Search for your own life", "w": "OS search finds filenames, photo apps find faces, a few tools find document text.", "missing": "One private, on-device search across everything you have ever seen, typed or photographed.", "why": "Indexing a lifetime of data locally without melting the laptop is genuinely hard.", "d": 4, "tags": ["AI", "privacy"]},
         {"t": "Messaging interop", "w": "Regulators forced the EU gatekeepers to open messaging to other apps under the DMA.", "missing": "Actual interconnection: the big networks barely talk, and third-party clients stayed niche.", "why": "The giants comply in the letter and stall in practice.", "d": 3, "tags": ["regulation", "standards"]},
         {"t": "Package managers for everything", "w": "Code has npm and apt; phones have app stores.", "missing": "The same install-update-trust machinery for datasets, models and design assets.", "why": "Every domain reinvents licensing and trust from scratch.", "d": 3, "tags": ["developer", "standards"]},
+        {"t": "Local AI assistants", "w": "Hobby-grade local models and CLIs exist; tinkerers already run assistants fully offline.", "missing": "A consumer-grade on-device assistant that holds your context and never phones home.", "why": "Memory and battery budgets are real — and vendors prefer your data in their cloud.", "d": 4, "tags": ["AI", "privacy"]},
     ],
     "ai": [
         {"t": "On-device assistants", "w": "Phones ship small models that summarize and translate offline.", "missing": "A private assistant that actually knows your life and never phones home.", "why": "Memory and battery budgets are real — and vendors prefer your data in their cloud.", "d": 4, "tags": ["privacy", "hardware"]},
@@ -245,6 +255,7 @@ HALF = {
         {"t": "Conversation that lasts", "w": "Assistants handle timers, weather and smart homes competently.", "missing": "Dialogue that holds context for weeks and acts across every app you use.", "why": "Each vendor walls its assistant inside its own ecosystem.", "d": 4, "tags": ["consumer", "interoperability"]},
         {"t": "Translation for real speech", "w": "Research systems cover thousands of languages on paper.", "missing": "Reliable everyday products for the hundreds of languages billions actually speak at home.", "why": "Per-language data work does not fit venture math.", "d": 3, "tags": ["global", "open-source"]},
         {"t": "AI code review", "w": "Assistants autocomplete and catch obvious bugs inside IDEs.", "missing": "A reviewer that understands architecture, catches security flaws, and earns senior engineers' trust.", "why": "Responsibility for a wrong review still lands on humans.", "d": 4, "tags": ["developer", "trust"]},
+        {"t": "Live translation that keeps up", "w": "Flagship phones and earbuds translate big languages reasonably well.", "missing": "Two-way, real-time conversation quality in noise, for the languages people actually speak.", "why": "Model size against latency, and data for non-major languages is thin.", "d": 4, "tags": ["AI", "hardware"]},
     ],
     "hardware": [
         {"t": "E-ink beyond books", "w": "E-ink is cheap, calm and sips power — in dedicated readers.", "missing": "E-ink phones, dashboards and monitors that refresh fast enough for daily use.", "why": "Refresh rate and cost; color e-ink has been almost-ready for a decade.", "d": 4, "tags": ["displays", "hardware"]},
@@ -252,6 +263,8 @@ HALF = {
         {"t": "Health patches", "w": "Continuous glucose monitors changed diabetes care overnight.", "missing": "The same cheap disposable patch for hydration, stress hormones and infection markers.", "why": "Biochemistry resists miniaturization, and regulation adds years.", "d": 5, "tags": ["health", "hardware"]},
         {"t": "A smart home that works", "w": "Matter, the unifying standard, finally shipped across vendors.", "missing": "Setup that works for normal people: no hubs, no app per bulb, no dead devices.", "why": "Every vendor still wants to own the hub.", "d": 3, "tags": ["standards", "consumer"]},
         {"t": "Satellite messaging", "w": "Flagship phones now text satellites in emergencies.", "missing": "Cheap, unlimited two-way data anywhere on Earth, at ordinary prices.", "why": "Spectrum, launch costs and telecom lobbying.", "d": 5, "tags": ["space", "telecom"]},
+        {"t": "Home energy monitors that close the loop", "w": "Clamp-on monitors and utility dashboards show household consumption in real time.", "missing": "Appliance-level control that acts on the readings: shift, shed, schedule.", "why": "The meter belongs to the utility; the appliances belong to vendors; nobody owns the loop.", "d": 4, "tags": ["energy", "hardware"]},
+        {"t": "Environmental mesh kits for schools", "w": "DIY air-quality and weather stations exist as kits, boards and Arduino projects.", "missing": "A sealed, school-ready kit with curriculum, dashboard and a maintenance plan.", "why": "Hobbyists build them; education procurement cannot buy from a hobby.", "d": 3, "tags": ["hardware", "education"]},
     ],
     "health": [
         {"t": "Continuous monitors", "w": "Glucose sensors and wrist ECGs moved vitals from clinics to wrists.", "missing": "Blood pressure, hydration and hormones on the same continuous, cheap, wearable rail.", "why": "Every new marker is its own physiological and regulatory battle.", "d": 4, "tags": ["wearables", "regulated"]},
@@ -259,6 +272,7 @@ HALF = {
         {"t": "Genetic risk prediction", "w": "Consumer kits flag variants for a few dozen conditions.", "missing": "Polygenic risk scores that are accurate across ancestries and actionable in clinics.", "why": "The datasets skew heavily to white Europeans.", "d": 4, "tags": ["genomics", "equity"]},
         {"t": "Sleep science in products", "w": "Wearables measure sleep stages with decent accuracy.", "missing": "Interventions that actually fix sleep, instead of scoring it.", "why": "Measurement is easy; behaviour change is not a gadget.", "d": 3, "tags": ["consumer", "behaviour"]},
         {"t": "Antibiotic alternatives", "w": "Phage therapy and CRISPR antimicrobials work in case studies and labs.", "missing": "A pipeline that gets them through trials, into factories and onto pharmacy shelves.", "why": "Pharma economics punish narrow cures that resistance can outdate.", "d": 5, "tags": ["biotech", "regulated"]},
+        {"t": "Hearing aids you can actually program", "w": "Over-the-counter hearing aids shipped after the FDA created the class in 2022.", "missing": "Self-fit tuning that measurably beats a $200 preset, with real-ear verification at home.", "why": "Fitting is the audiologist's moat; vendors ship presets, not outcomes.", "d": 3, "tags": ["hardware", "regulated"]},
     ],
     "climate": [
         {"t": "Green hydrogen", "w": "Electrolyzers exist, and pilots ship hydrogen-made ammonia and steel.", "missing": "Cost parity with fossil hydrogen at scale, plus the pipelines to move it.", "why": "Cheap solar keeps out-competing it for electrons.", "d": 4, "tags": ["energy", "industrial"]},
@@ -266,6 +280,7 @@ HALF = {
         {"t": "Carbon removal", "w": "Direct air capture plants exist; buyers pay around $600 a ton.", "missing": "A route under $100 a ton, measured and guaranteed by someone trustworthy.", "why": "The physics is generous; the economics is brutal.", "d": 5, "tags": ["climate", "market"]},
         {"t": "Cooling without super-pollutants", "w": "The Kigali treaty phases out HFC refrigerants, and alternatives exist.", "missing": "Alternatives as cheap, safe and efficient in tropical heat at mass scale.", "why": "Every substitute trades one problem for another.", "d": 3, "tags": ["climate", "hardware"]},
         {"t": "Vertical farming", "w": "Lettuce grows profitably in warehouses in a few cities.", "missing": "Staple crops at grid-scale economics; most vertical farms still sell garnish.", "why": "Light is an electricity bill, and wheat does not care.", "d": 4, "tags": ["agriculture", "energy"]},
+        {"t": "Used-EV packs with honest grades", "w": "Regional marketplaces sell used EV packs and cars; grader tools exist in labs.", "missing": "A standardized grade and warranty that travels between buyers.", "why": "Cell health is measurable but there is no common scorecard, so prices stay guesses.", "d": 4, "tags": ["energy", "circular"]},
     ],
     "education": [
         {"t": "Classroom laptops, rebooted", "w": "Cheap devices reached hundreds of millions of students.", "missing": "Software and maintenance that survive the classroom; most kit gathers dust within two years.", "why": "Hardware got funded; teachers and repair did not.", "d": 3, "tags": ["global", "schools"]},
@@ -280,6 +295,7 @@ HALF = {
         {"t": "Digital identity", "w": "India's Aadhaar and Estonia's e-ID prove state-scale digital identity works.", "missing": "Interoperable, privacy-preserving identity for the billion people without legal ID.", "why": "Trust in the issuer is everything, and nobody trusts everyone.", "d": 5, "tags": ["identity", "global"]},
         {"t": "Lending without collateral", "w": "Fintechs score small merchants from transaction data in a few markets.", "missing": "Underwriting that travels: the same rails for shopkeepers everywhere.", "why": "Local contract enforcement is the hard part, not the model.", "d": 4, "tags": ["credit", "global"]},
         {"t": "Equity for creators", "w": "Patreon and Substack turned audiences into salaries.", "missing": "Fans holding actual equity in the work they make famous.", "why": "Securities law treats every fan as a broker.", "d": 4, "tags": ["creator", "regulated"]},
+        {"t": "Round-up retirement for cash earners", "w": "Round-up investing apps exist where cards are everywhere.", "missing": "The same spare-change pension for street vendors paid in cash.", "why": "No card swipe means nothing to round up, and the rake is tiny on tiny deposits.", "d": 4, "tags": ["global", "pensions"]},
     ],
     "food": [
         {"t": "Cultivated meat", "w": "Singapore and the US approved the first lab-grown chicken portions.", "missing": "Cost, scale and taste parity; the first plants produce boutique quantities.", "why": "Bioreactors are expensive and cells are delicate.", "d": 5, "tags": ["biotech", "food"]},
@@ -287,6 +303,7 @@ HALF = {
         {"t": "Cold chains for smallholders", "w": "Solar cold rooms run in pilot markets across Asia and Africa.", "missing": "Financing and service networks so every market town can run one.", "why": "The gear works; the business model is the gap.", "d": 3, "tags": ["agriculture", "global"]},
         {"t": "Food-waste markets", "w": "Apps sell restaurants' surplus at a discount in big cities.", "missing": "Coverage of groceries, farms and the Global South, where most waste happens.", "why": "Waste is fragmented; every tonne hides in a different supply chain.", "d": 3, "tags": ["climate", "marketplaces"]},
         {"t": "Soil sensing in the field", "w": "Labs read soil samples precisely; kits give rough answers in minutes.", "missing": "Cheap, farmer-grade sensors that read nitrogen and carbon in the field, continuously.", "why": "Chemistry in mud is much harder than chemistry in a vial.", "d": 4, "tags": ["agriculture", "hardware"]},
+        {"t": "Dynamic markdowns at the shelf edge", "w": "Apps sell near-expiry food in surplus bags, store by store.", "missing": "Automatic per-item markdowns as items approach expiry, connected to the till.", "why": "Point-of-sale integration is tedious and margin pride dies hard.", "d": 3, "tags": ["climate", "marketplaces"]},
     ],
     "civic": [
         {"t": "Digital voting", "w": "Estonia votes online; dozens of countries pilot electronic ballots.", "missing": "A system verifiable by ordinary people that survives national politics.", "why": "Security researchers keep showing the prototypes break.", "d": 5, "tags": ["democracy", "security"]},
@@ -294,6 +311,7 @@ HALF = {
         {"t": "Participatory budgeting", "w": "Thousands of cities let residents vote on small budgets.", "missing": "Real power: the big capital budgets, and evidence the votes change anything.", "why": "The hallways of city hall defend the purse.", "d": 3, "tags": ["democracy", "cities"]},
         {"t": "Disaster early warning", "w": "Cell broadcast reaches millions; the UN aims for global coverage by 2027.", "missing": "Last-mile systems for the poorest regions, in local languages, with somewhere to go.", "why": "A warning without shelter or transport is just a louder disaster.", "d": 3, "tags": ["safety", "global"]},
         {"t": "Public connectivity", "w": "Kiosks like New York's LinkNYC replaced payphones with free Wi-Fi.", "missing": "Free, fast public connectivity as normal as streetlights, in every city.", "why": "No revenue model survives the procurement office.", "d": 2, "tags": ["infrastructure", "cities"]},
+        {"t": "City services with public clocks", "w": "311-style reporting apps exist in hundreds of cities.", "missing": "Published service-level clocks: reported, assigned, fixed, cost — visible to everyone.", "why": "Governments fear the clock more than the pothole.", "d": 4, "tags": ["govtech", "unsexy"]},
     ],
     "robotics": [
         {"t": "Humanoid robots", "w": "Boston Dynamics dances; factories pilot humanoids moving totes.", "missing": "A humanoid that earns its price doing real work for a year without hand-holding.", "why": "Legs are solved; hands, batteries and economics are not.", "d": 5, "tags": ["hardware", "industry"]},
@@ -301,6 +319,7 @@ HALF = {
         {"t": "Agricultural robots", "w": "Weeders and strawberry pickers work in pilot fields.", "missing": "Machines cheap and versatile enough for small, mixed, messy farms.", "why": "Nature is unstructured and farms are capital-poor.", "d": 4, "tags": ["agriculture", "hardware"]},
         {"t": "Delivery robots", "w": "Sidewalk robots serve a few campuses; drones drop parcels in parts of Africa and Texas.", "missing": "Density and city permits that make them cheaper than a person on a bike.", "why": "Cities tax what they fear, and pedestrians resent wheels.", "d": 4, "tags": ["cities", "regulated"]},
         {"t": "Surgical autonomy", "w": "Assistive systems support millions of operations a year.", "missing": "Autonomy for routine steps, at a price community hospitals can pay.", "why": "Liability concentrates on whoever writes the motion.", "d": 5, "tags": ["medical", "regulated"]},
+        {"t": "Robot mowers with maps you own", "w": "Consumer robot mowers mow well inside vendor-locked mapping apps.", "missing": "Open maps, no subscription, and boundary data that outlives the vendor.", "why": "The map is the lock-in; vendors sell peace of mind, not ownership.", "d": 3, "tags": ["hardware", "open-source"]},
     ],
     "access": [
         {"t": "Signing avatars", "w": "Avatars and smart gloves translate fingerspelled, isolated signs.", "missing": "Continuous, natural, two-way conversation — the grammar, not the alphabet.", "why": "Signing is a full spatial language; gloves capture none of it.", "d": 5, "tags": ["AI", "accessibility"]},
@@ -308,6 +327,7 @@ HALF = {
         {"t": "Smart navigation canes", "w": "Instrumented canes and apps add obstacle detection.", "missing": "Outdoor-grade, all-weather guidance that beats a trained dog or a white cane.", "why": "Reliability must be near-perfect, or it is dangerous.", "d": 4, "tags": ["hardware", "safety"]},
         {"t": "Inclusive gaming", "w": "Major consoles ship adaptive controllers.", "missing": "Games designed from scratch for blind and motor-limited players, not ported to them.", "why": "Accessibility is a budget line, and it gets cut first.", "d": 3, "tags": ["gaming", "design"]},
         {"t": "Public audio for hearing aids", "w": "Hearing aids stream from phones; loop systems work in some halls.", "missing": "Auracast-style public audio in every station, classroom and theatre.", "why": "Building owners see no paying customer.", "d": 2, "tags": ["audio", "standards"]},
+        {"t": "Haptic navigation wearables", "w": "Research prototypes and crowdfunding one-offs vibrate directions at your waist or wrist.", "missing": "All-weather, daily-driver reliability at a mainstream price.", "why": "Reliability must be near-perfect, or the device becomes dangerous.", "d": 4, "tags": ["hardware", "accessibility"]},
     ],
     "media": [
         {"t": "Universal digital libraries", "w": "The Internet Archive, Project Gutenberg and national libraries scan millions of works.", "missing": "Legal, complete access to the 20th century, still locked by unclear rights.", "why": "A copyright thicket where owners are unknown, so nobody may digitize.", "d": 4, "tags": ["law", "culture"]},
@@ -315,6 +335,7 @@ HALF = {
         {"t": "Interactive news", "w": "Newsrooms ship beautiful interactives for a handful of stories a year.", "missing": "A toolchain where any reporter can build one in an afternoon.", "why": "Every interactive is still a bespoke software project.", "d": 3, "tags": ["journalism", "tools"]},
         {"t": "A creator middle class", "w": "A million people earn from audiences; a few get rich.", "missing": "Economics that let ten million earn a living wage without dancing for an algorithm.", "why": "Platforms pay the top 0.1 percent and harvest the rest.", "d": 4, "tags": ["labour", "platforms"]},
         {"t": "Local news, rebuilt", "w": "Nonprofit newsrooms and newsletters refill some news deserts.", "missing": "A model that covers every county courthouse and city hall, profitably.", "why": "Classified advertising left and never came back.", "d": 4, "tags": ["journalism", "business"]},
+        {"t": "Local-first photo libraries", "w": "Self-hosted photo platforms with AI search exist and are excellent.", "missing": "One-click setup and phone integration for people who have never opened a terminal.", "why": "The buyers are non-technical; the maintainers are volunteers.", "d": 3, "tags": ["open-source", "privacy"]},
     ],
 }
 
@@ -458,6 +479,36 @@ def meter_html(kind, n, label):
             f'<span class="visually-hidden">{esc(label)}</span></p>')
 
 
+CHECKS = None
+
+
+def checks():
+    global CHECKS
+    if CHECKS is None:
+        try:
+            import json
+            with open(os.path.join(OUT, "assets", "gap-evidence.json"), encoding="utf-8") as fh:
+                CHECKS = json.load(fh)
+        except Exception:
+            CHECKS = {"checks": {}, "catalog_total": 0}
+    return CHECKS
+
+
+def sev_line(card_id):
+    chk = checks().get("checks", {}).get(card_id)
+    if not chk:
+        return ""
+    total = chk["total"]
+    n = checks().get("catalog_total", 0)
+    if total == 0:
+        return (f'<p class="sev"><b>Shelves check:</b> no listing among the {n:,} catalog '
+                f'entries matches — where we measured, the shelf is empty.</p>')
+    ex = ""
+    if chk["examples"]:
+        ex = " Closest: " + "; ".join(chk["examples"][:3]) + "."
+    return (f'<p class="sev"><b>Shelves check:</b> {total:,} of {n:,} catalog listings match.{ex}</p>')
+
+
 def built_card(f, b, i):
     t, w, v, c = b
     return f"""<article class="card built" id="c-{f['id']}-b{i}">
@@ -475,6 +526,7 @@ def unbuilt_card(f, u, i):
   <p class="what">{esc(u['w'])}</p>
   <p class="why">{esc(u['why'])}</p>
   <p class="closest">{esc(u['closest'])}</p>
+  {sev_line(f"c-{f['id']}-u{i}")}
   {meter_html("Difficulty", u['d'], f"Difficulty {u['d']} of 5")}
   <p class="tags">{tags}</p>
 </article>"""
@@ -487,6 +539,7 @@ def half_card(f, u, i):
   <p class="what">{esc(u['w'])}</p>
   <p class="missing">{esc(u['missing'])}</p>
   <p class="why">{esc(u['why'])}</p>
+  {sev_line(f"c-{f['id']}-h{i}")}
   {meter_html("Difficulty to finish", u['d'], f"Difficulty to finish {u['d']} of 5")}
   <p class="tags">{tags}</p>
 </article>"""
@@ -834,6 +887,14 @@ def build_about():
     <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
     editorial, but the shelves are measured.
   </p>
+  <p>
+    Every not-built and half-built card also carries a <strong>shelves check</strong>: a
+    deterministic, whole-token search for the idea's key terms across all 92,463 catalog
+    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our ten
+    catalogs matched — which is evidence of an empty shelf in the stores we measured, not
+    proof that nothing exists anywhere. A non-zero check lists the closest listings we
+    found, so you can judge the distance yourself.
+  </p>
 
   <h2>Limits, stated plainly</h2>
   <p>
@@ -1113,6 +1174,8 @@ a{color:inherit}
   font-size:.78rem;color:var(--muted);
 }
 .card.half .meter{color:var(--ink)}
+.sev{margin-top:.5rem;font-size:.83rem;color:var(--muted)}
+.sev b{color:var(--ink);font-weight:700}
 .meter{margin-top:.7rem;display:flex;align-items:center;gap:.6rem;font-size:.76rem}
 .meter .squares{display:inline-flex;gap:3px}
 .sq{width:10px;height:10px;border:1.5px solid currentColor;display:inline-block}

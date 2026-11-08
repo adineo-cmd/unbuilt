@@ -98,6 +98,14 @@
     <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
     editorial, but the shelves are measured.
   </p>
+  <p>
+    Every not-built and half-built card also carries a <strong>shelves check</strong>: a
+    deterministic, whole-token search for the idea's key terms across all 92,463 catalog
+    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our ten
+    catalogs matched — which is evidence of an empty shelf in the stores we measured, not
+    proof that nothing exists anywhere. A non-zero check lists the closest listings we
+    found, so you can judge the distance yourself.
+  </p>
 
   <h2>Limits, stated plainly</h2>
   <p>

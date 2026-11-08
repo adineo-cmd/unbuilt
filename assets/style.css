@@ -234,6 +234,8 @@ a{color:inherit}
   font-size:.78rem;color:var(--muted);
 }
 .card.half .meter{color:var(--ink)}
+.sev{margin-top:.5rem;font-size:.83rem;color:var(--muted)}
+.sev b{color:var(--ink);font-weight:700}
 .meter{margin-top:.7rem;display:flex;align-items:center;gap:.6rem;font-size:.76rem}
 .meter .squares{display:inline-flex;gap:3px}
 .sq{width:10px;height:10px;border:1.5px solid currentColor;display:inline-block}

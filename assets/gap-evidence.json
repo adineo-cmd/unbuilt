@@ -1,0 +1,861 @@
+{
+ "generated": "2026-11-08",
+ "catalog_total": 92463,
+ "method": "whole-token matches on name, summary, category and developer",
+ "checks": {
+  "c-software-u0": {
+   "queries": [
+    "download my data",
+    "gdpr export",
+    "data export",
+    "takeout"
+   ],
+   "total": 7,
+   "examples": [
+    "Pizza Hut - Delivery & Takeout (Google Play)",
+    "Pizza Hut - Delivery & Takeout (App Store)",
+    "Buffalo Wild Wings (App Store)"
+   ]
+  },
+  "c-software-u1": {
+   "queries": [
+    "end of life",
+    "abandonware",
+    "sunset notice"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-software-u2": {
+   "queries": [
+    "internet speed",
+    "network diagnostic",
+    "dns test"
+   ],
+   "total": 2,
+   "examples": [
+    "LibreSpeed (F-Droid)",
+    "Breitbandmessung (Flathub)"
+   ]
+  },
+  "c-software-u3": {
+   "queries": [
+    "digital legacy",
+    "dead man switch",
+    "inheritance"
+   ],
+   "total": 1,
+   "examples": [
+    "inherits (npm)"
+   ]
+  },
+  "c-software-u4": {
+   "queries": [
+    "medical bill",
+    "bill scan",
+    "explain bill"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ai-u0": {
+   "queries": [
+    "hallucination",
+    "fact check",
+    "citation"
+   ],
+   "total": 2,
+   "examples": [
+    "Harman Kardon Citation 200 (iFixit)",
+    "Cite It Now: Easy referencing (App Store)"
+   ]
+  },
+  "c-ai-u1": {
+   "queries": [
+    "license compliance",
+    "copyleft",
+    "license audit"
+   ],
+   "total": 1,
+   "examples": [
+    "@sandworm/audit (npm)"
+   ]
+  },
+  "c-ai-u2": {
+   "queries": [
+    "low resource language",
+    "minority language",
+    "underresourced language"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ai-u3": {
+   "queries": [
+    "permit",
+    "visa",
+    "government form"
+   ],
+   "total": 2,
+   "examples": [
+    "AusweisApp (Flathub)",
+    "Affirm: Buy now, pay over time (App Store)"
+   ]
+  },
+  "c-ai-u4": {
+   "queries": [
+    "model evaluation",
+    "ai benchmark",
+    "llm eval"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-hardware-u0": {
+   "queries": [
+    "braille"
+   ],
+   "total": 1,
+   "examples": [
+    "Brailliac: Braille Keyboard (F-Droid)"
+   ]
+  },
+  "c-hardware-u1": {
+   "queries": [
+    "hearing aid",
+    "audiogram"
+   ],
+   "total": 5,
+   "examples": [
+    "Hearing Aid (iFixit)",
+    "Face Plate Hearing Aid (FDA devices)",
+    "Air-Conduction Hearing Aid Software (FDA devices)"
+   ]
+  },
+  "c-hardware-u2": {
+   "queries": [
+    "battery storage",
+    "second life battery",
+    "ev battery"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-hardware-u3": {
+   "queries": [
+    "teardown",
+    "repair manual",
+    "service manual",
+    "spare part"
+   ],
+   "total": 2,
+   "examples": [
+    "Nokia X2-00 Teardown (iFixit)",
+    "Baxter Arena Service Manual (iFixit)"
+   ]
+  },
+  "c-hardware-u4": {
+   "queries": [
+    "water quality",
+    "water test"
+   ],
+   "total": 3,
+   "examples": [
+    "Water Quality (F-Droid)",
+    "BME63M001 (Arduino)",
+    "BM25S4021-1 (Arduino)"
+   ]
+  },
+  "c-health-u0": {
+   "queries": [
+    "menopause"
+   ],
+   "total": 1,
+   "examples": [
+    "Menopause Test System (FDA devices)"
+   ]
+  },
+  "c-health-u1": {
+   "queries": [
+    "blood test",
+    "lab result",
+    "blood panel"
+   ],
+   "total": 1,
+   "examples": [
+    "Immunoassay Blood Test For Amyloid Pathology Assessment (FDA devices)"
+   ]
+  },
+  "c-health-u2": {
+   "queries": [
+    "drug interaction",
+    "medication interaction"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-health-u3": {
+   "queries": [
+    "phage",
+    "antibiotic resistance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-health-u4": {
+   "queries": [
+    "therapist",
+    "find a doctor",
+    "book doctor"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-climate-u0": {
+   "queries": [
+    "air conditioner",
+    "ac control"
+   ],
+   "total": 52,
+   "examples": [
+    "LG Air Conditioner (iFixit)",
+    "Wall Air Conditioner (iFixit)",
+    "HeatpumpIR (Arduino)"
+   ]
+  },
+  "c-climate-u1": {
+   "queries": [
+    "heat pump"
+   ],
+   "total": 1,
+   "examples": [
+    "Heat Pump (iFixit)"
+   ]
+  },
+  "c-climate-u2": {
+   "queries": [
+    "water heater"
+   ],
+   "total": 2,
+   "examples": [
+    "Water Heater (iFixit)",
+    "Atlantic Vertigo water heater (iFixit)"
+   ]
+  },
+  "c-climate-u3": {
+   "queries": [
+    "battery health",
+    "cell grader",
+    "battery test"
+   ],
+   "total": 1,
+   "examples": [
+    "EUC State Of Health Analyzer (F-Droid)"
+   ]
+  },
+  "c-climate-u4": {
+   "queries": [
+    "crop rotation",
+    "planting calendar",
+    "crop planning"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-education-u0": {
+   "queries": [
+    "spaced repetition",
+    "flashcard"
+   ],
+   "total": 23,
+   "examples": [
+    "Flashcard maker (Google Play)",
+    "Flashcards Deluxe (Google Play)",
+    "Flashcards Deluxe (App Store)"
+   ]
+  },
+  "c-education-u1": {
+   "queries": [
+    "science kit",
+    "virtual lab"
+   ],
+   "total": 1,
+   "examples": [
+    "Arduino_ScienceKitCarrier (Arduino)"
+   ]
+  },
+  "c-education-u2": {
+   "queries": [
+    "apprentice",
+    "trade school",
+    "vocational"
+   ],
+   "total": 3,
+   "examples": [
+    "Dragon’s Apprentice (Flathub)",
+    "Crafty Candy (App Store)",
+    "PowerZ: The Learning Game (App Store)"
+   ]
+  },
+  "c-education-u3": {
+   "queries": [
+    "portfolio",
+    "verified skill"
+   ],
+   "total": 11,
+   "examples": [
+    "Portfolio Performance (Flathub)",
+    "Bag: Bitcoin Portfolio Monitor (F-Droid)",
+    "Six Flags (App Store)"
+   ]
+  },
+  "c-education-u4": {
+   "queries": [
+    "physics simulator",
+    "physics"
+   ],
+   "total": 14,
+   "examples": [
+    "Physics (Flathub)",
+    "PhysicsLabFirmware (Arduino)",
+    "Numpty Physics (Flathub)"
+   ]
+  },
+  "c-money-u0": {
+   "queries": [
+    "portable benefits",
+    "gig benefits"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-money-u1": {
+   "queries": [
+    "pension",
+    "micro pension"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-money-u2": {
+   "queries": [
+    "medical bill",
+    "insurance claim"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-money-u3": {
+   "queries": [
+    "payroll",
+    "contractor payment",
+    "employer of record"
+   ],
+   "total": 2,
+   "examples": [
+    "Chilis (App Store)",
+    "indiAccounting (Flathub)"
+   ]
+  },
+  "c-money-u4": {
+   "queries": [
+    "microinsurance",
+    "index insurance",
+    "takaful"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-food-u0": {
+   "queries": [
+    "fridge",
+    "pantry"
+   ],
+   "total": 10,
+   "examples": [
+    "Pantry (F-Droid)",
+    "PantryClient (Arduino)",
+    "Bosch Fridge (iFixit)"
+   ]
+  },
+  "c-food-u1": {
+   "queries": [
+    "agronomy",
+    "farm advisory",
+    "crop advice"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-food-u2": {
+   "queries": [
+    "food waste"
+   ],
+   "total": 4,
+   "examples": [
+    "Too Good To Go: End Food Waste (App Store)",
+    "Franke counter top food waste bin (iFixit)",
+    "Pantry (F-Droid)"
+   ]
+  },
+  "c-food-u3": {
+   "queries": [
+    "tractor",
+    "farm equipment"
+   ],
+   "total": 77,
+   "examples": [
+    "Tractor (iFixit)",
+    "Tractor Plow (iFixit)",
+    "Tractor GPS Navigation (App Store)"
+   ]
+  },
+  "c-food-u4": {
+   "queries": [
+    "compost"
+   ],
+   "total": 1,
+   "examples": [
+    "Seymour Compost Roller 85755  Rev B (iFixit)"
+   ]
+  },
+  "c-civic-u0": {
+   "queries": [
+    "fixmystreet",
+    "see click fix",
+    "city works"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-civic-u1": {
+   "queries": [
+    "what3words",
+    "plus code",
+    "address"
+   ],
+   "total": 33,
+   "examples": [
+    "AddressLearnMLX (Arduino)",
+    "what3words: Navigation & Maps (App Store)",
+    "x-address-codec (npm)"
+   ]
+  },
+  "c-civic-u2": {
+   "queries": [
+    "municipal code",
+    "ordinance",
+    "city ordinance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-civic-u3": {
+   "queries": [
+    "mesh network",
+    "community network",
+    "broadband"
+   ],
+   "total": 5,
+   "examples": [
+    "EE: Mobile, broadband & tech (App Store)",
+    "Meshy (Flathub)",
+    "YL-800N (Arduino)"
+   ]
+  },
+  "c-civic-u4": {
+   "queries": [
+    "panic button",
+    "sos beacon",
+    "emergency sos"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-robotics-u0": {
+   "queries": [
+    "laundry",
+    "fold clothes"
+   ],
+   "total": 4,
+   "examples": [
+    "LaundryNotes (F-Droid)",
+    "Commercial-Industrial Laundry (iFixit)",
+    "@washy-washy/core (npm)"
+   ]
+  },
+  "c-robotics-u1": {
+   "queries": [
+    "dexterous hand",
+    "robot gripper",
+    "bionic hand"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-robotics-u2": {
+   "queries": [
+    "cooking robot",
+    "kitchen robot"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-robotics-u3": {
+   "queries": [
+    "pick and place",
+    "assembly line"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-robotics-u4": {
+   "queries": [
+    "recycling",
+    "waste sorting"
+   ],
+   "total": 1,
+   "examples": [
+    "Waste Works (F-Droid)"
+   ]
+  },
+  "c-access-u0": {
+   "queries": [
+    "sign language"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-access-u1": {
+   "queries": [
+    "audio description",
+    "described video"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-access-u2": {
+   "queries": [
+    "wheelchair",
+    "curb cut"
+   ],
+   "total": 71,
+   "examples": [
+    "Wheelchair (iFixit)",
+    "Belt, Wheelchair (FDA devices)",
+    "GEN 2 Wheelchair (iFixit)"
+   ]
+  },
+  "c-access-u3": {
+   "queries": [
+    "screen reader"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-access-u4": {
+   "queries": [
+    "brain injury",
+    "memory prosthesis"
+   ],
+   "total": 2,
+   "examples": [
+    "Brain Injury Adjunctive Interpretive Oculomotor Assessment Aid (FDA devices)",
+    "Brain Injury Adjunctive Interpretive Electroencephalograph Assessment Aid (FDA devices)"
+   ]
+  },
+  "c-media-u0": {
+   "queries": [
+    "content credentials",
+    "c2pa",
+    "provenance"
+   ],
+   "total": 1,
+   "examples": [
+    "@mondaydotcomorg/atp-provenance (npm)"
+   ]
+  },
+  "c-media-u1": {
+   "queries": [
+    "social media backup",
+    "account archive"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-media-u2": {
+   "queries": [
+    "cookie consent",
+    "gdpr banner",
+    "privacy consent"
+   ],
+   "total": 1,
+   "examples": [
+    "cookieconsent (npm)"
+   ]
+  },
+  "c-media-u3": {
+   "queries": [
+    "fact check"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-media-u4": {
+   "queries": [
+    "forum",
+    "bbs",
+    "community board"
+   ],
+   "total": 36,
+   "examples": [
+    "Forum, a Facebook app (App Store)",
+    "Archlinux Forums (F-Droid)",
+    "HN (F-Droid)"
+   ]
+  },
+  "c-software-u5": {
+   "queries": [
+    "personal data api",
+    "quantified self",
+    "data vault",
+    "own your data"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-ai-u5": {
+   "queries": [
+    "voice clone",
+    "voice cloning",
+    "voice print"
+   ],
+   "total": 1,
+   "examples": [
+    "Fish AI: Audio Voice Clone TTS (Google Play)"
+   ]
+  },
+  "c-ai-u6": {
+   "queries": [
+    "ai liability",
+    "ai insurance"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-hardware-u5": {
+   "queries": [
+    "service manual",
+    "repair manual",
+    "spare parts"
+   ],
+   "total": 1,
+   "examples": [
+    "Baxter Arena Service Manual (iFixit)"
+   ]
+  },
+  "c-health-u5": {
+   "queries": [
+    "caregiver",
+    "elder care",
+    "aging parent"
+   ],
+   "total": 1,
+   "examples": [
+    "Homer Audio Player for Seniors (F-Droid)"
+   ]
+  },
+  "c-climate-u5": {
+   "queries": [
+    "demand response",
+    "virtual power plant",
+    "grid services"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-money-u5": {
+   "queries": [
+    "freelancer",
+    "gig work",
+    "reputation"
+   ],
+   "total": 3,
+   "examples": [
+    "Accountable: for freelancers (Google Play)",
+    "Solo: Your Gig Business App (App Store)",
+    "Podium - Small Business Tools (App Store)"
+   ]
+  },
+  "c-access-u6": {
+   "queries": [
+    "symptom tracker",
+    "pain scale",
+    "patient reported"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-media-u6": {
+   "queries": [
+    "webmention",
+    "comment system",
+    "comments plugin"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-software-h5": {
+   "queries": [
+    "local ai",
+    "offline ai",
+    "private ai",
+    "on device model"
+   ],
+   "total": 12,
+   "examples": [
+    "Maskan — Private AI Chat (F-Droid)",
+    "Jan (Flathub)",
+    "Lumo (F-Droid)"
+   ]
+  },
+  "c-ai-h5": {
+   "queries": [
+    "live translation",
+    "translator",
+    "interpretation"
+   ],
+   "total": 24,
+   "examples": [
+    "The Translator (F-Droid)",
+    "LibreTranslator (F-Droid)",
+    "U Dictionary Translator (Google Play)"
+   ]
+  },
+  "c-hardware-h5": {
+   "queries": [
+    "energy monitor",
+    "power monitor",
+    "home energy"
+   ],
+   "total": 14,
+   "examples": [
+    "Janitza Power Monitor (iFixit)",
+    "SparkFun ACS37800 Power Monitor Arduino Library (Arduino)",
+    "STPM3X (Arduino)"
+   ]
+  },
+  "c-hardware-h6": {
+   "queries": [
+    "air quality",
+    "weather station",
+    "environment sensor"
+   ],
+   "total": 29,
+   "examples": [
+    "Weather Station (iFixit)",
+    "ESP8266 Weather Station (Arduino)",
+    "Tempest Weather Station (iFixit)"
+   ]
+  },
+  "c-health-h5": {
+   "queries": [
+    "hearing aid",
+    "audiogram",
+    "hearing test"
+   ],
+   "total": 5,
+   "examples": [
+    "Hearing Aid (iFixit)",
+    "Face Plate Hearing Aid (FDA devices)",
+    "Air-Conduction Hearing Aid Software (FDA devices)"
+   ]
+  },
+  "c-climate-h5": {
+   "queries": [
+    "ev battery",
+    "battery health",
+    "used battery"
+   ],
+   "total": 1,
+   "examples": [
+    "EUC State Of Health Analyzer (F-Droid)"
+   ]
+  },
+  "c-money-h5": {
+   "queries": [
+    "acorns",
+    "micro investing",
+    "roundups",
+    "spare change"
+   ],
+   "total": 2,
+   "examples": [
+    "Acorns: Save & Invest Money (App Store)",
+    "Cash App (App Store)"
+   ]
+  },
+  "c-food-h5": {
+   "queries": [
+    "food waste",
+    "expiry",
+    "surplus food"
+   ],
+   "total": 7,
+   "examples": [
+    "Too Good To Go: End Food Waste (App Store)",
+    "Franke counter top food waste bin (iFixit)",
+    "Pantry (F-Droid)"
+   ]
+  },
+  "c-civic-h5": {
+   "queries": [
+    "see click fix",
+    "city works",
+    "fixmystreet"
+   ],
+   "total": 0,
+   "examples": []
+  },
+  "c-robotics-h5": {
+   "queries": [
+    "mower",
+    "automower",
+    "lawn"
+   ],
+   "total": 623,
+   "examples": [
+    "Lawn Mower (iFixit)",
+    "Lawn Roller (iFixit)",
+    "Junior Tycoon: My Business (App Store)"
+   ]
+  },
+  "c-access-h5": {
+   "queries": [
+    "haptic",
+    "smart cane",
+    "navigation wearable"
+   ],
+   "total": 10,
+   "examples": [
+    "Haptic_DA7280 (Arduino)",
+    "Haptic_DRV2605 (Arduino)",
+    "Haptic Testing: Developer Tool (App Store)"
+   ]
+  },
+  "c-media-h5": {
+   "queries": [
+    "immich",
+    "photoprism",
+    "photo sync",
+    "photo gallery"
+   ],
+   "total": 6,
+   "examples": [
+    "Immich (F-Droid)",
+    "Immich Wear (F-Droid)",
+    "FerrumPix (Flathub)"
+   ]
+  }
+ }
+}
