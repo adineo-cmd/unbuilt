@@ -29,6 +29,8 @@ FIELDS = [
             {"t": "Explain-my-bill", "w": "Photograph any bill — medical, utility, telecom — and get an itemized audit plus a dispute letter.", "why": "Bill confusion is load-bearing revenue; auditing it is nobody's product.", "closest": "Rocket Money, subscriptions only.", "d": 3, "tags": ["consumer", "AI-assisted"]},
             {"t": "The personal API", "w": "One versioned endpoint you own that exposes your data — contacts, health, purchases — to apps you approve, with scopes and revocation.", "why": "Every app wants to be the hub of your data; nobody wants to be the spoke.", "closest": "Quantified-self exports, app by app.", "d": 4, "tags": ["wildcard", "data", "standards"]},
             {"t": "Undo for the internet", "w": "A personal undo ledger: everything you sent or posted, recallable where protocols allow, marked as retracted everywhere else.", "why": "Email's thirty-year-old recall is a joke, and platforms monetize permanence.", "closest": "Per-platform delete buttons with no memory.", "d": 3, "tags": ["wildcard", "privacy", "standards"]},
+            {"t": "The sentence-popularity meter", "w": "Flags the phrases everyone writes — the clichés of job posts, essays and emails — before you hit send.", "why": "Every writing tool checks grammar; none checks originality.", "closest": "Style guides and grammar checkers.", "d": 2, "tags": ["wildcard", "consumer", "AI"]},
+            {"t": "A diff for human spreadsheets", "w": "Shows what actually changed between two versions of a budget, roster or inventory — rows, edits, formulas — in words.", "why": "Diffs exist for code and databases; humans live in spreadsheets.", "closest": "Git tools built for engineers.", "d": 3, "tags": ["consumer", "data"]},
         ],
     },
     {
@@ -40,6 +42,7 @@ FIELDS = [
             ["Chat-with-your-PDF", "A vector database and a chat box, sold monthly.", "Bundled into every document tool that matters.", 5],
             ["Prompt libraries", "Collections of instructions, sold as courses.", "The models outgrew them.", 4],
             ["AI resume screeners", "A model that reads CVs and guesses fit.", "Legal exposure plus an arms race both sides lose.", 4],
+            ["Agent harnesses and skills packs", "Dozens of repos above one hundred thousand stars sell harnesses, skills and memory hacks.", "The 2026 gold rush; differentiation is a README.", 5],
         ],
         "unbuilt": [
             {"t": "Per-claim receipts", "w": "Every sentence of an AI answer carries its evidence and a confidence you can inspect.", "why": "Everyone benchmarks models; nobody ships accountability for one answer at a time.", "closest": "Citation modes — page-level, not claim-level.", "d": 4, "tags": ["trust", "infrastructure"]},
@@ -436,6 +439,9 @@ HALF = {
         {"t": "Messaging interop", "w": "Regulators forced the EU gatekeepers to open messaging to other apps under the DMA.", "missing": "Actual interconnection: the big networks barely talk, and third-party clients stayed niche.", "why": "The giants comply in the letter and stall in practice.", "d": 3, "tags": ["regulation", "standards"]},
         {"t": "Package managers for everything", "w": "Code has npm and apt; phones have app stores.", "missing": "The same install-update-trust machinery for datasets, models and design assets.", "why": "Every domain reinvents licensing and trust from scratch.", "d": 3, "tags": ["developer", "standards"]},
         {"t": "Local AI assistants", "w": "Hobby-grade local models and CLIs exist; tinkerers already run assistants fully offline.", "missing": "A consumer-grade on-device assistant that holds your context and never phones home.", "why": "Memory and battery budgets are real — and vendors prefer your data in their cloud.", "d": 4, "tags": ["AI", "privacy"]},
+        {"t": "One control plane for your devices", "w": "Debloaters and local-first driver replacements boom, device by device.", "missing": "Cross-vendor control: peripherals, TVs and appliances from one private dashboard.", "why": "Every vendor guards its own settings API.", "d": 4, "tags": ["privacy", "hardware"]},
+        {"t": "Honest indie app distribution", "w": "Open-source app stores for GitHub releases are taking off.", "missing": "Signed, auto-updating distribution for indie apps on every desktop OS.", "why": "The gatekeepers take 30% and the alternative is a README link.", "d": 3, "tags": ["open-source", "infrastructure"]},
+        {"t": "The paperwork flow, finished", "w": "OCR, renamers and privacy PDF toolkits each solve a fragment.", "missing": "Scan to searchable, filed, named and retrievable — one flow that runs locally.", "why": "Document AI got good; the plumbing between steps stayed yours to build.", "d": 3, "tags": ["consumer", "AI"]},
     ],
     "ai": [
         {"t": "On-device assistants", "w": "Phones ship small models that summarize and translate offline.", "missing": "A private assistant that actually knows your life and never phones home.", "why": "Memory and battery budgets are real — and vendors prefer your data in their cloud.", "d": 4, "tags": ["privacy", "hardware"]},
@@ -444,6 +450,9 @@ HALF = {
         {"t": "Translation for real speech", "w": "Research systems cover thousands of languages on paper.", "missing": "Reliable everyday products for the hundreds of languages billions actually speak at home.", "why": "Per-language data work does not fit venture math.", "d": 3, "tags": ["global", "open-source"]},
         {"t": "AI code review", "w": "Assistants autocomplete and catch obvious bugs inside IDEs.", "missing": "A reviewer that understands architecture, catches security flaws, and earns senior engineers' trust.", "why": "Responsibility for a wrong review still lands on humans.", "d": 4, "tags": ["developer", "trust"]},
         {"t": "Live translation that keeps up", "w": "Flagship phones and earbuds translate big languages reasonably well.", "missing": "Two-way, real-time conversation quality in noise, for the languages people actually speak.", "why": "Model size against latency, and data for non-major languages is thin.", "d": 4, "tags": ["AI", "hardware"]},
+        {"t": "The agent audit trail", "w": "Developer tools log what coding agents did and why.", "missing": "The org-grade record: what the agent touched, decided and cost — auditable by non-engineers.", "why": "Every harness ships its own log format on purpose.", "d": 3, "tags": ["trust", "AI"]},
+        {"t": "Agent memory that travels", "w": "Community hacks persist an agent's context across sessions.", "missing": "Portable, user-owned memory that follows you between agents and vendors.", "why": "Lock-in is the point: whoever holds the memory holds the user.", "d": 4, "tags": ["AI", "privacy"]},
+        {"t": "Agent fleet operations", "w": "Command-line fleet managers run personal swarms of coding agents.", "missing": "The team version: queues, budgets, permissions and review for a whole company's agents.", "why": "The hackers are individuals; the buyers are IT departments that need audit first.", "d": 4, "tags": ["AI", "developer"]},
     ],
     "hardware": [
         {"t": "E-ink beyond books", "w": "E-ink is cheap, calm and sips power — in dedicated readers.", "missing": "E-ink phones, dashboards and monitors that refresh fast enough for daily use.", "why": "Refresh rate and cost; color e-ink has been almost-ready for a decade.", "d": 4, "tags": ["displays", "hardware"]},
@@ -453,6 +462,8 @@ HALF = {
         {"t": "Satellite messaging", "w": "Flagship phones now text satellites in emergencies.", "missing": "Cheap, unlimited two-way data anywhere on Earth, at ordinary prices.", "why": "Spectrum, launch costs and telecom lobbying.", "d": 5, "tags": ["space", "telecom"]},
         {"t": "Home energy monitors that close the loop", "w": "Clamp-on monitors and utility dashboards show household consumption in real time.", "missing": "Appliance-level control that acts on the readings: shift, shed, schedule.", "why": "The meter belongs to the utility; the appliances belong to vendors; nobody owns the loop.", "d": 4, "tags": ["energy", "hardware"]},
         {"t": "Environmental mesh kits for schools", "w": "DIY air-quality and weather stations exist as kits, boards and Arduino projects.", "missing": "A sealed, school-ready kit with curriculum, dashboard and a maintenance plan.", "why": "Hobbyists build them; education procurement cannot buy from a hobby.", "d": 3, "tags": ["hardware", "education"]},
+        {"t": "The home IoT honeypot", "w": "Hacker projects fake vulnerable devices to catch intruders on the home network.", "missing": "A consumer box that watches the smart home, catches the odd one out, and explains itself.", "why": "The threat is real; the buyer doesn't know it yet.", "d": 3, "tags": ["security", "hardware"]},
+        {"t": "Prebuilt PC price audits", "w": "Part-pickers price DIY builds to the dollar.", "missing": "The same audit for prebuilt machines: is this $1,800 box honest?", "why": "Prebuilt SKUs change weekly and hide the margin in the power supply.", "d": 2, "tags": ["consumer", "tools"]},
     ],
     "health": [
         {"t": "Continuous monitors", "w": "Glucose sensors and wrist ECGs moved vitals from clinics to wrists.", "missing": "Blood pressure, hydration and hormones on the same continuous, cheap, wearable rail.", "why": "Every new marker is its own physiological and regulatory battle.", "d": 4, "tags": ["wearables", "regulated"]},
@@ -485,6 +496,7 @@ HALF = {
         {"t": "Lending without collateral", "w": "Fintechs score small merchants from transaction data in a few markets.", "missing": "Underwriting that travels: the same rails for shopkeepers everywhere.", "why": "Local contract enforcement is the hard part, not the model.", "d": 4, "tags": ["credit", "global"]},
         {"t": "Equity for creators", "w": "Patreon and Substack turned audiences into salaries.", "missing": "Fans holding actual equity in the work they make famous.", "why": "Securities law treats every fan as a broker.", "d": 4, "tags": ["creator", "regulated"]},
         {"t": "Round-up retirement for cash earners", "w": "Round-up investing apps exist where cards are everywhere.", "missing": "The same spare-change pension for street vendors paid in cash.", "why": "No card swipe means nothing to round up, and the rake is tiny on tiny deposits.", "d": 4, "tags": ["global", "pensions"]},
+        {"t": "The cancellation switch", "w": "Apps cancel subscriptions you remember to list.", "missing": "The standard: any merchant, one revocation, confirmed end to end.", "why": "Cancellation friction is revenue; the switch must be mandated, then built.", "d": 3, "tags": ["consumer", "policy"]},
     ],
     "food": [
         {"t": "Cultivated meat", "w": "Singapore and the US approved the first lab-grown chicken portions.", "missing": "Cost, scale and taste parity; the first plants produce boutique quantities.", "why": "Bioreactors are expensive and cells are delicate.", "d": 5, "tags": ["biotech", "food"]},
@@ -695,12 +707,22 @@ def sev_line(card_id):
     total = chk["total"]
     n = checks().get("catalog_total", 0)
     if total == 0:
-        return (f'<p class="sev"><b>Shelves check:</b> no listing among the {n:,} catalog '
-                f'entries matches — where we measured, the shelf is empty.</p>')
-    ex = ""
-    if chk["examples"]:
-        ex = " Closest: " + "; ".join(chk["examples"][:3]) + "."
-    return (f'<p class="sev"><b>Shelves check:</b> {total:,} of {n:,} catalog listings match.{ex}</p>')
+        out = (f'<p class="sev"><b>Shelves check:</b> no listing among the {n:,} catalog '
+               f'entries matches — where we measured, the shelf is empty.</p>')
+    else:
+        ex = ""
+        if chk["examples"]:
+            ex = " Closest: " + "; ".join(chk["examples"][:3]) + "."
+        out = f'<p class="sev"><b>Shelves check:</b> {total:,} of {n:,} catalog listings match.{ex}</p>'
+    gh = chk.get("gh")
+    if gh:
+        if gh["total"]:
+            out += (f'<p class="sev"><b>GitHub signal:</b> {gh["total"]:,} public repos match; '
+                    f'top: {esc(gh["top"])}</p>')
+        else:
+            out += ('<p class="sev"><b>GitHub signal:</b> no public repo matches — '
+                    'even the hackers haven\'t started.</p>')
+    return out
 
 
 def built_card(f, b, i):
@@ -1088,6 +1110,14 @@ def build_about():
     catalogs matched — which is evidence of an empty shelf in the stores we measured, not
     proof that nothing exists anywhere. A non-zero check lists the closest listings we
     found, so you can judge the distance yourself.
+  </p>
+  <p>
+    Beneath that sits a <strong>GitHub signal</strong>: a phrase search over public
+    repositories (<code>pipeline/gh_signal.py</code>, via the GitHub API). Hackers build
+    before markets do, so repo counts read as demand: hundreds of repos means the gap is
+    real but still stuck in hackerland; zero means even the hackers haven't arrived.
+    Signal research also drew on Hacker News demand threads and the year's hottest new
+    repositories — the agent-harness gold rush in the AI field is a direct import.
   </p>
 
   <h2>Limits, stated plainly</h2>

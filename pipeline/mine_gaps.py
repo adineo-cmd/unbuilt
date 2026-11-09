@@ -191,6 +191,18 @@ SEEDS = {
     "c-arts-h1": ["art provenance", "certificate of authenticity"],
     "c-arts-h2": ["repatriation", "provenance research", "museum collection"],
     "c-arts-h3": ["gig listing", "live music", "tour planning"],
+    # ---- cards from GitHub/HN signal research (Nov 2026)
+    "c-ai-h6": ["agent audit", "agent logs", "ai traceability"],
+    "c-ai-h7": ["agent memory", "persistent context", "llm memory"],
+    "c-ai-h8": ["agent fleet", "multi agent orchestration", "agent manager"],
+    "c-software-h6": ["debloat", "device control", "peripheral software"],
+    "c-software-h7": ["app store alternative", "github releases", "update server"],
+    "c-software-h8": ["pdf organizer", "document management", "ocr rename"],
+    "c-software-u7": ["cliche detector", "writing style checker", "originality check"],
+    "c-software-u8": ["spreadsheet diff", "csv diff", "data diff"],
+    "c-money-h6": ["cancel subscription", "subscription tracker", "recurring billing"],
+    "c-hardware-h7": ["iot honeypot", "home network security", "router monitor"],
+    "c-hardware-h8": ["pc part picker", "prebuilt pc", "pc price"],
 }
 
 

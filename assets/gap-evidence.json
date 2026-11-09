@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08",
+ "generated": "2026-11-09",
  "catalog_total": 92463,
  "method": "whole-token matches on name, summary, category and developer",
  "checks": {
@@ -15,7 +15,11 @@
     "Pizza Hut - Delivery & Takeout (Google Play)",
     "Pizza Hut - Delivery & Takeout (App Store)",
     "Buffalo Wild Wings (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-software-u1": {
    "queries": [
@@ -24,7 +28,11 @@
     "sunset notice"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 55,
+    "top": "aws/aws-sdk-js (7,600★, last push 2025-12-09)"
+   }
   },
   "c-software-u2": {
    "queries": [
@@ -36,7 +44,11 @@
    "examples": [
     "LibreSpeed (F-Droid)",
     "Breitbandmessung (Flathub)"
-   ]
+   ],
+   "gh": {
+    "total": 65,
+    "top": "gnmyt/MySpeed (3,049★, last push 2026-11-05)"
+   }
   },
   "c-software-u3": {
    "queries": [
@@ -47,7 +59,11 @@
    "total": 1,
    "examples": [
     "inherits (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 3,
+    "top": "alpyxn/aeterna (310★, last push 2026-10-28)"
+   }
   },
   "c-software-u4": {
    "queries": [
@@ -56,7 +72,11 @@
     "explain bill"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "mohitagw15856/pm-claude-skills (1,537★, last push 2026-11-09)"
+   }
   },
   "c-ai-u0": {
    "queries": [
@@ -68,7 +88,11 @@
    "examples": [
     "Harman Kardon Citation 200 (iFixit)",
     "Cite It Now: Easy referencing (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 381,
+    "top": "idosal/git-mcp (8,510★, last push 2026-05-08)"
+   }
   },
   "c-ai-u1": {
    "queries": [
@@ -79,7 +103,11 @@
    "total": 1,
    "examples": [
     "@sandworm/audit (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 21,
+    "top": "XmirrorSecurity/OpenSCA-cli (1,135★, last push 2026-05-15)"
+   }
   },
   "c-ai-u2": {
    "queries": [
@@ -88,7 +116,11 @@
     "underresourced language"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 25,
+    "top": "RichardLitt/low-resource-languages (461★, last push 2026-10-15)"
+   }
   },
   "c-ai-u3": {
    "queries": [
@@ -100,7 +132,11 @@
    "examples": [
     "AusweisApp (Flathub)",
     "Affirm: Buy now, pay over time (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 157,
+    "top": "ianstormtaylor/permit (1,676★, last push 2022-12-06)"
+   }
   },
   "c-ai-u4": {
    "queries": [
@@ -109,7 +145,11 @@
     "llm eval"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 124,
+    "top": "UKGovernmentBEIS/inspect_ai (3,209★, last push 2026-11-09)"
+   }
   },
   "c-hardware-u0": {
    "queries": [
@@ -118,7 +158,11 @@
    "total": 1,
    "examples": [
     "Brailliac: Braille Keyboard (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 102,
+    "top": "rastapasta/mapscii (9,274★, last push 2024-11-03)"
+   }
   },
   "c-hardware-u1": {
    "queries": [
@@ -130,7 +174,11 @@
     "Hearing Aid (iFixit)",
     "Face Plate Hearing Aid (FDA devices)",
     "Air-Conduction Hearing Aid Software (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 14,
+    "top": "HoerTech-gGmbH/openMHA (341★, last push 2026-08-05)"
+   }
   },
   "c-hardware-u2": {
    "queries": [
@@ -139,7 +187,11 @@
     "ev battery"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 21,
+    "top": "redpomodoro/fronius_modbus (106★, last push 2025-09-12)"
+   }
   },
   "c-hardware-u3": {
    "queries": [
@@ -152,7 +204,11 @@
    "examples": [
     "Nokia X2-00 Teardown (iFixit)",
     "Baxter Arena Service Manual (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 71,
+    "top": "ScrapeCreators/social-media-research-skills (6,069★, last push 2026-08-26)"
+   }
   },
   "c-hardware-u4": {
    "queries": [
@@ -164,7 +220,11 @@
     "Water Quality (F-Droid)",
     "BME63M001 (Arduino)",
     "BM25S4021-1 (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 74,
+    "top": "OpenWaterAnalytics/EPANET (432★, last push 2026-10-26)"
+   }
   },
   "c-health-u0": {
    "queries": [
@@ -173,7 +233,11 @@
    "total": 1,
    "examples": [
     "Menopause Test System (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-health-u1": {
    "queries": [
@@ -184,7 +248,11 @@
    "total": 1,
    "examples": [
     "Immunoassay Blood Test For Amyloid Pathology Assessment (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 4,
+    "top": "markwk/awesome-biomarkers (469★, last push 2021-09-15)"
+   }
   },
   "c-health-u2": {
    "queries": [
@@ -192,7 +260,11 @@
     "medication interaction"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 26,
+    "top": "rezacsedu/Drug-Drug-Interaction-Prediction (102★, last push 2019-10-09)"
+   }
   },
   "c-health-u3": {
    "queries": [
@@ -200,7 +272,11 @@
     "antibiotic resistance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 53,
+    "top": "phage-nz/ph0neutria (301★, last push 2020-04-24)"
+   }
   },
   "c-health-u4": {
    "queries": [
@@ -209,7 +285,11 @@
     "book doctor"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 34,
+    "top": "Dwarf-Therapist/Dwarf-Therapist (722★, last push 2025-11-11)"
+   }
   },
   "c-climate-u0": {
    "queries": [
@@ -221,7 +301,11 @@
     "LG Air Conditioner (iFixit)",
     "Wall Air Conditioner (iFixit)",
     "HeatpumpIR (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 115,
+    "top": "YunYouJun/air-conditioner (3,461★, last push 2026-10-31)"
+   }
   },
   "c-climate-u1": {
    "queries": [
@@ -230,7 +314,11 @@
    "total": 1,
    "examples": [
     "Heat Pump (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 99,
+    "top": "Akkudoktor-EOS/EOS (1,727★, last push 2026-11-09)"
+   }
   },
   "c-climate-u2": {
    "queries": [
@@ -240,7 +328,11 @@
    "examples": [
     "Water Heater (iFixit)",
     "Atlantic Vertigo water heater (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 13,
+    "top": "wuwentao/midea_ac_lan (1,947★, last push 2026-11-09)"
+   }
   },
   "c-climate-u3": {
    "queries": [
@@ -251,7 +343,11 @@
    "total": 1,
    "examples": [
     "EUC State Of Health Analyzer (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 35,
+    "top": "maniacx/Battery-Health-Charging (415★, last push 2026-11-08)"
+   }
   },
   "c-climate-u4": {
    "queries": [
@@ -260,7 +356,11 @@
     "crop planning"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 8,
+    "top": "natario1/GIFCompressor (126★, last push 2023-04-12)"
+   }
   },
   "c-education-u0": {
    "queries": [
@@ -272,7 +372,11 @@
     "Flashcard maker (Google Play)",
     "Flashcards Deluxe (Google Play)",
     "Flashcards Deluxe (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 201,
+    "top": "ankitects/anki (32,695★, last push 2026-11-09)"
+   }
   },
   "c-education-u1": {
    "queries": [
@@ -282,7 +386,11 @@
    "total": 1,
    "examples": [
     "Arduino_ScienceKitCarrier (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 5,
+    "top": "qiskit-community/qiskit-js (115★, last push 2019-09-08)"
+   }
   },
   "c-education-u2": {
    "queries": [
@@ -295,7 +403,11 @@
     "Dragon’s Apprentice (Flathub)",
     "Crafty Candy (App Store)",
     "PowerZ: The Learning Game (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 63,
+    "top": "kodecocodes/flta-materials (2,428★, last push 2024-03-01)"
+   }
   },
   "c-education-u3": {
    "queries": [
@@ -307,7 +419,11 @@
     "Portfolio Performance (Flathub)",
     "Bag: Bitcoin Portfolio Monitor (F-Droid)",
     "Six Flags (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 4687,
+    "top": "emmabostian/developer-portfolios (27,625★, last push 2026-11-09)"
+   }
   },
   "c-education-u4": {
    "queries": [
@@ -319,7 +435,11 @@
     "Physics (Flathub)",
     "PhysicsLabFirmware (Arduino)",
     "Numpty Physics (Flathub)"
-   ]
+   ],
+   "gh": {
+    "total": 35,
+    "top": "google-deepmind/mujoco (16,824★, last push 2026-11-09)"
+   }
   },
   "c-money-u0": {
    "queries": [
@@ -327,7 +447,11 @@
     "gig benefits"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-money-u1": {
    "queries": [
@@ -335,7 +459,11 @@
     "micro pension"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 10,
+    "top": "danidm98/rumbo (70★, last push 2026-10-22)"
+   }
   },
   "c-money-u2": {
    "queries": [
@@ -343,7 +471,11 @@
     "insurance claim"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "mohitagw15856/pm-claude-skills (1,537★, last push 2026-11-09)"
+   }
   },
   "c-money-u3": {
    "queries": [
@@ -355,7 +487,11 @@
    "examples": [
     "Chilis (App Store)",
     "indiAccounting (Flathub)"
-   ]
+   ],
+   "gh": {
+    "total": 93,
+    "top": "frappe/hrms (9,036★, last push 2026-11-09)"
+   }
   },
   "c-money-u4": {
    "queries": [
@@ -364,7 +500,11 @@
     "takaful"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-food-u0": {
    "queries": [
@@ -376,7 +516,11 @@
     "Pantry (F-Droid)",
     "PantryClient (Arduino)",
     "Bosch Fridge (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 42,
+    "top": "grocy/grocy (9,670★, last push 2026-09-16)"
+   }
   },
   "c-food-u1": {
    "queries": [
@@ -385,7 +529,11 @@
     "crop advice"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 4,
+    "top": "Peilin-FF/Awesome-Deep-Research (107★, last push 2025-03-17)"
+   }
   },
   "c-food-u2": {
    "queries": [
@@ -396,7 +544,11 @@
     "Too Good To Go: End Food Waste (App Store)",
     "Franke counter top food waste bin (iFixit)",
     "Pantry (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 15,
+    "top": "kishor-23/food-waste-management-system (80★, last push 2024-06-20)"
+   }
   },
   "c-food-u3": {
    "queries": [
@@ -408,7 +560,11 @@
     "Tractor (iFixit)",
     "Tractor Plow (iFixit)",
     "Tractor GPS Navigation (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 51,
+    "top": "iDoka/awesome-automotive-can-id (1,024★, last push 2026-08-12)"
+   }
   },
   "c-food-u4": {
    "queries": [
@@ -417,7 +573,11 @@
    "total": 1,
    "examples": [
     "Seymour Compost Roller 85755  Rev B (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 16,
+    "top": "compostjs/compost (133★, last push 2026-04-09)"
+   }
   },
   "c-civic-u0": {
    "queries": [
@@ -426,7 +586,11 @@
     "city works"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "mysociety/fixmystreet (625★, last push 2026-11-09)"
+   }
   },
   "c-civic-u1": {
    "queries": [
@@ -439,7 +603,11 @@
     "AddressLearnMLX (Arduino)",
     "what3words: Navigation & Maps (App Store)",
     "x-address-codec (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 7,
+    "top": "what3words/w3w-python-wrapper (88★, last push 2024-11-28)"
+   }
   },
   "c-civic-u2": {
    "queries": [
@@ -448,7 +616,11 @@
     "city ordinance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-civic-u3": {
    "queries": [
@@ -461,7 +633,11 @@
     "EE: Mobile, broadband & tech (App Store)",
     "Meshy (Flathub)",
     "YL-800N (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 177,
+    "top": "liamcottle/reticulum-meshchat (1,321★, last push 2026-10-06)"
+   }
   },
   "c-civic-u4": {
    "queries": [
@@ -470,7 +646,11 @@
     "emergency sos"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 9,
+    "top": "guardianproject/ripple (304★, last push 2026-04-17)"
+   }
   },
   "c-robotics-u0": {
    "queries": [
@@ -482,7 +662,11 @@
     "LaundryNotes (F-Droid)",
     "Commercial-Industrial Laundry (iFixit)",
     "@washy-washy/core (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 46,
+    "top": "efskap/deepfriedmemes.com (183★, last push 2025-08-03)"
+   }
   },
   "c-robotics-u1": {
    "queries": [
@@ -491,7 +675,11 @@
     "bionic hand"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 40,
+    "top": "PKU-MARL/DexterousHands (1,121★, last push 2025-02-18)"
+   }
   },
   "c-robotics-u2": {
    "queries": [
@@ -499,7 +687,11 @@
     "kitchen robot"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "ispaik06/Panbot (18★, last push 2026-07-13)"
+   }
   },
   "c-robotics-u3": {
    "queries": [
@@ -507,7 +699,11 @@
     "assembly line"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 87,
+    "top": "opulo-inc/lumenpnp (3,722★, last push 2026-10-14)"
+   }
   },
   "c-robotics-u4": {
    "queries": [
@@ -517,14 +713,22 @@
    "total": 1,
    "examples": [
     "Waste Works (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 235,
+    "top": "apollographql/react-apollo (6,790★, last push 2023-04-13)"
+   }
   },
   "c-access-u0": {
    "queries": [
     "sign language"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 302,
+    "top": "dxli94/WLASL (1,290★, last push 2023-03-18)"
+   }
   },
   "c-access-u1": {
    "queries": [
@@ -532,7 +736,11 @@
     "described video"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 11,
+    "top": "Soldelli/MAD (178★, last push 2023-10-22)"
+   }
   },
   "c-access-u2": {
    "queries": [
@@ -544,14 +752,22 @@
     "Wheelchair (iFixit)",
     "Belt, Wheelchair (FDA devices)",
     "GEN 2 Wheelchair (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 27,
+    "top": "azac/cobol-on-wheelchair (1,033★, last push 2024-08-10)"
+   }
   },
   "c-access-u3": {
    "queries": [
     "screen reader"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 88,
+    "top": "nvaccess/nvda (2,686★, last push 2026-11-09)"
+   }
   },
   "c-access-u4": {
    "queries": [
@@ -562,7 +778,11 @@
    "examples": [
     "Brain Injury Adjunctive Interpretive Oculomotor Assessment Aid (FDA devices)",
     "Brain Injury Adjunctive Interpretive Electroencephalograph Assessment Aid (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-media-u0": {
    "queries": [
@@ -573,7 +793,11 @@
    "total": 1,
    "examples": [
     "@mondaydotcomorg/atp-provenance (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 4,
+    "top": "haidrrrry/claude-watermark-remover (44★, last push 2026-11-09)"
+   }
   },
   "c-media-u1": {
    "queries": [
@@ -581,7 +805,11 @@
     "account archive"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-media-u2": {
    "queries": [
@@ -592,14 +820,22 @@
    "total": 1,
    "examples": [
     "cookieconsent (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 85,
+    "top": "orestbida/cookieconsent (5,749★, last push 2026-11-03)"
+   }
   },
   "c-media-u3": {
    "queries": [
     "fact check"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 95,
+    "top": "Nigh/show-me-the-story (640★, last push 2026-10-15)"
+   }
   },
   "c-media-u4": {
    "queries": [
@@ -612,7 +848,11 @@
     "Forum, a Facebook app (App Store)",
     "Archlinux Forums (F-Droid)",
     "HN (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 1162,
+    "top": "flarum/flarum (16,442★, last push 2026-11-06)"
+   }
   },
   "c-software-u5": {
    "queries": [
@@ -622,7 +862,11 @@
     "own your data"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-ai-u5": {
    "queries": [
@@ -633,7 +877,11 @@
    "total": 1,
    "examples": [
     "Fish AI: Audio Voice Clone TTS (Google Play)"
-   ]
+   ],
+   "gh": {
+    "total": 252,
+    "top": "debpalash/VoiceStudio (105,926★, last push 2026-11-09)"
+   }
   },
   "c-ai-u6": {
    "queries": [
@@ -641,7 +889,11 @@
     "ai insurance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-hardware-u5": {
    "queries": [
@@ -652,7 +904,11 @@
    "total": 1,
    "examples": [
     "Baxter Arena Service Manual (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 9,
+    "top": "iamtheyammer/fetch-ford-service-manuals (114★, last push 2024-08-04)"
+   }
   },
   "c-health-u5": {
    "queries": [
@@ -663,7 +919,11 @@
    "total": 1,
    "examples": [
     "Homer Audio Player for Seniors (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 16,
+    "top": "babybuddy/babybuddy (2,944★, last push 2026-11-07)"
+   }
   },
   "c-climate-u5": {
    "queries": [
@@ -672,7 +932,11 @@
     "grid services"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 15,
+    "top": "citylearn-project/CityLearn (660★, last push 2026-11-06)"
+   }
   },
   "c-money-u5": {
    "queries": [
@@ -685,7 +949,11 @@
     "Accountable: for freelancers (Google Play)",
     "Solo: Your Gig Business App (App Store)",
     "Podium - Small Business Tools (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 266,
+    "top": "midday-ai/midday (15,116★, last push 2026-06-13)"
+   }
   },
   "c-access-u6": {
    "queries": [
@@ -694,7 +962,11 @@
     "patient reported"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 2,
+    "top": "alexisthual/symptoms-tracker (18★, last push 2023-01-07)"
+   }
   },
   "c-media-u6": {
    "queries": [
@@ -703,7 +975,11 @@
     "comments plugin"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 41,
+    "top": "aaronpk/webmention.io (877★, last push 2026-10-17)"
+   }
   },
   "c-software-h5": {
    "queries": [
@@ -717,7 +993,11 @@
     "Maskan — Private AI Chat (F-Droid)",
     "Jan (Flathub)",
     "Lumo (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 617,
+    "top": "mudler/LocalAI (50,279★, last push 2026-11-09)"
+   }
   },
   "c-ai-h5": {
    "queries": [
@@ -730,7 +1010,11 @@
     "The Translator (F-Droid)",
     "LibreTranslator (F-Droid)",
     "U Dictionary Translator (Google Play)"
-   ]
+   ],
+   "gh": {
+    "total": 27,
+    "top": "yuxino/Mimi (840★, last push 2026-11-06)"
+   }
   },
   "c-hardware-h5": {
    "queries": [
@@ -743,7 +1027,11 @@
     "Janitza Power Monitor (iFixit)",
     "SparkFun ACS37800 Power Monitor Arduino Library (Arduino)",
     "STPM3X (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 74,
+    "top": "emporia-vue-local/esphome (813★, last push 2026-04-19)"
+   }
   },
   "c-hardware-h6": {
    "queries": [
@@ -756,7 +1044,11 @@
     "Weather Station (iFixit)",
     "ESP8266 Weather Station (Arduino)",
     "Tempest Weather Station (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 272,
+    "top": "Hypfer/esp8266-vindriktning-particle-sensor (1,242★, last push 2023-09-30)"
+   }
   },
   "c-health-h5": {
    "queries": [
@@ -769,7 +1061,11 @@
     "Hearing Aid (iFixit)",
     "Face Plate Hearing Aid (FDA devices)",
     "Air-Conduction Hearing Aid Software (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 14,
+    "top": "HoerTech-gGmbH/openMHA (341★, last push 2026-08-05)"
+   }
   },
   "c-climate-h5": {
    "queries": [
@@ -780,7 +1076,11 @@
    "total": 1,
    "examples": [
     "EUC State Of Health Analyzer (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 6,
+    "top": "dalathegreat/Battery-Emulator (3,017★, last push 2026-11-09)"
+   }
   },
   "c-money-h5": {
    "queries": [
@@ -793,7 +1093,11 @@
    "examples": [
     "Acorns: Save & Invest Money (App Store)",
     "Cash App (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 74,
+    "top": "TomHarte/CLK (1,153★, last push 2026-10-30)"
+   }
   },
   "c-food-h5": {
    "queries": [
@@ -806,7 +1110,11 @@
     "Too Good To Go: End Food Waste (App Store)",
     "Franke counter top food waste bin (iFixit)",
     "Pantry (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 15,
+    "top": "kishor-23/food-waste-management-system (80★, last push 2024-06-20)"
+   }
   },
   "c-civic-h5": {
    "queries": [
@@ -815,7 +1123,11 @@
     "fixmystreet"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-robotics-h5": {
    "queries": [
@@ -828,7 +1140,11 @@
     "Lawn Mower (iFixit)",
     "Lawn Roller (iFixit)",
     "Junior Tycoon: My Business (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 48,
+    "top": "ClemensElflein/OpenMower (6,753★, last push 2026-09-03)"
+   }
   },
   "c-access-h5": {
    "queries": [
@@ -841,7 +1157,11 @@
     "Haptic_DA7280 (Arduino)",
     "Haptic_DRV2605 (Arduino)",
     "Haptic Testing: Developer Tool (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 214,
+    "top": "scottbez1/smartknob (22,293★, last push 2024-02-19)"
+   }
   },
   "c-media-h5": {
    "queries": [
@@ -855,7 +1175,11 @@
     "Immich (F-Droid)",
     "Immich Wear (F-Droid)",
     "FerrumPix (Flathub)"
-   ]
+   ],
+   "gh": {
+    "total": 181,
+    "top": "immich-app/immich (118,627★, last push 2026-11-09)"
+   }
   },
   "c-software-u6": {
    "queries": [
@@ -864,7 +1188,11 @@
     "unsend"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 2,
+    "top": "bennyandresen/mu4e-send-delay (20★, last push 2020-08-07)"
+   }
   },
   "c-climate-u6": {
    "queries": [
@@ -873,7 +1201,11 @@
     "flood insurance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 8,
+    "top": "kelvinfkr/adaptive-strategies-for-climate-change-adaptation-An-application-for-flood-risk-management (135★, last push 2025-02-13)"
+   }
   },
   "c-civic-u5": {
    "queries": [
@@ -882,7 +1214,11 @@
     "council meeting"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 5,
+    "top": "sgermosen/Denunciado (245★, last push 2026-04-09)"
+   }
   },
   "c-media-u7": {
    "queries": [
@@ -893,7 +1229,11 @@
    "examples": [
     "AMARadio (F-Droid)",
     "Water Reminder & Tracker App (Google Play)"
-   ]
+   ],
+   "gh": {
+    "total": 158,
+    "top": "inulute/freedium-app (1,928★, last push 2026-10-08)"
+   }
   },
   "c-health-h6": {
    "queries": [
@@ -906,7 +1246,11 @@
     "Wound Care (iFixit)",
     "Wound Dressing Kit (FDA devices)",
     "Wound Dressing With Animal-Derived Material(S) (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 2,
+    "top": "mlaradji/deep-learning-for-wound-care (25★, last push 2019-02-08)"
+   }
   },
   "c-law-u0": {
    "queries": [
@@ -915,7 +1259,11 @@
     "law explained"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 79,
+    "top": "realZachi/pg-jev (1,301★, last push 2026-10-06)"
+   }
   },
   "c-law-u1": {
    "queries": [
@@ -924,7 +1272,11 @@
     "federal court"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-law-u2": {
    "queries": [
@@ -933,7 +1285,11 @@
     "legal expenses"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-law-u3": {
    "queries": [
@@ -941,7 +1297,11 @@
     "demand letter"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-law-h0": {
    "queries": [
@@ -950,7 +1310,11 @@
     "arbitration"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-law-h1": {
    "queries": [
@@ -959,7 +1323,11 @@
     "lawyer referral"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 6,
+    "top": "Anbu-00001/CivicMesh (26★, last push 2026-11-06)"
+   }
   },
   "c-law-h2": {
    "queries": [
@@ -968,7 +1336,11 @@
     "landlord"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-law-h3": {
    "queries": [
@@ -977,7 +1349,11 @@
     "criminal record"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "codeforpdx/recordexpungPDX (56★, last push 2026-11-09)"
+   }
   },
   "c-textiles-u0": {
    "queries": [
@@ -986,7 +1362,11 @@
     "product passport"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 2,
+    "top": "eclipse-tractusx/digital-product-pass (50★, last push 2025-09-18)"
+   }
   },
   "c-textiles-u1": {
    "queries": [
@@ -995,7 +1375,11 @@
     "custom fit"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "joostdecock/core (60★, last push 2019-08-25)"
+   }
   },
   "c-textiles-u2": {
    "queries": [
@@ -1004,7 +1388,11 @@
     "washing instruction"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-textiles-u3": {
    "queries": [
@@ -1017,7 +1405,11 @@
     "Wardrobe (Flathub)",
     "maCat (F-Droid)",
     "Meesho: Online Shopping (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 40,
+    "top": "tandpfun/wardrobe (2,286★, last push 2026-07-16)"
+   }
   },
   "c-textiles-h0": {
    "queries": [
@@ -1030,7 +1422,11 @@
     "ThriftBooks: New & Used Books (App Store)",
     "ThredUp: Online Thrift Store (App Store)",
     "@databricks/sql (npm)"
-   ]
+   ],
+   "gh": {
+    "total": 18,
+    "top": "Star2Billing/a2billing (200★, last push 2023-01-30)"
+   }
   },
   "c-textiles-h1": {
    "queries": [
@@ -1042,7 +1438,11 @@
    "examples": [
     "Body Measurement & Weight Loss (Google Play)",
     "Weight Tracker - WeightLog (Google Play)"
-   ]
+   ],
+   "gh": {
+    "total": 3,
+    "top": "ganapativs/microcharts (207★, last push 2026-11-09)"
+   }
   },
   "c-textiles-h2": {
    "queries": [
@@ -1051,7 +1451,11 @@
     "clothing recycling"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-textiles-h3": {
    "queries": [
@@ -1064,7 +1468,11 @@
     "Tailor (Flathub)",
     "Scan Tailor (Flathub)",
     "Patagonia Clothing (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-death-u0": {
    "queries": [
@@ -1073,7 +1481,11 @@
     "letters testamentary"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "RalphHightower/EOL-RalphHightower (33★, last push 2026-11-08)"
+   }
   },
   "c-death-u1": {
    "queries": [
@@ -1082,7 +1494,11 @@
     "family treasure"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 8,
+    "top": "n-t-roff/heirloom-doctools (149★, last push 2024-08-11)"
+   }
   },
   "c-death-u2": {
    "queries": [
@@ -1091,7 +1507,11 @@
     "donor registry"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 5,
+    "top": "Kartik-Katkar/OrganEase (111★, last push 2026-10-01)"
+   }
   },
   "c-death-u3": {
    "queries": [
@@ -1099,7 +1519,11 @@
     "probate avoid"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-death-h0": {
    "queries": [
@@ -1110,7 +1534,11 @@
    "total": 1,
    "examples": [
     "Journey to the Center of Hawkthorne (Flathub)"
-   ]
+   ],
+   "gh": {
+    "total": 3,
+    "top": "hawkthorne/hawkthorne-journey (1,155★, last push 2024-11-26)"
+   }
   },
   "c-death-h1": {
    "queries": [
@@ -1119,7 +1547,11 @@
     "palliative"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "davemo/advanced-directives-with-angular-js (30★, last push 2021-11-20)"
+   }
   },
   "c-death-h2": {
    "queries": [
@@ -1128,7 +1560,11 @@
     "natural burial"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-death-h3": {
    "queries": [
@@ -1137,7 +1573,11 @@
     "mourning"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 27,
+    "top": "PlayPro/CoreProtect (1,007★, last push 2026-10-19)"
+   }
   },
   "c-ocean-u0": {
    "queries": [
@@ -1146,7 +1586,11 @@
     "well water"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 46,
+    "top": "groundwater/GhostVM (678★, last push 2026-08-08)"
+   }
   },
   "c-ocean-u1": {
    "queries": [
@@ -1155,7 +1599,11 @@
     "catch log"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 31,
+    "top": "thoughtbot/fishery (1,036★, last push 2026-02-26)"
+   }
   },
   "c-ocean-u2": {
    "queries": [
@@ -1164,7 +1612,11 @@
     "swim safety"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "Irikos/rip_currents (18★, last push 2025-09-24)"
+   }
   },
   "c-ocean-u3": {
    "queries": [
@@ -1173,7 +1625,11 @@
     "land use change"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 18,
+    "top": "SpoonX/wetland (256★, last push 2023-01-11)"
+   }
   },
   "c-ocean-h0": {
    "queries": [
@@ -1182,7 +1638,11 @@
     "tide alert"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-ocean-h1": {
    "queries": [
@@ -1195,7 +1655,11 @@
     "Reverse Osmosis Filter (iFixit)",
     "Water Purification Systems (iFixit)",
     "Subsystem, Water Purification (FDA devices)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-ocean-h2": {
    "queries": [
@@ -1204,7 +1668,11 @@
     "seafood label"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-ocean-h3": {
    "queries": [
@@ -1213,7 +1681,11 @@
     "beach cleaning"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-parenting-u0": {
    "queries": [
@@ -1222,7 +1694,11 @@
     "parent rota"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-parenting-u1": {
    "queries": [
@@ -1231,7 +1707,11 @@
     "baby development"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-parenting-u2": {
    "queries": [
@@ -1240,7 +1720,11 @@
     "self employed leave"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "AskNowQA/AutoSPARQL (98★, last push 2023-09-05)"
+   }
   },
   "c-parenting-u3": {
    "queries": [
@@ -1252,7 +1736,11 @@
     "Screen Time (F-Droid)",
     "Screen Time (F-Droid)",
     "StayFree - Screen Time (Google Play)"
-   ]
+   ],
+   "gh": {
+    "total": 66,
+    "top": "tanujnotes/Olauncher (3,967★, last push 2026-11-05)"
+   }
   },
   "c-parenting-h0": {
    "queries": [
@@ -1261,7 +1749,11 @@
     "nursery school"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 4,
+    "top": "doomhz/daycare_social_platform (30★, last push 2014-06-22)"
+   }
   },
   "c-parenting-h1": {
    "queries": [
@@ -1270,7 +1762,11 @@
     "shared custody"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-parenting-h2": {
    "queries": [
@@ -1283,7 +1779,11 @@
     "Pediatric Position Holder (FDA devices)",
     "Pediatric Hemodialysis System (FDA devices)",
     "Hausted Pediatric Stretcher (iFixit)"
-   ]
+   ],
+   "gh": {
+    "total": 19,
+    "top": "RuiyangJu/Fracture_Detection_Improved_YOLOv8 (136★, last push 2025-10-17)"
+   }
   },
   "c-parenting-h3": {
    "queries": [
@@ -1292,7 +1792,11 @@
     "kids items"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-travel-u0": {
    "queries": [
@@ -1301,7 +1805,11 @@
     "border crossing"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-travel-u1": {
    "queries": [
@@ -1310,7 +1818,11 @@
     "immigration paperwork"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "Andision/CEACStatusBot (56★, last push 2026-01-26)"
+   }
   },
   "c-travel-u2": {
    "queries": [
@@ -1319,7 +1831,11 @@
     "trip cancellation"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-travel-u3": {
    "queries": [
@@ -1328,7 +1844,11 @@
     "sign translation"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 15,
+    "top": "dormouse/Flask_Docs_ZhCn (275★, last push 2025-02-10)"
+   }
   },
   "c-travel-h0": {
    "queries": [
@@ -1337,7 +1857,11 @@
     "timatic"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 4,
+    "top": "ilyankou/passport-index-dataset (311★, last push 2026-02-18)"
+   }
   },
   "c-travel-h1": {
    "queries": [
@@ -1348,7 +1872,11 @@
    "total": 1,
    "examples": [
     "Yivi (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-travel-h2": {
    "queries": [
@@ -1360,7 +1888,11 @@
    "examples": [
     "OurBus: Book Bus Tickets (App Store)",
     "FlixBus: Book Bus Tickets (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 5,
+    "top": "aaronpk/Overland-iOS (748★, last push 2026-11-09)"
+   }
   },
   "c-travel-h3": {
    "queries": [
@@ -1369,7 +1901,11 @@
     "delayed bag"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "ThijsZijdel/Corendon-LostLuggage (30★, last push 2018-01-29)"
+   }
   },
   "c-space-u0": {
    "queries": [
@@ -1378,7 +1914,11 @@
     "gps outage"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 16,
+    "top": "dividebysandwich/sdroxide (306★, last push 2026-11-07)"
+   }
   },
   "c-space-u1": {
    "queries": [
@@ -1391,7 +1931,11 @@
     "SatDump (F-Droid)",
     "Iridium SBD (Arduino)",
     "IridiumSBDi2c (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 74,
+    "top": "SatDump/SatDump (2,511★, last push 2026-11-03)"
+   }
   },
   "c-space-u2": {
    "queries": [
@@ -1399,7 +1943,11 @@
     "space insurance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-space-u3": {
    "queries": [
@@ -1410,7 +1958,11 @@
    "total": 1,
    "examples": [
     "artemis-cubesat (Arduino)"
-   ]
+   ],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-space-h0": {
    "queries": [
@@ -1419,7 +1971,11 @@
     "satellite antenna"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 56,
+    "top": "sgoudelis/ground-station (4,890★, last push 2026-11-09)"
+   }
   },
   "c-space-h1": {
    "queries": [
@@ -1428,7 +1984,11 @@
     "crop monitoring"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 278,
+    "top": "Oldcircle/geo-sleuth (6,699★, last push 2026-11-09)"
+   }
   },
   "c-space-h2": {
    "queries": [
@@ -1437,7 +1997,11 @@
     "debris avoidance"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 4,
+    "top": "ARCLab-MIT/MOCAT-SSEM (38★, last push 2025-07-01)"
+   }
   },
   "c-space-h3": {
    "queries": [
@@ -1446,7 +2010,11 @@
     "on orbit servicing"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-arts-u0": {
    "queries": [
@@ -1455,7 +2023,11 @@
     "artisan apprentice"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-arts-u1": {
    "queries": [
@@ -1464,7 +2036,11 @@
     "language archive"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "livingtongues/living-dictionaries (42★, last push 2026-08-08)"
+   }
   },
   "c-arts-u2": {
    "queries": [
@@ -1475,7 +2051,11 @@
    "total": 1,
    "examples": [
     "PublicArtExplorer (F-Droid)"
-   ]
+   ],
+   "gh": {
+    "total": 2,
+    "top": "remixdawei/wechat-public-article-archive-skill (59★, last push 2026-08-11)"
+   }
   },
   "c-arts-u3": {
    "queries": [
@@ -1484,7 +2064,11 @@
     "session musician"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 12,
+    "top": "pandulapeter/campfire (120★, last push 2026-11-09)"
+   }
   },
   "c-arts-h0": {
    "queries": [
@@ -1493,7 +2077,11 @@
     "royalty management"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-arts-h1": {
    "queries": [
@@ -1501,7 +2089,11 @@
     "certificate of authenticity"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   },
   "c-arts-h2": {
    "queries": [
@@ -1510,7 +2102,11 @@
     "museum collection"
    ],
    "total": 0,
-   "examples": []
+   "examples": [],
+   "gh": {
+    "total": 1,
+    "top": "UWCHR/ice-air (17★, last push 2025-05-29)"
+   }
   },
   "c-arts-h3": {
    "queries": [
@@ -1522,7 +2118,167 @@
    "examples": [
     "Relisten — all live music (App Store)",
     "nugs: Live Music Lives Here (App Store)"
-   ]
+   ],
+   "gh": {
+    "total": 1,
+    "top": "KyuRish/mcp-server-for-fiverr-unofficial (16★, last push 2026-10-20)"
+   }
+  },
+  "c-ai-h6": {
+   "queries": [
+    "agent audit",
+    "agent logs",
+    "ai traceability"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 16,
+    "top": "EvoMap/evolver (8,736★, last push 2026-11-08)"
+   }
+  },
+  "c-ai-h7": {
+   "queries": [
+    "agent memory",
+    "persistent context",
+    "llm memory"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 278,
+    "top": "vectorize-io/hindsight (60,076★, last push 2026-11-09)"
+   }
+  },
+  "c-ai-h8": {
+   "queries": [
+    "agent fleet",
+    "multi agent orchestration",
+    "agent manager"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 41,
+    "top": "SethGammon/Citadel (928★, last push 2026-11-05)"
+   }
+  },
+  "c-software-h6": {
+   "queries": [
+    "debloat",
+    "device control",
+    "peripheral software"
+   ],
+   "total": 1717,
+   "examples": [
+    "MIDI Device Controller (Arduino)",
+    "OSC (Arduino)"
+   ],
+   "gh": {
+    "total": 199,
+    "top": "Raphire/Win11Debloat (62,229★, last push 2026-11-08)"
+   }
+  },
+  "c-software-h7": {
+   "queries": [
+    "app store alternative",
+    "github releases",
+    "update server"
+   ],
+   "total": 3,
+   "examples": [
+    "Komi Store (F-Droid)",
+    "GitReleaseOTA (Arduino)",
+    "ESPAsyncHTTPUpdateServer (Arduino)"
+   ],
+   "gh": {
+    "total": 1,
+    "top": "TheResonanceTeam/TrollApps (646★, last push 2025-03-13)"
+   }
+  },
+  "c-software-h8": {
+   "queries": [
+    "pdf organizer",
+    "document management",
+    "ocr rename"
+   ],
+   "total": 3,
+   "examples": [
+    "Paperless Go (F-Droid)",
+    "PDFgear Scan: PDF Scanner App (Google Play)",
+    "iLovePDF: PDF Editor & Scanner (Google Play)"
+   ],
+   "gh": {
+    "total": 3,
+    "top": "tabsl/KI-PDF-Organizer (29★, last push 2026-05-27)"
+   }
+  },
+  "c-software-u7": {
+   "queries": [
+    "cliche detector",
+    "writing style checker",
+    "originality check"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
+  },
+  "c-software-u8": {
+   "queries": [
+    "spreadsheet diff",
+    "csv diff",
+    "data diff"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
+  },
+  "c-money-h6": {
+   "queries": [
+    "cancel subscription",
+    "subscription tracker",
+    "recurring billing"
+   ],
+   "total": 1,
+   "examples": [
+    "WallosMobile (F-Droid)"
+   ],
+   "gh": {
+    "total": 1,
+    "top": "woocommerce/woocommerce-subscriptions-cancel-subscription-confirmation (37★, last push 2024-05-29)"
+   }
+  },
+  "c-hardware-h7": {
+   "queries": [
+    "iot honeypot",
+    "home network security",
+    "router monitor"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 3,
+    "top": "Phype/telnet-iot-honeypot (311★, last push 2024-02-02)"
+   }
+  },
+  "c-hardware-h8": {
+   "queries": [
+    "pc part picker",
+    "prebuilt pc",
+    "pc price"
+   ],
+   "total": 0,
+   "examples": [],
+   "gh": {
+    "total": 0,
+    "top": ""
+   }
   }
  }
 }
