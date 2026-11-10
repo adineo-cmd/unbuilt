@@ -31,6 +31,7 @@ FIELDS = [
             {"t": "Undo for the internet", "w": "A personal undo ledger: everything you sent or posted, recallable where protocols allow, marked as retracted everywhere else.", "why": "Email's thirty-year-old recall is a joke, and platforms monetize permanence.", "closest": "Per-platform delete buttons with no memory.", "d": 3, "tags": ["wildcard", "privacy", "standards"]},
             {"t": "The sentence-popularity meter", "w": "Flags the phrases everyone writes — the clichés of job posts, essays and emails — before you hit send.", "why": "Every writing tool checks grammar; none checks originality.", "closest": "Style guides and grammar checkers.", "d": 2, "tags": ["wildcard", "consumer", "AI"]},
             {"t": "A diff for human spreadsheets", "w": "Shows what actually changed between two versions of a budget, roster or inventory — rows, edits, formulas — in words.", "why": "Diffs exist for code and databases; humans live in spreadsheets.", "closest": "Git tools built for engineers.", "d": 3, "tags": ["consumer", "data"]},
+            {"t": "API change monitoring for mortals", "w": "Watches any public API you depend on and explains breaking changes in plain language before your app breaks.", "why": "Two thousand free APIs exist; every one can change tomorrow, silently.", "closest": "Enterprise API gateways, priced for enterprises.", "d": 3, "tags": ["wildcard", "developer", "infrastructure"]},
         ],
     },
     {
@@ -128,6 +129,7 @@ FIELDS = [
             {"t": "Apprenticeship matching", "w": "Welders, electricians, plumbers: matched to mentors by region and capacity.", "why": "No aggregator survives national fragmentation and small fees.", "closest": "Job boards with low fidelity.", "d": 3, "tags": ["trades", "unsexy"]},
             {"t": "Proof-of-work portfolios", "w": "Portable, verifiable evidence you can wire a board or keep books — for jobs that don't commit code.", "why": "Assessing hands-on work resists automation's cheapest tricks.", "closest": "LinkedIn endorsements.", "d": 4, "tags": ["credentials", "under-served"]},
             {"t": "A syllabus-true physics simulator", "w": "Every equation on the national exam, playable, in order, in your textbook's notation.", "why": "Per-country fragmentation makes margins miserable.", "closest": "PhET — generic and US-centric.", "d": 3, "tags": ["education", "global"]},
+            {"t": "Guided build-your-own-X tracks", "w": "Four hundred 'build your own X' guides exist; learning-by-building is proven to work.", "why": "The guides are unmetered: no sequencing, no checks, no proof you built it.", "closest": "The awesome list itself.", "d": 3, "tags": ["wildcard", "education", "open-source"]},
         ],
     },
     {
@@ -147,6 +149,7 @@ FIELDS = [
             {"t": "Direct cross-border payroll", "w": "One company pays thirty contractors in twelve countries, compliant, without an employer-of-record markup.", "why": "Compliance is real work; incumbents monetize opacity.", "closest": "EOR platforms with steep fees.", "d": 3, "tags": ["fintech", "unsexy"]},
             {"t": "Insurance for informal economies", "w": "Parametric products priced for a homestead — flood, drought, theft — paid out in days.", "why": "Distribution and trust, not actuarial science, are the blockers.", "closest": "Weather-index pilots.", "d": 4, "tags": ["global", "insurance"]},
             {"t": "Portable gig reputation", "w": "Your ratings and work history follow you between platforms, verifiable, yours.", "why": "Platforms own the ratings on purpose — the lock-in is the business model.", "closest": "Per-platform profiles that die when you leave.", "d": 4, "tags": ["wildcard", "labour", "policy"]},
+        {"t": "The free-tier sentinel", "w": "Fourteen hundred services publish free-for-developers tiers; a sentinel that watches yours and warns before terms change.", "why": "Free tiers shrink quietly; startups build on them and wake up to invoices.", "closest": "Static lists, checked by hand.", "d": 2, "tags": ["wildcard", "developer", "consumer"]},
         ],
     },
     {
@@ -241,6 +244,7 @@ FIELDS = [
             {"t": "Modern forum software", "w": "The 2005 stack that runs niche communities, rebuilt to make hosting them sustainable.", "why": "The builders left; the communities stayed.", "closest": "Discourse — better, still heavy.", "d": 2, "tags": ["community", "open-source"]},
             {"t": "A comment layer you own", "w": "Portable comments anchored to any URL — your thread travels with you, not with the site.", "why": "Sites monetize the conversation; a portable one removes their reason to host it.", "closest": "Embedded widgets that die with the vendor.", "d": 4, "tags": ["wildcard", "social", "standards"]},
             {"t": "The news pass", "w": "One subscription, every publisher, pooled by what you actually read — a Spotify for journalism.", "why": "Publishers won't pool while paywalls trickle income; the deaths come first.", "closest": "Bundles of two or three big titles.", "d": 4, "tags": ["wildcard", "journalism", "business"]},
+            {"t": "The directory that heals itself", "w": "Curated link directories rot silently — a keeper that detects dead links, finds archived copies and proposes replacements.", "why": "Every human-curated list dies by link rot; HumanWeb itself needs this.", "closest": "One-off broken-link checkers.", "d": 3, "tags": ["wildcard", "infrastructure", "crowdsourced"]},
         ],
     },
 {
@@ -442,6 +446,7 @@ HALF = {
         {"t": "One control plane for your devices", "w": "Debloaters and local-first driver replacements boom, device by device.", "missing": "Cross-vendor control: peripherals, TVs and appliances from one private dashboard.", "why": "Every vendor guards its own settings API.", "d": 4, "tags": ["privacy", "hardware"]},
         {"t": "Honest indie app distribution", "w": "Open-source app stores for GitHub releases are taking off.", "missing": "Signed, auto-updating distribution for indie apps on every desktop OS.", "why": "The gatekeepers take 30% and the alternative is a README link.", "d": 3, "tags": ["open-source", "infrastructure"]},
         {"t": "The paperwork flow, finished", "w": "OCR, renamers and privacy PDF toolkits each solve a fragment.", "missing": "Scan to searchable, filed, named and retrievable — one flow that runs locally.", "why": "Document AI got good; the plumbing between steps stayed yours to build.", "d": 3, "tags": ["consumer", "AI"]},
+        {"t": "The self-hosted shelf that runs itself", "w": "Thousands of excellent self-hosted apps exist; installing and keeping them alive is still a hobby.", "missing": "One-command install, updates, backups and TLS for the whole shelf, from a store.", "why": "The maintainers are volunteers; operations is the part nobody volunteers for.", "d": 3, "tags": ["open-source", "infrastructure"]},
     ],
     "ai": [
         {"t": "On-device assistants", "w": "Phones ship small models that summarize and translate offline.", "missing": "A private assistant that actually knows your life and never phones home.", "why": "Memory and battery budgets are real — and vendors prefer your data in their cloud.", "d": 4, "tags": ["privacy", "hardware"]},
@@ -464,6 +469,7 @@ HALF = {
         {"t": "Environmental mesh kits for schools", "w": "DIY air-quality and weather stations exist as kits, boards and Arduino projects.", "missing": "A sealed, school-ready kit with curriculum, dashboard and a maintenance plan.", "why": "Hobbyists build them; education procurement cannot buy from a hobby.", "d": 3, "tags": ["hardware", "education"]},
         {"t": "The home IoT honeypot", "w": "Hacker projects fake vulnerable devices to catch intruders on the home network.", "missing": "A consumer box that watches the smart home, catches the odd one out, and explains itself.", "why": "The threat is real; the buyer doesn't know it yet.", "d": 3, "tags": ["security", "hardware"]},
         {"t": "Prebuilt PC price audits", "w": "Part-pickers price DIY builds to the dollar.", "missing": "The same audit for prebuilt machines: is this $1,800 box honest?", "why": "Prebuilt SKUs change weekly and hide the margin in the power supply.", "d": 2, "tags": ["consumer", "tools"]},
+        {"t": "The de-Googled phone setup wizard", "w": "Privacy ROMs like GrapheneOS exist and are excellent.", "missing": "A wizard that moves a normal person's life over — apps, chats, payments — without the terminal.", "why": "The audience who needs privacy most can't run adb commands.", "d": 3, "tags": ["privacy", "hardware"]},
     ],
     "health": [
         {"t": "Continuous monitors", "w": "Glucose sensors and wrist ECGs moved vitals from clinics to wrists.", "missing": "Blood pressure, hydration and hormones on the same continuous, cheap, wearable rail.", "why": "Every new marker is its own physiological and regulatory battle.", "d": 4, "tags": ["wearables", "regulated"]},
@@ -567,6 +573,7 @@ def nav_links(prefix, active):
         ("fields.html", "Fields"),
         ("search.html", "Search"),
         ("shelves.html", "Shelves"),
+        ("zeros.html", "Zeros"),
         ("about.html", "About"),
     ]
     out = []
@@ -621,6 +628,7 @@ def site_footer(prefix):
         <a href="{prefix}fields.html">All fields</a>
         <a href="{prefix}search.html">Search the census</a>
         <a href="{prefix}shelves.html">Search the shelves</a>
+        <a href="{prefix}zeros.html">The measured zeros</a>
         <a href="{prefix}about.html">Methodology</a>
       </div>
     </nav>
@@ -885,6 +893,7 @@ def build_home():
     <h2>The shelves</h2>
     <p class="sub">{shelves_teaser()}</p>
     <div class="actions"><a class="btn" href="shelves.html">Search the shelves</a></div>
+    <p class="howto-more">The strongest finds are the <a href="zeros.html">measured zeros</a> — ideas both the stores and the hackers have skipped.</p>
   </div>
 </section>
 
@@ -1032,6 +1041,72 @@ def build_shelves():
         "", "Shelves", main)
 
 
+# ---------------------------------------------------------------- zeros page
+def build_zeros():
+    c = checks()
+    checks_map = c.get("checks", {})
+    catalog_total = c.get("catalog_total", 0)
+    gh_total = sum(chk.get("gh", {}).get("total", 0) for chk in checks_map.values())
+    groups, zero_count = [], 0
+    for f in FIELDS:
+        rows = []
+        for i, u in enumerate(f["unbuilt"]):
+            chk = checks_map.get(f"c-{f['id']}-u{i}")
+            if chk and chk["total"] == 0 and chk.get("gh", {}).get("total", 0) == 0:
+                rows.append((u, "Not built yet", f"c-{f['id']}-u{i}"))
+        half = HALF.get(f["id"], f.get("half", []))
+        for i, u in enumerate(half):
+            chk = checks_map.get(f"c-{f['id']}-h{i}")
+            if chk and chk["total"] == 0 and chk.get("gh", {}).get("total", 0) == 0:
+                rows.append((u, "Half-built", f"c-{f['id']}-h{i}"))
+        if rows:
+            groups.append((f, rows))
+            zero_count += len(rows)
+    body = []
+    for f, rows in groups:
+        items = []
+        for u, tier, cid in rows:
+            tags = " ".join(f'<span class="tag">{esc(t)}</span>' for t in u["tags"][:3])
+            items.append(f"""<a class="zrow" href="fields/{f['id']}.html#{cid}">
+  <span class="r-side u">{tier}</span>
+  <span class="r-title">{esc(u['t'])}</span>
+  <span class="r-field">{esc(f['name'])}</span>
+  <span class="r-what">{esc(u['w'])}</span>
+  <span class="ztags">{tags}</span>
+</a>""")
+        body.append(f"""<section class="zgroup">
+  <h2>{esc(f['name'])}<span class="zcount">{len(rows)}</span></h2>
+  {''.join(items)}
+</section>""")
+    main = f"""<section class="hero slim">
+  <div class="wrap">
+    <h1>The measured zeros</h1>
+    <p class="lede">{zero_count} ideas where every probe came back empty: no listing among
+    {catalog_total:,} entries across ten stores and directories, and no public repository
+    among everything GitHub returned for their key terms. Nobody has built these — not the
+    markets, not the hackers. Each one links to its census card with the full argument.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>{zero_count}</b><span>measured zeros</span></div>
+      <div class="stat"><b>{catalog_total:,}</b><span>catalog listings searched</span></div>
+      <div class="stat"><b>{gh_total:,}</b><span>GitHub repos seen across checks</span></div>
+      <div class="stat"><b>{len(groups)}</b><span>fields affected</span></div>
+    </div>
+    <p class="howto-more" style="margin-top:1.2rem">A zero is scoped, honest evidence: the
+    ten catalogs we measured and GitHub's public index. If you build one of these, rerun
+    the pipeline — the check flips from zero to non-zero and the census notices.</p>
+    {''.join(body)}
+  </div>
+</section>"""
+    return page(
+        "The measured zeros — Unbuilt",
+        f"{zero_count} ideas with no listing in ten catalogs and no GitHub repository — the measured empty shelves.",
+        "", "Zeros", main)
+
+
 # ---------------------------------------------------------------- about page
 def build_about():
     main = f"""<section class="hero slim">
@@ -1093,13 +1168,17 @@ def build_about():
     The Shelves page backs "already built" with real catalogs rather than memory:
     Flathub and F-Droid in full from their open metadata dumps, the Apple App Store through
     its official Search API, popular npm packages through the registry API, Steam's games
-    catalog, and — for hardware — iFixit's complete device-repair tree, openFDA's regulated
+    catalog, — and for hardware — iFixit's complete device-repair tree, openFDA's regulated
     medical-device database, Arduino's embedded-library registry and Open Food Facts'
-    product database. Google Play contributes capped, popularity-ranked searches: Play has
+    product database. Two more sources widen the net: GitHub itself (every public repo
+    above 1,000 stars, walked star-band by star-band through the search API) and HumanWeb
+    — a human-curated map of the web with 2.6 million Curlie directory entries, ten
+    curated lists (FMHY, awesome-selfhosted, public APIs, privacy tools...) and OpenAlex
+    research repositories. Google Play contributes capped, popularity-ranked searches: Play has
     no bulk API, and scraping all of it would violate its terms, so the pipeline stops at
     capped results. The raw snapshots live in <code>data/raw/</code>, the full merged
-    catalog in <code>data/catalog.db</code>, and the site ships a capped index at
-    <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
+    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships a
+    capped index at <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
     <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
     editorial, but the shelves are measured.
   </p>
@@ -1308,6 +1387,12 @@ a{color:inherit}
 .r-side.h{color:var(--ink)}
 .r-side.u{color:var(--blue-deep)}
 .result .src{color:var(--ink)}
+.zgroup{margin-top:2.2rem}
+.zgroup h2{font-weight:900;font-stretch:112%;font-size:1.15rem;border-top:2px solid var(--ink);padding-top:.8rem;display:flex;align-items:baseline;gap:.6rem}
+.zcount{font-size:.75rem;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:.05rem .45rem}
+.zrow{display:grid;grid-template-columns:auto 1fr auto;gap:.15rem .8rem;padding:.8rem .2rem;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.zrow:hover{background:var(--card)}
+.ztags{grid-column:2/4;display:flex;gap:.4rem;flex-wrap:wrap}
 .shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
 .srcchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
 .chip{
@@ -1692,6 +1777,7 @@ def main():
     write("fields.html", build_fields_index())
     write("search.html", build_search())
     write("shelves.html", build_shelves())
+    write("zeros.html", build_zeros())
     write("about.html", build_about())
     write("404.html", build_404())
     for i, f in enumerate(FIELDS):

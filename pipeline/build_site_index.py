@@ -26,14 +26,27 @@ SUMMARY_LIMIT = 220
 def load_raw():
     rows = []
     for name in sorted(os.listdir(RAW)):
-        if not name.endswith(".json"):
-            continue
-        source = name[:-5]
-        with open(os.path.join(RAW, name), encoding="utf-8") as fh:
-            data = json.load(fh)
-        apps = data.get("apps") or []
-        rows.append((source, apps))
-        print(f"  {source}: {len(apps)}")
+        if name.endswith(".json"):
+            source = name[:-5]
+            with open(os.path.join(RAW, name), encoding="utf-8") as fh:
+                data = json.load(fh)
+            apps = data.get("apps") or []
+            rows.append((source, apps))
+            print(f"  {source}: {len(apps)}")
+        elif name.endswith(".ndjson.gz"):
+            import gzip
+            source = name[:-len(".ndjson.gz")]
+            apps = []
+            with gzip.open(os.path.join(RAW, name), "rt", encoding="utf-8") as fh:
+                for line in fh:
+                    line = line.strip()
+                    if line:
+                        try:
+                            apps.append(json.loads(line))
+                        except Exception:
+                            continue
+            rows.append((source, apps))
+            print(f"  {source}: {len(apps)} (ndjson.gz)")
     return rows
 
 
@@ -78,6 +91,7 @@ def main():
 
     os.makedirs(ASSETS, exist_ok=True)
     print("loading raw catalogs:")
+    import hashlib
     groups = []
     seen = set()
     for source, apps in load_raw():
@@ -86,7 +100,9 @@ def main():
             row = normalize(source, a)
             if not row:
                 continue
-            key = (row["name"].lower(), row["developer"].lower())
+            key = hashlib.md5(
+                (row["name"].lower() + "\x00" + row["developer"].lower()).encode()
+            ).digest()
             if key in seen or key in per_source_seen:
                 continue
             per_source_seen.add(key)
@@ -123,6 +139,12 @@ def main():
         [(r["source"], r["id"], r["name"], r["summary"], r["description"],
           r["category"], r["developer"], r["url"]) for r in merged])
     conn.execute("CREATE INDEX IF NOT EXISTS idx_name ON apps(name)")
+    # FTS5 index: makes mine_gaps phrase checks fast over millions of rows
+    conn.execute("DROP TABLE IF EXISTS apps_fts")
+    conn.execute("""CREATE VIRTUAL TABLE apps_fts USING fts5(
+        name, summary, category, developer, source UNINDEXED)""")
+    conn.execute("""INSERT INTO apps_fts(rowid, name, summary, category, developer, source)
+        SELECT rowid, name, summary, category, developer, source FROM apps""")
     conn.commit()
     conn.close()
     print(f"wrote {db}: {len(merged)} rows with full descriptions")

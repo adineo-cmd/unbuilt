@@ -31,6 +31,7 @@ import argparse
 import gzip
 import io
 import json
+import subprocess
 import os
 import re
 import sys
@@ -551,6 +552,217 @@ def fetch_off(pages=60):
     return save("off", apps)
 
 
+
+
+
+# ---------------------------------------------------------------- github
+def fetch_github(cap=45000):
+    """Popular public repos from GitHub's search API, star-band pagination.
+
+    Search results cap at 1,000 per query, so the pipeline walks narrow
+    star bands instead of one giant query. Names + descriptions only —
+    it is a catalog of what hackers built, not the code itself.
+    """
+    bands = ([(lo, lo + 99) for lo in range(1000, 3000, 100)]
+             + [(lo, lo + 199) for lo in range(3000, 5000, 200)]
+             + [(lo, lo + 499) for lo in range(5000, 10000, 500)]
+             + [(lo, lo + 999) for lo in range(10000, 20000, 1000)]
+             + [(lo, lo + 1999) for lo in range(20000, 40000, 2000)]
+             + [(lo, lo + 4999) for lo in range(40000, 80000, 5000)]
+             + [(80000, 9999999)])
+    apps, seen = [], set()
+    for lo, hi in bands:
+        page, total_band = 1, 0
+        while page <= 10:
+            q = f"stars:{lo}..{hi}" if hi < 9999999 else f"stars:>{lo}"
+            try:
+                out = subprocess.run(
+                    ["gh", "api", "-X", "GET", "search/repositories",
+                     "-f", f"q={q} fork:false", "-f", "sort=stars",
+                     "-f", "order=desc", "-f", "per_page=100", "-f", f"page={page}"],
+                    capture_output=True, text=True, timeout=90)
+                if out.returncode != 0:
+                    raise RuntimeError(out.stderr.strip()[:150])
+                data = json.loads(out.stdout)
+            except Exception as e:  # noqa: BLE001
+                print(f"    band {lo}-{hi} p{page}: {e}", file=sys.stderr)
+                break
+            items = data.get("items") or []
+            total_band = data.get("total_count", 0)
+            if not items:
+                break
+            new = 0
+            for r in items:
+                full = r.get("full_name") or ""
+                if not full or full in seen:
+                    continue
+                seen.add(full)
+                desc = clean(r.get("description"), 300)
+                if not desc and (r.get("archived") or False):
+                    continue
+                apps.append({
+                    "id": full,
+                    "name": full,
+                    "summary": desc or "GitHub repository",
+                    "description": desc,
+                    "category": (r.get("language") or "GitHub repository"),
+                    "developer": (r.get("owner") or {}).get("login", ""),
+                    "url": r.get("html_url") or f"https://github.com/{full}",
+                })
+                new += 1
+            if len(apps) >= cap:
+                break
+            if page * 100 >= min(total_band, 1000):
+                break
+            page += 1
+            time.sleep(0.4)
+        print(f"    band {lo}-{hi}: total {total_band}")
+        if len(apps) >= cap:
+            print(f"    cap {cap} reached")
+            break
+        time.sleep(0.6)
+    return save("github", apps)
+
+
+# ---------------------------------------------------------------- humanweb
+HUMANWEB_RAW = "https://raw.githubusercontent.com/adineo-cmd/HumanWeb/main/public/data/"
+HUMANWEB_CLONE = os.path.join(os.path.dirname(RAW), "humanweb-src")
+HUMANWEB_CURATED = ["fmhy", "awesome", "apis", "buildyourownx", "devbooks",
+                    "freefordev", "privacy", "selfhosted", "usefulsites", "vlib"]
+
+
+def _hw_clean(text, limit=180):
+    if not text:
+        return ""
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", text)
+    text = text.split("](")[0]
+    text = re.sub(r"[\[\]]", "", text)
+    text = re.sub(r"\s+", " ", text).strip(" -–—:;.|")
+    return text[:limit]
+
+
+def fetch_humanweb(curlie_cap=400000):
+    """The human-curated web, from adineo-cmd/HumanWeb (HumanWeb).
+
+    Sources: ten curated directories (FMHY, awesome-selfhosted, public APIs,
+    privacy tools...) plus the full Curlie directory dump (2.6M entries with
+    descriptions) and OpenAlex research repositories. Curated + OpenAlex go
+    to data/raw/humanweb.json; Curlie streams to humanweb-curlie.ndjson.gz.
+    """
+    from concurrent.futures import ThreadPoolExecutor
+
+    apps, seen = [], set()
+
+    def add(name, url, summary, category, developer="", description=""):
+        if not name or not url or not url.startswith("http"):
+            return False
+        key = url.split("#")[0].rstrip("/").lower()
+        if key in seen:
+            return False
+        seen.add(key)
+        apps.append({"id": key, "name": name[:150], "summary": summary[:250],
+                     "description": description[:600], "category": category[:80],
+                     "developer": developer[:100], "url": url})
+        return True
+
+    # curated directories: sections {p: path, l: [[text, url], ...]}
+    for src in HUMANWEB_CURATED:
+        try:
+            raw = http_get(HUMANWEB_RAW + f"{src}/data.json.gz", timeout=120)
+            data = json.loads(gzip.decompress(raw))
+        except Exception as e:  # noqa: BLE001
+            print(f"    {src}: {e}", file=sys.stderr)
+            continue
+        got = 0
+        for section in data:
+            path = _hw_clean(section.get("p", ""), 80) or src
+            for item in section.get("l", []):
+                if not isinstance(item, (list, tuple)) or len(item) < 2:
+                    continue
+                name = _hw_clean(item[1] if len(item) > 2 else item[0])
+                url = item[1] if len(item) > 2 else item[0]
+                summary = _hw_clean(item[2]) if len(item) > 2 else ""
+                if add(name, url, summary, f"{src}/{path}"):
+                    got += 1
+        print(f"    {src}: {got}")
+
+    # OpenAlex research repositories CSV
+    try:
+        csv_text = http_get("https://raw.githubusercontent.com/adineo-cmd/HumanWeb/main/openalex-repositories.csv",
+                            timeout=120).decode("utf-8", "replace")
+        import csv as _csv
+        reader = _csv.DictReader(io.StringIO(csv_text))
+        got = 0
+        for row in reader:
+            name = (row.get("display_name") or "").strip()
+            url = (row.get("homepage_url") or "").strip()
+            if not name:
+                continue
+            works = (row.get("works_count") or "0").strip()
+            if add(name, url or "", f"Research repository/aggregate; about {works} works indexed.",
+                   "Research repository", (row.get("host_organization") or "").strip()):
+                got += 1
+        print(f"    openalex: {got}")
+    except Exception as e:  # noqa: BLE001
+        print(f"    openalex: {e}", file=sys.stderr)
+
+    save("humanweb", apps)
+
+    # Curlie: stream every shard to ndjson.gz (kept out of the JSON raw file)
+    import urllib.request as _ur
+    curlie_path = os.path.join(RAW, "humanweb-curlie.ndjson.gz")
+    listing = get_json("https://api.github.com/repos/adineo-cmd/HumanWeb/contents/public/data/curlie/c?per_page=100",
+                       timeout=60)
+    # contents API paginates at 100; walk pages via Link header is complex — use git trees
+    tree = get_json("https://api.github.com/repos/adineo-cmd/HumanWeb/git/trees/main?recursive=0", timeout=60)
+    shards = [t["path"] for t in tree.get("tree", [])
+              if t["path"].startswith("public/data/curlie/c/") and t["path"].endswith(".ndjson.gz")]
+    print(f"    curlie shards: {len(shards)}")
+    rows_written, lock = [0], __import__("threading").Lock()
+
+    def fetch_shard(path):
+        try:
+            req = _ur.Request(HUMANWEB_RAW.replace("/public/data/", "/") + path,
+                              headers={"User-Agent": UA})
+            with _ur.urlopen(req, timeout=60) as resp:
+                blob = resp.read()
+            if blob[:2] == b"\x1f\x8b":
+                blob = gzip.decompress(blob)
+            out = []
+            for line in blob.decode("utf-8", "replace").splitlines():
+                if not line.strip():
+                    continue
+                try:
+                    entry = json.loads(line)
+                except Exception:
+                    continue
+                if not (isinstance(entry, list) and len(entry) >= 2):
+                    continue
+                cat = str(entry[0]).replace("_", " / ")
+                for triple in entry[1]:
+                    if isinstance(triple, (list, tuple)) and len(triple) >= 2:
+                        out.append({"id": triple[0], "name": clean(triple[1] if len(triple) > 1 else triple[0], 150),
+                                    "summary": clean(triple[2] if len(triple) > 2 else "", 250),
+                                    "description": "", "category": f"curlie/{cat}",
+                                    "developer": "", "url": triple[0]})
+            return out
+        except Exception:
+            return []
+
+    with gzip.open(curlie_path, "wt", encoding="utf-8") as gz:
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            for result in pool.map(fetch_shard, shards):
+                for row in result:
+                    if rows_written[0] >= curlie_cap:
+                        break
+                    gz.write(json.dumps(row, ensure_ascii=False) + "\n")
+                    rows_written[0] += 1
+                if rows_written[0] >= curlie_cap:
+                    break
+    print(f"    curlie rows: {rows_written[0]} -> {curlie_path}")
+    return apps
+
+
 SOURCES = {
     "flathub": fetch_flathub,
     "fdroid": fetch_fdroid,
@@ -562,8 +774,9 @@ SOURCES = {
     "arduino": fetch_arduino,
     "steam": fetch_steam,
     "off": fetch_off,
+    "github": fetch_github,
+    "humanweb": fetch_humanweb,
 }
-
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])

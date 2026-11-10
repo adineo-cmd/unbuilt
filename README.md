@@ -50,9 +50,12 @@ Sources: Flathub and F-Droid in full (open metadata), the App Store via Apple's 
 Search API, npm via the registry's search API, **iFixit's full hardware device-repair
 tree** (open API), **openFDA's regulated medical-device database** (official US open
 data), **Arduino's embedded-library index**, **Steam** via community search, **Open Food
-Facts** products, and Google Play via capped, popularity-ranked searches (Play has no
-bulk API and aggressive scraping violates its terms — keep the caps modest). `data/` is
-local-only (gitignored); the site ships a capped `assets/catalog.json`.
+Facts** products, **every GitHub repo above 1,000 stars** (star-band search walk),
+**HumanWeb** — a human-curated map of the web (2.6M Curlie entries, FMHY,
+awesome-selfhosted, public APIs, privacy tools, OpenAlex research repositories) — and
+Google Play via capped, popularity-ranked searches (Play has no bulk API and aggressive
+scraping violates its terms — keep the caps modest). `data/` is local-only (gitignored);
+the site ships a capped `assets/catalog.json`.
 
 ## Shelves checks (evidence lines)
 

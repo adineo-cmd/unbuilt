@@ -144,6 +144,12 @@ a{color:inherit}
 .r-side.h{color:var(--ink)}
 .r-side.u{color:var(--blue-deep)}
 .result .src{color:var(--ink)}
+.zgroup{margin-top:2.2rem}
+.zgroup h2{font-weight:900;font-stretch:112%;font-size:1.15rem;border-top:2px solid var(--ink);padding-top:.8rem;display:flex;align-items:baseline;gap:.6rem}
+.zcount{font-size:.75rem;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:.05rem .45rem}
+.zrow{display:grid;grid-template-columns:auto 1fr auto;gap:.15rem .8rem;padding:.8rem .2rem;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.zrow:hover{background:var(--card)}
+.ztags{grid-column:2/4;display:flex;gap:.4rem;flex-wrap:wrap}
 .shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
 .srcchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
 .chip{

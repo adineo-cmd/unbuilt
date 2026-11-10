@@ -203,6 +203,13 @@ SEEDS = {
     "c-money-h6": ["cancel subscription", "subscription tracker", "recurring billing"],
     "c-hardware-h7": ["iot honeypot", "home network security", "router monitor"],
     "c-hardware-h8": ["pc part picker", "prebuilt pc", "pc price"],
+    # ---- cards from HumanWeb + GitHub catalog mining (Nov 2026)
+    "c-software-h9": ["selfhosted", "self hosted", "yunohost"],
+    "c-hardware-h9": ["grapheneos", "degoogled", "privacy phone"],
+    "c-education-u5": ["build your own x", "build from scratch"],
+    "c-media-u8": ["link rot", "broken link checker", "dead link"],
+    "c-software-u10": ["api monitoring", "api change", "breaking change"],
+    "c-money-u7": ["free tier", "free for dev", "developer freebies"],
 }
 
 
@@ -229,6 +236,25 @@ def pick_examples(rows, terms):
     return picked
 
 
+def matched_rows(cur, terms):
+    """Whole-token matches on name/summary/category/developer, via FTS5 when present."""
+    has_fts = cur.execute(
+        "SELECT COUNT(*) FROM sqlite_master WHERE name='apps_fts'").fetchone()[0]
+    if has_fts:
+        match = " OR ".join('"' + t.replace('"', "") + '"' for t in terms)
+        return cur.execute(
+            "SELECT a.source, a.name, a.summary FROM apps_fts f "
+            "JOIN apps a ON a.rowid = f.rowid WHERE apps_fts MATCH ? LIMIT 4000",
+            (match,)).fetchall()
+    cond = " OR ".join(
+        "instr(' ' || lower(name || ' ' || coalesce(summary,'') || ' ' || "
+        "coalesce(category,'') || ' ' || coalesce(developer,'')) || ' ', ?) > 0"
+        for _ in terms)
+    return cur.execute(
+        f"SELECT source, name, summary FROM apps WHERE {cond}",
+        [f" {t.lower()} " for t in terms]).fetchall()
+
+
 def main():
     conn = sqlite3.connect(DB)
     cur = conn.cursor()
@@ -236,14 +262,7 @@ def main():
 
     checks = {}
     for cid, terms in SEEDS.items():
-        cond = " OR ".join(
-            "instr(' ' || lower(name || ' ' || coalesce(summary,'') || ' ' || "
-            "coalesce(category,'') || ' ' || coalesce(developer,'')) || ' ', ?) > 0"
-            for _ in terms)
-        params = [f" {t.lower()} " for t in terms]
-        rows = cur.execute(
-            f"SELECT source, name, summary FROM apps WHERE {cond}", params
-        ).fetchall()
+        rows = matched_rows(cur, [t.lower() for t in terms])
         checks[cid] = {
             "queries": terms,
             "total": len(rows),

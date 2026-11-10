@@ -24,6 +24,7 @@
           <a href="fields.html">Fields</a>
           <a href="search.html">Search</a>
           <a href="shelves.html">Shelves</a>
+          <a href="zeros.html">Zeros</a>
           <a href="about.html" aria-current="page">About</a>
     </nav>
   </div>
@@ -88,13 +89,17 @@
     The Shelves page backs "already built" with real catalogs rather than memory:
     Flathub and F-Droid in full from their open metadata dumps, the Apple App Store through
     its official Search API, popular npm packages through the registry API, Steam's games
-    catalog, and — for hardware — iFixit's complete device-repair tree, openFDA's regulated
+    catalog, — and for hardware — iFixit's complete device-repair tree, openFDA's regulated
     medical-device database, Arduino's embedded-library registry and Open Food Facts'
-    product database. Google Play contributes capped, popularity-ranked searches: Play has
+    product database. Two more sources widen the net: GitHub itself (every public repo
+    above 1,000 stars, walked star-band by star-band through the search API) and HumanWeb
+    — a human-curated map of the web with 2.6 million Curlie directory entries, ten
+    curated lists (FMHY, awesome-selfhosted, public APIs, privacy tools...) and OpenAlex
+    research repositories. Google Play contributes capped, popularity-ranked searches: Play has
     no bulk API, and scraping all of it would violate its terms, so the pipeline stops at
     capped results. The raw snapshots live in <code>data/raw/</code>, the full merged
-    catalog in <code>data/catalog.db</code>, and the site ships a capped index at
-    <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
+    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships a
+    capped index at <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
     <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
     editorial, but the shelves are measured.
   </p>
@@ -146,6 +151,7 @@
         <a href="fields.html">All fields</a>
         <a href="search.html">Search the census</a>
         <a href="shelves.html">Search the shelves</a>
+        <a href="zeros.html">The measured zeros</a>
         <a href="about.html">Methodology</a>
       </div>
     </nav>
