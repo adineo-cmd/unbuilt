@@ -16,7 +16,7 @@
 ---
 
 Most people build the same ten visible things in every field. This is a field
-guide to the rest: **201 ideas across 12 fields**, each split three ways —
+guide to the rest: **328 ideas across 20 fields**, each split three ways —
 already built, half-built, and not built yet.
 
 The Shelves section backs the "already built" claim with real catalog data
@@ -26,7 +26,7 @@ rather than vibes.
 
 | | Feature | What it does |
 | --- | --- | --- |
-| 🗂️ | **201 ideas, 12 fields** | Software, AI, hardware, health, climate, education, money, food, cities, robotics, accessibility, media. |
+| 🗂️ | **328 ideas, 20 fields** | Software, AI, hardware, health, climate, education, money, food, cities, robotics, accessibility, media — plus law & justice, textiles, death & legacy, oceans, parenting, travel & borders, space, arts & culture. |
 | 🚦 | **Three states** | Solid: stop adding. Outlined: finish it. Dashed: the empty lane. |
 | 📚 | **Shelves catalog** | Real apps and devices from Flathub, F-Droid, the App Store, npm and iFixit. |
 | 🧩 | **First-class reasoning** | Every idea names the blocker that keeps it open. |
@@ -37,8 +37,11 @@ One Python script builds the whole site:
 
 1. `build.py` holds the census data (`FIELDS`, `HALF`) and the page templates.
 2. It writes every HTML page plus `assets/` — styles, search index and app logic.
-3. `pipeline/ingest.py` pulls open catalogs; `pipeline/build_site_index.py`
-   merges them into `assets/catalog.json` and `data/catalog.db`.
+3. `pipeline/ingest.py` pulls 13 open catalogs; `pipeline/build_site_index.py`
+   merges them into sharded `assets/catalog/` and `data/catalog.db` (with a full-text index).
+4. `pipeline/mine_gaps.py` measures every not-built claim against the catalog;
+   `pipeline/gh_signal.py` counts GitHub repos per idea; `pipeline/classify.py`
+   assigns listings to fields for the per-genre shelves sections.
 4. Generated HTML is never hand-edited; the data is the source.
 
 ```mermaid
@@ -63,8 +66,11 @@ python3 -m http.server 8412       # http://127.0.0.1:8412
 **Rebuild the shelves**
 
 ```bash
-python3 pipeline/ingest.py
-python3 pipeline/build_site_index.py
+python3 pipeline/ingest.py             # 13 catalogs: stores, GitHub, HumanWeb, hardware, food
+python3 pipeline/build_site_index.py   # merge -> shards + SQLite + full-text index
+python3 pipeline/mine_gaps.py          # measure every not-built claim against the catalog
+python3 pipeline/gh_signal.py          # GitHub demand signal per idea
+python3 pipeline/classify.py           # per-field extracted evidence
 ```
 
 ## Project structure
@@ -73,8 +79,8 @@ python3 pipeline/build_site_index.py
 build.py              census data + page templates
 fields/               generated field pages
 pipeline/             catalog ingestion and index build
-assets/               styles, search index, catalog data
-data/                 catalog database
+assets/               styles, app logic, sharded catalog, evidence files
+data/                 full catalog database (SQLite + FTS5)
 ```
 
 ## Deployment
