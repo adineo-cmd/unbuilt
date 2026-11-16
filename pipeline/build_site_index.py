@@ -101,7 +101,8 @@ def main():
             if not row:
                 continue
             key = hashlib.md5(
-                (row["name"].lower() + "\x00" + row["developer"].lower()).encode()
+                (row["name"].lower() + "\x00" + row["developer"].lower() + "\x00" +
+                 row["url"].lower()).encode()
             ).digest()
             if key in seen or key in per_source_seen:
                 continue
@@ -113,20 +114,39 @@ def main():
     merged = interleave(groups)
     shipped = merged[:args.max]
 
-    catalog = {
+    shard_size = 45000
+    shard_dir = os.path.join(ASSETS, "catalog")
+    os.makedirs(shard_dir, exist_ok=True)
+    for old_file in os.listdir(shard_dir):
+        os.remove(os.path.join(shard_dir, old_file))
+    shards = [shipped[i:i + shard_size] for i in range(0, len(shipped), shard_size)]
+    for i, chunk in enumerate(shards):
+        payload = {
+            "count": len(chunk),
+            "apps": [[r["name"], r["summary"], r["source"], r["category"], r["url"], r["developer"]]
+                     for r in chunk],
+        }
+        path = os.path.join(shard_dir, f"shard-{i:02d}.json")
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(payload, fh, ensure_ascii=False, separators=(",", ":"))
+        print(f"  shard {i:02d}: {len(chunk)} rows ({os.path.getsize(path) / 1e6:.1f} MB)")
+    manifest = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "count": len(shipped),
-        "total": len(merged),
+        "grand_total": len(merged),
+        "shard_size": shard_size,
+        "num_shards": len(shards),
         "sources": {s: sum(1 for r in shipped if r["source"] == s)
                     for s in sorted({r["source"] for r in shipped})},
-        "apps": [[r["name"], r["summary"], r["source"], r["category"], r["url"], r["developer"]]
-                 for r in shipped],
     }
-    out = os.path.join(ASSETS, "catalog.json")
-    with open(out, "w", encoding="utf-8") as fh:
-        json.dump(catalog, fh, ensure_ascii=False, separators=(",", ":"))
-    print(f"wrote {out}: {catalog['count']} of {catalog['total']} rows "
-          f"({os.path.getsize(out) / 1e6:.1f} MB)")
+    manifest_path = os.path.join(shard_dir, "manifest.json")
+    with open(manifest_path, "w", encoding="utf-8") as fh:
+        json.dump(manifest, fh, ensure_ascii=False, separators=(",", ":"))
+    legacy = os.path.join(ASSETS, "catalog.json")
+    if os.path.exists(legacy):
+        os.remove(legacy)
+    print(f"wrote {manifest_path}: {manifest['count']} of {manifest['grand_total']} rows "
+          f"in {len(shards)} shards")
 
     db = os.path.join(ROOT, "data", "catalog.db")
     conn = sqlite3.connect(db)

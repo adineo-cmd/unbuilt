@@ -657,13 +657,49 @@ SOURCE_DISPLAY = {
 
 
 def catalog_info():
-    """Read assets/catalog.json if the pipeline has run; catalog dict or None."""
+    """Read assets/catalog/manifest.json if the pipeline has run; manifest or None."""
     try:
         import json
-        with open(os.path.join(OUT, "assets", "catalog.json"), encoding="utf-8") as fh:
+        with open(os.path.join(OUT, "assets", "catalog", "manifest.json"), encoding="utf-8") as fh:
             return json.load(fh)
     except Exception:
         return None
+
+
+FE = None
+
+
+def field_evidence():
+    global FE
+    if FE is None:
+        try:
+            import json
+            with open(os.path.join(OUT, "assets", "field-evidence.json"), encoding="utf-8") as fh:
+                FE = json.load(fh)
+        except Exception:
+            FE = {"fields": {}}
+    return FE
+
+
+def shelves_section(field_id, prefix=""):
+    """'From the shelves' block: real extracted listings for one census field."""
+    info = field_evidence().get("fields", {}).get(field_id)
+    if not info or not info.get("sample"):
+        return ""
+    rows = []
+    for name, summary, source, url in info["sample"]:
+        link = f' href="{esc(url)}" target="_blank" rel="noopener"' if url else ""
+        rows.append(f"""<a class="result"{link}>
+  <span class="r-side src">{esc(source)}</span>
+  <span class="r-title">{esc(name)}</span>
+  <span class="r-what">{esc(summary)}</span>
+</a>""")
+    return f"""<section class="from-shelves">
+  <h2>From the shelves</h2>
+  <p class="sub">{info['total']:,} real listings in the catalog land in this field's corner — these ten were pulled from the pile:</p>
+  <div class="results">{''.join(rows)}</div>
+  <p class="howto-more">Browse all of them on the <a href="{prefix}shelves.html">shelves</a> — filter by store, search by name.</p>
+</section>"""
 
 
 def source_names(catalog):
@@ -970,6 +1006,8 @@ def build_field_page(idx):
     </div>
   </div>
 
+  {shelves_section(f['id'], '../')}
+
   <nav class="pager" aria-label="More fields">
     <a href="{prev_f['id']}.html"><span class="dir">Previous field</span><span class="name">{esc(prev_f['name'])}</span></a>
     <a class="all" href="../fields.html">All fields</a>
@@ -1109,6 +1147,9 @@ def build_zeros():
 
 # ---------------------------------------------------------------- about page
 def build_about():
+    c = catalog_info()
+    cat_count = c["count"] if c else 0
+    num_catalogs = len(c.get("sources", {})) if c else 0
     main = f"""<section class="hero slim">
   <div class="wrap">
     <h1>About the census</h1>
@@ -1177,15 +1218,18 @@ def build_about():
     research repositories. Google Play contributes capped, popularity-ranked searches: Play has
     no bulk API, and scraping all of it would violate its terms, so the pipeline stops at
     capped results. The raw snapshots live in <code>data/raw/</code>, the full merged
-    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships a
-    capped index at <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
-    <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
-    editorial, but the shelves are measured.
+    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships the
+    browseable index in shards under <code>assets/catalog/</code> ({cat_count:,} listings,
+    loaded progressively so the shelves stay fast). Every field page also shows ten real
+    listings pulled from that catalog — classified by <code>pipeline/classify.py</code>.
+    Rerun <code>pipeline/ingest.py</code>, <code>pipeline/build_site_index.py</code> and
+    <code>pipeline/classify.py</code> to refresh them — the census of ideas is editorial,
+    but the shelves are measured.
   </p>
   <p>
     Every not-built and half-built card also carries a <strong>shelves check</strong>: a
-    deterministic, whole-token search for the idea's key terms across all 92,463 catalog
-    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our ten
+    deterministic, whole-token search for the idea's key terms across all {cat_count:,} catalog
+    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our {num_catalogs}
     catalogs matched — which is evidence of an empty shelf in the stores we measured, not
     proof that nothing exists anywhere. A non-zero check lists the closest listings we
     found, so you can judge the distance yourself.
@@ -1393,6 +1437,9 @@ a{color:inherit}
 .zrow{display:grid;grid-template-columns:auto 1fr auto;gap:.15rem .8rem;padding:.8rem .2rem;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .zrow:hover{background:var(--card)}
 .ztags{grid-column:2/4;display:flex;gap:.4rem;flex-wrap:wrap}
+.from-shelves{margin-top:clamp(2rem,4vw,3rem);padding-top:.5rem}
+.from-shelves h2{font-weight:900;font-stretch:112%;font-size:1.3rem;border-top:2px solid var(--ink);padding-top:.9rem}
+.from-shelves .sub{color:var(--muted);margin:.4rem 0 1rem;font-size:.95rem}
 .shelves-status{margin-top:1.6rem;color:var(--muted);font-size:.9rem;min-height:1.3em}
 .srcchips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
 .chip{
@@ -1633,24 +1680,24 @@ SHELVES_JS = """(function () {
   "use strict";
   var DISPLAY = {flathub: "Flathub", fdroid: "F-Droid", itunes: "App Store", play: "Google Play",
     npm: "npm", ifixit: "iFixit", fda: "FDA devices", arduino: "Arduino",
-    steam: "Steam", off: "Open Food Facts"};
+    steam: "Steam", off: "Open Food Facts", github: "GitHub",
+    humanweb: "HumanWeb", "humanweb-curlie": "Curlie"};
   var input = document.getElementById("q");
   var list = document.getElementById("results");
   var shown = document.getElementById("shown");
   var status = document.getElementById("loadstate");
   var chips = document.getElementById("srcchips");
-  var CAT = null, INDEX = null, active = {}, timer = null;
+  var MAN = null, INDEX = [], active = {}, timer = null;
 
-  fetch("assets/catalog.json").then(function (r) {
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    return r.json();
-  }).then(function (c) {
-    CAT = c;
-    INDEX = c.apps.map(function (a) {
-      return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
+  function addRows(apps) {
+    apps.forEach(function (a) {
+      INDEX.push([a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a]);
     });
-    var keys = Object.keys(CAT.sources).sort(function (a, b) {
-      return CAT.sources[b] - CAT.sources[a];
+  }
+
+  function buildChips() {
+    var keys = Object.keys(MAN.sources).sort(function (a, b) {
+      return MAN.sources[b] - MAN.sources[a];
     });
     keys.forEach(function (k) {
       active[k] = true;
@@ -1658,7 +1705,7 @@ SHELVES_JS = """(function () {
       b.type = "button";
       b.className = "chip on";
       b.setAttribute("aria-pressed", "true");
-      b.textContent = (DISPLAY[k] || k) + " " + CAT.sources[k].toLocaleString();
+      b.textContent = (DISPLAY[k] || k) + " " + MAN.sources[k].toLocaleString();
       b.addEventListener("click", function () {
         active[k] = !active[k];
         b.classList.toggle("on", active[k]);
@@ -1667,17 +1714,52 @@ SHELVES_JS = """(function () {
       });
       chips.appendChild(b);
     });
-    status.textContent = CAT.count.toLocaleString() + " apps, devices and products on the " +
-      "shelves, collected " + CAT.generated + " from " + keys.length + " catalogs";
-    input.disabled = false;
-    render();
+  }
+
+  function loadShard(i) {
+    if (i >= MAN.num_shards) {
+      status.textContent = MAN.count.toLocaleString() + " apps, devices and products on the " +
+        "shelves, collected " + MAN.generated + " from " + Object.keys(MAN.sources).length + " catalogs";
+      input.disabled = false;
+      render();
+      return;
+    }
+    var num = ("0" + i).slice(-2);
+    status.textContent = "loading the catalog — shard " + (i + 1) + " of " + MAN.num_shards +
+      " (" + INDEX.length.toLocaleString() + " indexed so far)";
+    fetch("assets/catalog/shard-" + num + ".json").then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (sh) {
+      addRows(sh.apps);
+      if (i === 0) {
+        buildChips();
+        input.disabled = false;
+        render();
+      } else if (!input.value.trim()) {
+        render();
+      }
+      loadShard(i + 1);
+    }).catch(function () {
+      status.textContent = "The catalog could not be fully loaded (" + INDEX.length.toLocaleString() +
+        " entries so far). Build it with pipeline/ingest.py and pipeline/build_site_index.py, " +
+        "then serve this folder over HTTP.";
+    });
+  }
+
+  fetch("assets/catalog/manifest.json").then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (man) {
+    MAN = man;
+    loadShard(0);
   }).catch(function () {
     status.textContent = "The catalog could not be loaded. Build it with pipeline/ingest.py and " +
       "pipeline/build_site_index.py, then serve this folder over HTTP.";
   });
 
   function render() {
-    if (!CAT) return;
+    if (!MAN || !INDEX.length) return;
     var qy = input.value.trim().toLowerCase();
     var hits = [];
     if (qy.length >= 2) {
@@ -1691,9 +1773,9 @@ SHELVES_JS = """(function () {
         if (s) hits.push([s, it[2]]);
       }
       hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
-      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " entries";
+      shown.textContent = hits.length.toLocaleString() + " of " + MAN.count.toLocaleString() + " entries";
     } else {
-      shown.textContent = CAT.count.toLocaleString() + " entries";
+      shown.textContent = INDEX.length.toLocaleString() + " of " + MAN.count.toLocaleString() + " indexed";
     }
     list.innerHTML = "";
     if (qy.length < 2) {

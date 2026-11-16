@@ -556,20 +556,24 @@ def fetch_off(pages=60):
 
 
 # ---------------------------------------------------------------- github
-def fetch_github(cap=45000):
+def fetch_github(cap=150000):
     """Popular public repos from GitHub's search API, star-band pagination.
 
     Search results cap at 1,000 per query, so the pipeline walks narrow
     star bands instead of one giant query. Names + descriptions only —
     it is a catalog of what hackers built, not the code itself.
     """
-    bands = ([(lo, lo + 99) for lo in range(1000, 3000, 100)]
+    bands = ([(lo, lo + 9) for lo in range(100, 400, 10)]
+             + [(lo, lo + 14) for lo in range(400, 1000, 15)]
+             + [(lo, lo + 99) for lo in range(1000, 3000, 100)]
              + [(lo, lo + 199) for lo in range(3000, 5000, 200)]
              + [(lo, lo + 499) for lo in range(5000, 10000, 500)]
              + [(lo, lo + 999) for lo in range(10000, 20000, 1000)]
              + [(lo, lo + 1999) for lo in range(20000, 40000, 2000)]
              + [(lo, lo + 4999) for lo in range(40000, 80000, 5000)]
              + [(80000, 9999999)])
+    fresh_windows = ["2023-01-01..2023-12-31", "2024-01-01..2024-12-31",
+                     "2025-01-01..2025-12-31", "2026-01-01..2026-12-31"]
     apps, seen = [], set()
     for lo, hi in bands:
         page, total_band = 1, 0
@@ -621,6 +625,35 @@ def fetch_github(cap=45000):
             print(f"    cap {cap} reached")
             break
         time.sleep(0.6)
+    for window in fresh_windows:
+        q = f"created:{window} stars:30..9999"
+        try:
+            out = subprocess.run(
+                ["gh", "api", "-X", "GET", "search/repositories",
+                 "-f", f"q={q} fork:false", "-f", "sort=stars",
+                 "-f", "order=desc", "-f", "per_page=100"],
+                capture_output=True, text=True, timeout=90)
+            data = json.loads(out.stdout)
+        except Exception as e:  # noqa: BLE001
+            print(f"    window {window}: {e}", file=sys.stderr)
+            continue
+        for r in data.get("items") or []:
+            full = r.get("full_name") or ""
+            if not full or full in seen:
+                continue
+            seen.add(full)
+            desc = clean(r.get("description"), 300)
+            apps.append({
+                "id": full,
+                "name": full,
+                "summary": desc or "GitHub repository",
+                "description": desc,
+                "category": (r.get("language") or "GitHub repository"),
+                "developer": (r.get("owner") or {}).get("login", ""),
+                "url": r.get("html_url") or f"https://github.com/{full}",
+            })
+        print(f"    fresh {window}: total {data.get('total_count', 0)}")
+        time.sleep(1.2)
     return save("github", apps)
 
 
@@ -641,7 +674,7 @@ def _hw_clean(text, limit=180):
     return text[:limit]
 
 
-def fetch_humanweb(curlie_cap=400000):
+def fetch_humanweb(curlie_cap=None):
     """The human-curated web, from adineo-cmd/HumanWeb (HumanWeb).
 
     Sources: ten curated directories (FMHY, awesome-selfhosted, public APIs,
@@ -720,6 +753,9 @@ def fetch_humanweb(curlie_cap=400000):
     print(f"    curlie shards: {len(shards)}")
     rows_written, lock = [0], __import__("threading").Lock()
 
+    def cap_reached():
+        return curlie_cap is not None and rows_written[0] >= curlie_cap
+
     def fetch_shard(path):
         try:
             req = _ur.Request(HUMANWEB_RAW.replace("/public/data/", "/") + path,
@@ -753,11 +789,11 @@ def fetch_humanweb(curlie_cap=400000):
         with ThreadPoolExecutor(max_workers=8) as pool:
             for result in pool.map(fetch_shard, shards):
                 for row in result:
-                    if rows_written[0] >= curlie_cap:
+                    if cap_reached():
                         break
                     gz.write(json.dumps(row, ensure_ascii=False) + "\n")
                     rows_written[0] += 1
-                if rows_written[0] >= curlie_cap:
+                if cap_reached():
                     break
     print(f"    curlie rows: {rows_written[0]} -> {curlie_path}")
     return apps

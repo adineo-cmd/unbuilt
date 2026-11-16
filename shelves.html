@@ -33,7 +33,7 @@
 <section class="hero slim">
   <div class="wrap">
     <h1>The shelves</h1>
-    <p class="lede">Opinion says a space is crowded; a catalog proves it. These are real, published apps, devices and products — 45,000 of them, collected 2026-11-10 from Arduino, FDA devices, F-Droid, github, humanweb, humanweb-curlie, iFixit, npm, App Store, Flathub, Google Play, Open Food Facts and Steam. Search before you build.</p>
+    <p class="lede">Opinion says a space is crowded; a catalog proves it. These are real, published apps, devices and products — 438,062 of them, collected 2026-11-15 from humanweb-curlie, github, iFixit, humanweb, npm, Arduino, FDA devices, F-Droid, App Store, Flathub, Google Play, Open Food Facts and Steam. Search before you build.</p>
   </div>
 </section>
 <section>
@@ -52,24 +52,24 @@
   "use strict";
   var DISPLAY = {flathub: "Flathub", fdroid: "F-Droid", itunes: "App Store", play: "Google Play",
     npm: "npm", ifixit: "iFixit", fda: "FDA devices", arduino: "Arduino",
-    steam: "Steam", off: "Open Food Facts"};
+    steam: "Steam", off: "Open Food Facts", github: "GitHub",
+    humanweb: "HumanWeb", "humanweb-curlie": "Curlie"};
   var input = document.getElementById("q");
   var list = document.getElementById("results");
   var shown = document.getElementById("shown");
   var status = document.getElementById("loadstate");
   var chips = document.getElementById("srcchips");
-  var CAT = null, INDEX = null, active = {}, timer = null;
+  var MAN = null, INDEX = [], active = {}, timer = null;
 
-  fetch("assets/catalog.json").then(function (r) {
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    return r.json();
-  }).then(function (c) {
-    CAT = c;
-    INDEX = c.apps.map(function (a) {
-      return [a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a];
+  function addRows(apps) {
+    apps.forEach(function (a) {
+      INDEX.push([a[0].toLowerCase(), (a[0] + " " + a[1] + " " + a[3] + " " + a[5]).toLowerCase(), a]);
     });
-    var keys = Object.keys(CAT.sources).sort(function (a, b) {
-      return CAT.sources[b] - CAT.sources[a];
+  }
+
+  function buildChips() {
+    var keys = Object.keys(MAN.sources).sort(function (a, b) {
+      return MAN.sources[b] - MAN.sources[a];
     });
     keys.forEach(function (k) {
       active[k] = true;
@@ -77,7 +77,7 @@
       b.type = "button";
       b.className = "chip on";
       b.setAttribute("aria-pressed", "true");
-      b.textContent = (DISPLAY[k] || k) + " " + CAT.sources[k].toLocaleString();
+      b.textContent = (DISPLAY[k] || k) + " " + MAN.sources[k].toLocaleString();
       b.addEventListener("click", function () {
         active[k] = !active[k];
         b.classList.toggle("on", active[k]);
@@ -86,17 +86,52 @@
       });
       chips.appendChild(b);
     });
-    status.textContent = CAT.count.toLocaleString() + " apps, devices and products on the " +
-      "shelves, collected " + CAT.generated + " from " + keys.length + " catalogs";
-    input.disabled = false;
-    render();
+  }
+
+  function loadShard(i) {
+    if (i >= MAN.num_shards) {
+      status.textContent = MAN.count.toLocaleString() + " apps, devices and products on the " +
+        "shelves, collected " + MAN.generated + " from " + Object.keys(MAN.sources).length + " catalogs";
+      input.disabled = false;
+      render();
+      return;
+    }
+    var num = ("0" + i).slice(-2);
+    status.textContent = "loading the catalog — shard " + (i + 1) + " of " + MAN.num_shards +
+      " (" + INDEX.length.toLocaleString() + " indexed so far)";
+    fetch("assets/catalog/shard-" + num + ".json").then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (sh) {
+      addRows(sh.apps);
+      if (i === 0) {
+        buildChips();
+        input.disabled = false;
+        render();
+      } else if (!input.value.trim()) {
+        render();
+      }
+      loadShard(i + 1);
+    }).catch(function () {
+      status.textContent = "The catalog could not be fully loaded (" + INDEX.length.toLocaleString() +
+        " entries so far). Build it with pipeline/ingest.py and pipeline/build_site_index.py, " +
+        "then serve this folder over HTTP.";
+    });
+  }
+
+  fetch("assets/catalog/manifest.json").then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (man) {
+    MAN = man;
+    loadShard(0);
   }).catch(function () {
     status.textContent = "The catalog could not be loaded. Build it with pipeline/ingest.py and " +
       "pipeline/build_site_index.py, then serve this folder over HTTP.";
   });
 
   function render() {
-    if (!CAT) return;
+    if (!MAN || !INDEX.length) return;
     var qy = input.value.trim().toLowerCase();
     var hits = [];
     if (qy.length >= 2) {
@@ -110,9 +145,9 @@
         if (s) hits.push([s, it[2]]);
       }
       hits.sort(function (a, b) { return b[0] - a[0] || a[1][0].length - b[1][0].length; });
-      shown.textContent = hits.length.toLocaleString() + " of " + CAT.count.toLocaleString() + " entries";
+      shown.textContent = hits.length.toLocaleString() + " of " + MAN.count.toLocaleString() + " entries";
     } else {
-      shown.textContent = CAT.count.toLocaleString() + " entries";
+      shown.textContent = INDEX.length.toLocaleString() + " of " + MAN.count.toLocaleString() + " indexed";
     }
     list.innerHTML = "";
     if (qy.length < 2) {

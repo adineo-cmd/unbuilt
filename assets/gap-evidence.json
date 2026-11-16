@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-10",
- "catalog_total": 367124,
+ "generated": "2026-11-16",
+ "catalog_total": 438062,
  "method": "whole-token matches on name, summary, category and developer",
  "checks": {
   "c-software-u0": {
@@ -10,7 +10,7 @@
     "data export",
     "takeout"
    ],
-   "total": 16,
+   "total": 19,
    "examples": [
     "https://takeout.google.com/ (humanweb)",
     "Pizza Hut - Delivery & Takeout (Google Play)",
@@ -27,7 +27,7 @@
     "abandonware",
     "sunset notice"
    ],
-   "total": 41,
+   "total": 46,
    "examples": [
     "End of Life Electronics Midwest (humanweb-curlie)",
     "https://abandonwaregames.net/ (humanweb)",
@@ -44,7 +44,7 @@
     "network diagnostic",
     "dns test"
    ],
-   "total": 7,
+   "total": 9,
    "examples": [
     "LibreSpeed (F-Droid)",
     "mehrdadrad/mylg (github)",
@@ -61,7 +61,7 @@
     "dead man switch",
     "inheritance"
    ],
-   "total": 8,
+   "total": 12,
    "examples": [
     "Inheritance Funding Company, LLC (humanweb-curlie)",
     "Menu-UI (Arduino)",
@@ -94,7 +94,7 @@
     "fact check",
     "citation"
    ],
-   "total": 34,
+   "total": 56,
    "examples": [
     "Citation Wizard (humanweb-curlie)",
     "Citation Producer (humanweb-curlie)",
@@ -111,11 +111,11 @@
     "copyleft",
     "license audit"
    ],
-   "total": 4,
+   "total": 6,
    "examples": [
     "Copyleft and Roll (humanweb-curlie)",
     "@sandworm/audit (npm)",
-    "Barlap Compliance Corporation (humanweb-curlie)"
+    "sandworm-hq/sandworm-audit (github)"
    ],
    "gh": {
     "total": 21,
@@ -141,7 +141,7 @@
     "visa",
     "government form"
    ],
-   "total": 40,
+   "total": 50,
    "examples": [
     "Visa pour l'Image (humanweb-curlie)",
     "Permit Consultants (humanweb-curlie)",
@@ -158,9 +158,10 @@
     "ai benchmark",
     "llm eval"
    ],
-   "total": 1,
+   "total": 5,
    "examples": [
-    "bespokelabsai/nimble (github)"
+    "wgryc/phasellm (github)",
+    "AISBench/benchmark (github)"
    ],
    "gh": {
     "total": 124,
@@ -171,11 +172,11 @@
    "queries": [
     "braille"
    ],
-   "total": 28,
+   "total": 31,
    "examples": [
     "Braille Plus (humanweb-curlie)",
     "Braille ASCII Art (humanweb-curlie)",
-    "Brailliac: Braille Keyboard (F-Droid)"
+    "505e06b2/Image-to-Braille (github)"
    ],
    "gh": {
     "total": 102,
@@ -187,7 +188,7 @@
     "hearing aid",
     "audiogram"
    ],
-   "total": 32,
+   "total": 34,
    "examples": [
     "Hearing Aid (iFixit)",
     "Hearing Aid, Master (FDA devices)",
@@ -220,7 +221,7 @@
     "service manual",
     "spare part"
    ],
-   "total": 6,
+   "total": 7,
    "examples": [
     "Nokia X2-00 Teardown (iFixit)",
     "elvarofficial/teardown (github)",
@@ -236,7 +237,7 @@
     "water quality",
     "water test"
    ],
-   "total": 21,
+   "total": 19,
    "examples": [
     "Water Quality (F-Droid)",
     "Water Quality Association (humanweb-curlie)",
@@ -298,8 +299,10 @@
     "phage",
     "antibiotic resistance"
    ],
-   "total": 0,
-   "examples": [],
+   "total": 1,
+   "examples": [
+    "wwood/singlem (github)"
+   ],
    "gh": {
     "total": 53,
     "top": "phage-nz/ph0neutria (301★, last push 2020-04-24)"
@@ -311,9 +314,10 @@
     "find a doctor",
     "book doctor"
    ],
-   "total": 7,
+   "total": 9,
    "examples": [
     "The Company Therapist (humanweb-curlie)",
+    "Dwarf-Therapist/Dwarf-Therapist (github)",
     "Zahra (humanweb-curlie)"
    ],
    "gh": {
@@ -326,7 +330,7 @@
     "air conditioner",
     "ac control"
    ],
-   "total": 156,
+   "total": 157,
    "examples": [
     "LG Air Conditioner (iFixit)",
     "Wall Air Conditioner (iFixit)",
@@ -356,7 +360,7 @@
    "queries": [
     "water heater"
    ],
-   "total": 14,
+   "total": 15,
    "examples": [
     "Water Heater (iFixit)",
     "Atlantic Vertigo water heater (iFixit)",
@@ -373,11 +377,11 @@
     "cell grader",
     "battery test"
    ],
-   "total": 3,
+   "total": 4,
    "examples": [
     "Maccor, Inc. (humanweb-curlie)",
-    "Digitron/Firing Circuits (humanweb-curlie)",
-    "EUC State Of Health Analyzer (F-Droid)"
+    "Jarvis322/MacWake (github)",
+    "Digitron/Firing Circuits (humanweb-curlie)"
    ],
    "gh": {
     "total": 35,
@@ -402,7 +406,7 @@
     "spaced repetition",
     "flashcard"
    ],
-   "total": 33,
+   "total": 49,
    "examples": [
     "Flashcard maker (Google Play)",
     "Flashcards Deluxe (Google Play)",
@@ -418,8 +422,9 @@
     "science kit",
     "virtual lab"
    ],
-   "total": 1,
+   "total": 2,
    "examples": [
+    "zou-group/virtual-lab (github)",
     "Arduino_ScienceKitCarrier (Arduino)"
    ],
    "gh": {
@@ -433,11 +438,11 @@
     "trade school",
     "vocational"
    ],
-   "total": 52,
+   "total": 53,
    "examples": [
+    "romainl/Apprentice (github)",
     "Dragon’s Apprentice (Flathub)",
-    "The Apprentice Blog (humanweb-curlie)",
-    "IMDb: Apprentice, The (humanweb-curlie)"
+    "The Apprentice Blog (humanweb-curlie)"
    ],
    "gh": {
     "total": 63,
@@ -449,7 +454,7 @@
     "portfolio",
     "verified skill"
    ],
-   "total": 3393,
+   "total": 3495,
    "examples": [
     "Portfolio Directory (humanweb-curlie)",
     "Portfolio Performance (Flathub)",
@@ -465,11 +470,11 @@
     "physics simulator",
     "physics"
    ],
-   "total": 178,
+   "total": 268,
    "examples": [
     "Physics (Flathub)",
     "PhysicsLabFirmware (Arduino)",
-    "Numpty Physics (Flathub)"
+    "Physics-Scaling/GeoPT (github)"
    ],
    "gh": {
     "total": 35,
@@ -493,10 +498,10 @@
     "pension",
     "micro pension"
    ],
-   "total": 40,
+   "total": 32,
    "examples": [
-    "Pension Dynamics Corporation (humanweb-curlie)",
-    "Penad Pension Services Limited (humanweb-curlie)",
+    "New England Pension Consultants (humanweb-curlie)",
+    "North American Pension Services (humanweb-curlie)",
     "The Research Data Centre of the German Pension Insurance (FDZ-RV) (humanweb)"
    ],
    "gh": {
@@ -525,11 +530,11 @@
     "contractor payment",
     "employer of record"
    ],
-   "total": 207,
+   "total": 202,
    "examples": [
     "Payroll Site UK (humanweb-curlie)",
     "Payroll Northwest (humanweb-curlie)",
-    "Chilis (App Store)"
+    "Devnawjesh/hr-payroll (github)"
    ],
    "gh": {
     "total": 93,
@@ -557,7 +562,7 @@
     "fridge",
     "pantry"
    ],
-   "total": 28,
+   "total": 30,
    "examples": [
     "Pantry (F-Droid)",
     "PantryClient (Arduino)",
@@ -603,7 +608,7 @@
     "tractor",
     "farm equipment"
    ],
-   "total": 257,
+   "total": 256,
    "examples": [
     "Tractor (iFixit)",
     "TractorJoe (humanweb-curlie)",
@@ -650,7 +655,7 @@
     "plus code",
     "address"
    ],
-   "total": 323,
+   "total": 388,
    "examples": [
     "AddressLearnMLX (Arduino)",
     "Address 'N' Mail, Inc. (humanweb-curlie)",
@@ -682,7 +687,7 @@
     "community network",
     "broadband"
    ],
-   "total": 47,
+   "total": 54,
    "examples": [
     "Broadband-Television.com (humanweb-curlie)",
     "Broadband Visual Communications Ltd (humanweb-curlie)",
@@ -713,7 +718,7 @@
     "laundry",
     "fold clothes"
    ],
-   "total": 59,
+   "total": 58,
    "examples": [
     "Laundry 365 (humanweb-curlie)",
     "LaundryNotes (F-Droid)",
@@ -730,8 +735,10 @@
     "robot gripper",
     "bionic hand"
    ],
-   "total": 0,
-   "examples": [],
+   "total": 1,
+   "examples": [
+    "aravindr93/hand_dapg (github)"
+   ],
    "gh": {
     "total": 40,
     "top": "PKU-MARL/DexterousHands (1,121★, last push 2025-02-18)"
@@ -770,7 +777,7 @@
     "recycling",
     "waste sorting"
    ],
-   "total": 487,
+   "total": 488,
    "examples": [
     "Recycling Bin.com (humanweb-curlie)",
     "Recycling International (humanweb-curlie)",
@@ -785,7 +792,7 @@
    "queries": [
     "sign language"
    ],
-   "total": 16,
+   "total": 22,
    "examples": [
     "Sign Language Interpreting Associates Ottawa Inc. (humanweb-curlie)",
     "Ontario Association of Sign Language Interpreters (humanweb-curlie)",
@@ -816,7 +823,7 @@
     "wheelchair",
     "curb cut"
    ],
-   "total": 145,
+   "total": 148,
    "examples": [
     "Wheelchair (iFixit)",
     "Wheelchair, Powered (FDA devices)",
@@ -831,9 +838,10 @@
    "queries": [
     "screen reader"
    ],
-   "total": 1,
+   "total": 4,
    "examples": [
-    "nvaccess/nvda (github)"
+    "nvaccess/nvda (github)",
+    "fymmot/inclusive-dates (github)"
    ],
    "gh": {
     "total": 88,
@@ -862,11 +870,11 @@
     "c2pa",
     "provenance"
    ],
-   "total": 16,
+   "total": 23,
    "examples": [
     "Provenance-Emu/Provenance (github)",
     "The Getty Provenance Index (humanweb-curlie)",
-    "@mondaydotcomorg/atp-provenance (npm)"
+    "danielroe/provenance-action (github)"
    ],
    "gh": {
     "total": 4,
@@ -891,11 +899,11 @@
     "gdpr banner",
     "privacy consent"
    ],
-   "total": 3,
+   "total": 10,
    "examples": [
     "cookieconsent (npm)",
     "orestbida/cookieconsent (github)",
-    "spatie/laravel-cookie-consent (github)"
+    "68publishers/cookie-consent (github)"
    ],
    "gh": {
     "total": 85,
@@ -919,7 +927,7 @@
     "bbs",
     "community board"
    ],
-   "total": 2726,
+   "total": 2791,
    "examples": [
     "BBS Graphix (humanweb-curlie)",
     "Forum Romanum (humanweb-curlie)",
@@ -937,7 +945,7 @@
     "data vault",
     "own your data"
    ],
-   "total": 7,
+   "total": 10,
    "examples": [
     "Live Science - What is the Quantified Self? (humanweb-curlie)",
     "spree/spree (github)",
@@ -954,10 +962,10 @@
     "voice cloning",
     "voice print"
    ],
-   "total": 20,
+   "total": 29,
    "examples": [
     "Fish AI: Audio Voice Clone TTS (Google Play)",
-    "leemysw/yovoice (github)",
+    "sipeter/CloneTTS (github)",
     "QwenLM/Qwen3-TTS (github)"
    ],
    "gh": {
@@ -983,7 +991,7 @@
     "repair manual",
     "spare parts"
    ],
-   "total": 95,
+   "total": 90,
    "examples": [
     "Old Racing Spare Parts (humanweb-curlie)",
     "Baxter Arena Service Manual (iFixit)",
@@ -1030,11 +1038,11 @@
     "gig work",
     "reputation"
    ],
-   "total": 131,
+   "total": 134,
    "examples": [
     "Freelancer (humanweb-curlie)",
-    "Freelancer Financials (humanweb-curlie)",
-    "Accountable: for freelancers (Google Play)"
+    "freelancer-leon/notes (github)",
+    "Freelancer Financials (humanweb-curlie)"
    ],
    "gh": {
     "total": 266,
@@ -1063,10 +1071,10 @@
     "comment system",
     "comments plugin"
    ],
-   "total": 4,
+   "total": 6,
    "examples": [
-    "imsun/gitment (github)",
-    "ArtalkJS/Artalk (github)"
+    "aaronpk/webmention.io (github)",
+    "imsun/gitment (github)"
    ],
    "gh": {
     "total": 41,
@@ -1080,7 +1088,7 @@
     "private ai",
     "on device model"
    ],
-   "total": 77,
+   "total": 114,
    "examples": [
     "Maskan — Private AI Chat (F-Droid)",
     "Jan (Flathub)",
@@ -1097,7 +1105,7 @@
     "translator",
     "interpretation"
    ],
-   "total": 350,
+   "total": 407,
    "examples": [
     "Translator Scandinavia AB (humanweb-curlie)",
     "Translator's Office Management (humanweb-curlie)",
@@ -1114,7 +1122,7 @@
     "power monitor",
     "home energy"
    ],
-   "total": 24,
+   "total": 27,
    "examples": [
     "Home Energy Systems, Inc. (humanweb-curlie)",
     "Janitza Power Monitor (iFixit)",
@@ -1131,7 +1139,7 @@
     "weather station",
     "environment sensor"
    ],
-   "total": 88,
+   "total": 97,
    "examples": [
     "Weather Station (iFixit)",
     "Air Quality Engineering (humanweb-curlie)",
@@ -1148,7 +1156,7 @@
     "audiogram",
     "hearing test"
    ],
-   "total": 33,
+   "total": 35,
    "examples": [
     "Hearing Aid (iFixit)",
     "Hearing Aid, Master (FDA devices)",
@@ -1165,8 +1173,9 @@
     "battery health",
     "used battery"
    ],
-   "total": 1,
+   "total": 2,
    "examples": [
+    "Jarvis322/MacWake (github)",
     "EUC State Of Health Analyzer (F-Droid)"
    ],
    "gh": {
@@ -1198,7 +1207,7 @@
     "expiry",
     "surplus food"
    ],
-   "total": 18,
+   "total": 20,
    "examples": [
     "expiry-map (npm)",
     "Past Expiry (humanweb-curlie)",
@@ -1230,7 +1239,7 @@
     "automower",
     "lawn"
    ],
-   "total": 818,
+   "total": 821,
    "examples": [
     "Lawn-Boy (humanweb-curlie)",
     "Lawn Mower (iFixit)",
@@ -1247,7 +1256,7 @@
     "smart cane",
     "navigation wearable"
    ],
-   "total": 16,
+   "total": 22,
    "examples": [
     "Haptic_DA7280 (Arduino)",
     "Haptic_DRV2605 (Arduino)",
@@ -1265,7 +1274,7 @@
     "photo sync",
     "photo gallery"
    ],
-   "total": 1594,
+   "total": 1615,
    "examples": [
     "Immich (F-Droid)",
     "Immich Wear (F-Droid)",
@@ -1295,10 +1304,10 @@
     "flood map",
     "flood insurance"
    ],
-   "total": 6,
+   "total": 5,
    "examples": [
     "The Flood Insurance Agency (TFIA) (humanweb-curlie)",
-    "Wark Consulting (humanweb-curlie)"
+    "Seattle Specialty Insurance (humanweb-curlie)"
    ],
    "gh": {
     "total": 8,
@@ -1326,11 +1335,11 @@
     "paywall",
     "news subscription"
    ],
-   "total": 19,
+   "total": 25,
    "examples": [
+    "paywallpro/paywall-gallery (github)",
     "https://unpaywall.org/ (humanweb)",
-    "https://byebyepaywall.com/en/ (humanweb)",
-    "WallApp (F-Droid)"
+    "https://byebyepaywall.com/en/ (humanweb)"
    ],
    "gh": {
     "total": 158,
@@ -1343,7 +1352,7 @@
     "wound dressing",
     "tele dermatology"
    ],
-   "total": 26,
+   "total": 25,
    "examples": [
     "Wound Care (iFixit)",
     "Wound Dressing Kit (FDA devices)",
@@ -1360,7 +1369,7 @@
     "legal jargon",
     "law explained"
    ],
-   "total": 8,
+   "total": 13,
    "examples": [
     "Plain Language Commission (humanweb-curlie)",
     "Plain Language Action Network (humanweb-curlie)",
@@ -1422,10 +1431,11 @@
     "mediation",
     "arbitration"
    ],
-   "total": 15,
+   "total": 11,
    "examples": [
     "Arbitration Appraisals (humanweb-curlie)",
-    "Business Mediation Associates (humanweb-curlie)"
+    "Resolve Disputes (humanweb-curlie)",
+    "larsacus/LARSAdController (github)"
    ],
    "gh": {
     "total": 0,
@@ -1454,11 +1464,11 @@
     "eviction",
     "landlord"
    ],
-   "total": 16,
+   "total": 20,
    "examples": [
     "Landlord Forms (humanweb-curlie)",
     "Landlord Floors (humanweb-curlie)",
-    "rache (npm)"
+    "hipsterjazzbo/Landlord (github)"
    ],
    "gh": {
     "total": 0,
@@ -1500,7 +1510,7 @@
     "custom tailoring",
     "custom fit"
    ],
-   "total": 13,
+   "total": 12,
    "examples": [
     "Maxxgard (humanweb-curlie)",
     "LucyCorsetry (humanweb-curlie)"
@@ -1531,11 +1541,11 @@
     "closet organizer",
     "outfit planner"
    ],
-   "total": 51,
+   "total": 56,
    "examples": [
     "Wardrobe (Flathub)",
     "Wardrobe Consulting (humanweb-curlie)",
-    "tandpfun/wardrobe (github)"
+    "wardrobecms/wardrobe-archived (github)"
    ],
    "gh": {
     "total": 40,
@@ -1548,11 +1558,11 @@
     "thrift",
     "second hand"
    ],
-   "total": 54,
+   "total": 66,
    "examples": [
     "Second Hand Rose (humanweb-curlie)",
-    "ThriftBooks: New & Used Books (App Store)",
-    "Second Hand Herman Miller Aeron Chairs (humanweb-curlie)"
+    "Thriftpy/thriftpy2 (github)",
+    "ThriftBooks: New & Used Books (App Store)"
    ],
    "gh": {
     "total": 18,
@@ -1598,7 +1608,7 @@
     "tailor",
     "sewing service"
    ],
-   "total": 30,
+   "total": 29,
    "examples": [
     "Tailor (Flathub)",
     "Scan Tailor (Flathub)",
@@ -1717,10 +1727,11 @@
     "bereavement",
     "mourning"
    ],
-   "total": 20,
+   "total": 22,
    "examples": [
     "Mourning Grave (humanweb-curlie)",
-    "Abysmal Grief (humanweb-curlie)"
+    "Abysmal Grief (humanweb-curlie)",
+    "etianl/Trouser-Streak (github)"
    ],
    "gh": {
     "total": 27,
@@ -1733,11 +1744,11 @@
     "aquifer",
     "well water"
    ],
-   "total": 25,
+   "total": 24,
    "examples": [
     "Groundwater, Beth (humanweb-curlie)",
-    "Managed Aquifer Recharged portal (humanweb)",
-    "The Global Groundwater Information System (GGIS) (humanweb)"
+    "groundwater/GhostVM (github)",
+    "Managed Aquifer Recharged portal (humanweb)"
    ],
    "gh": {
     "total": 46,
@@ -1779,10 +1790,10 @@
     "mangrove",
     "land use change"
    ],
-   "total": 3,
+   "total": 2,
    "examples": [
     "Ernst Seeds (humanweb-curlie)",
-    "Chow Engineering, Inc. (humanweb-curlie)"
+    "Tennessee Wholesale Nursery (humanweb-curlie)"
    ],
    "gh": {
     "total": 18,
@@ -1892,7 +1903,7 @@
     "screen time",
     "parental control"
    ],
-   "total": 25,
+   "total": 30,
    "examples": [
     "Screen Time (F-Droid)",
     "Screen Time (F-Droid)",
@@ -1909,10 +1920,10 @@
     "childcare",
     "nursery school"
    ],
-   "total": 17,
+   "total": 18,
    "examples": [
     "ChildCare Action Project (humanweb-curlie)",
-    "ChildCare Action Project: Confidence (humanweb-curlie)"
+    "ChildCare Action Project (humanweb-curlie)"
    ],
    "gh": {
     "total": 4,
@@ -2015,10 +2026,11 @@
     "form translation",
     "sign translation"
    ],
-   "total": 12,
+   "total": 13,
    "examples": [
     "CyraCom (humanweb-curlie)",
-    "TechniTrad (humanweb-curlie)"
+    "TechniTrad (humanweb-curlie)",
+    "MicrosoftTranslator/DocumentTranslation (github)"
    ],
    "gh": {
     "total": 15,
@@ -2046,9 +2058,11 @@
     "vaccine passport",
     "digital identity"
    ],
-   "total": 1,
+   "total": 5,
    "examples": [
-    "Yivi (F-Droid)"
+    "Yivi (F-Droid)",
+    "walt-id/waltid-identity (github)",
+    "hypersign-protocol/hid-node (github)"
    ],
    "gh": {
     "total": 0,
@@ -2061,7 +2075,7 @@
     "train planner",
     "bus travel"
    ],
-   "total": 23,
+   "total": 21,
    "examples": [
     "Overland Trails (humanweb-curlie)",
     "Overland Models (humanweb-curlie)",
@@ -2109,7 +2123,7 @@
     "earth observation",
     "imagery cooperative"
    ],
-   "total": 7,
+   "total": 12,
    "examples": [
     "SatDump (F-Droid)",
     "Iridium SBD (Arduino)",
@@ -2138,9 +2152,10 @@
     "cubesat",
     "spacecraft platform"
    ],
-   "total": 1,
+   "total": 2,
    "examples": [
-    "artemis-cubesat (Arduino)"
+    "artemis-cubesat (Arduino)",
+    "libcsp/libcsp (github)"
    ],
    "gh": {
     "total": 0,
@@ -2170,11 +2185,11 @@
     "ndvi",
     "crop monitoring"
    ],
-   "total": 11,
+   "total": 23,
    "examples": [
+    "Google Earth (Google Play)",
     "Google Earth (App Store)",
-    "Aerograffects (humanweb-curlie)",
-    "mapbox/robosat (github)"
+    "Belluxx/Aleph (github)"
    ],
    "gh": {
     "total": 278,
@@ -2317,7 +2332,7 @@
     "live music",
     "tour planning"
    ],
-   "total": 112,
+   "total": 114,
    "examples": [
     "Live Music Blog (humanweb-curlie)",
     "Live Music Studio (humanweb-curlie)",
@@ -2334,8 +2349,10 @@
     "agent logs",
     "ai traceability"
    ],
-   "total": 0,
-   "examples": [],
+   "total": 1,
+   "examples": [
+    "im4codes/imcodes (github)"
+   ],
    "gh": {
     "total": 16,
     "top": "EvoMap/evolver (8,736★, last push 2026-11-08)"
@@ -2347,10 +2364,10 @@
     "persistent context",
     "llm memory"
    ],
-   "total": 9,
+   "total": 23,
    "examples": [
-    "xerj-org/xerj (github)",
-    "ruvnet/RuVector (github)"
+    "kody-hq/kody (github)",
+    "xerj-org/xerj (github)"
    ],
    "gh": {
     "total": 279,
@@ -2363,7 +2380,7 @@
     "multi agent orchestration",
     "agent manager"
    ],
-   "total": 13,
+   "total": 19,
    "examples": [
     "Sherpr (F-Droid)",
     "rcortx/kiwiq (github)",
@@ -2380,11 +2397,11 @@
     "device control",
     "peripheral software"
    ],
-   "total": 1734,
+   "total": 1753,
    "examples": [
-    "MIDI Device Controller (Arduino)",
-    "LeDragoX/Win-Debloat-Tools (github)",
-    "W4RH4WK/Debloat-Windows-10 (github)"
+    "Squiblydoo/debloat (github)",
+    "amq/firefox-debloat (github)",
+    "MIDI Device Controller (Arduino)"
    ],
    "gh": {
     "total": 201,
@@ -2397,7 +2414,7 @@
     "github releases",
     "update server"
    ],
-   "total": 7,
+   "total": 14,
    "examples": [
     "RepoStore (F-Droid)",
     "Komi Store (F-Droid)",
@@ -2414,7 +2431,7 @@
     "document management",
     "ocr rename"
    ],
-   "total": 38,
+   "total": 45,
    "examples": [
     "Legal Document Management Services, Inc. (humanweb-curlie)",
     "Lanier (humanweb-curlie)",
@@ -2461,10 +2478,11 @@
     "subscription tracker",
     "recurring billing"
    ],
-   "total": 2,
+   "total": 4,
    "examples": [
     "WallosMobile (F-Droid)",
-    "ellite/Wallos (github)"
+    "ellite/Wallos (github)",
+    "bscott/subtrackr (github)"
    ],
    "gh": {
     "total": 1,
@@ -2503,10 +2521,10 @@
     "self hosted",
     "yunohost"
    ],
-   "total": 2871,
+   "total": 3120,
    "examples": [
     "YunoHost/yunohost (github)",
-    "yourselfhosted/slash (github)",
+    "r-selfhosted/wiki (github)",
     "https://yunohost.org/ (humanweb)"
    ],
    "gh": {
@@ -2520,10 +2538,10 @@
     "degoogled",
     "privacy phone"
    ],
-   "total": 9,
+   "total": 14,
    "examples": [
-    "GrapheneOS/Vanadium (github)",
-    "GrapheneOS/hardened_malloc (github)",
+    "GrapheneOS/AppStore (github)",
+    "GrapheneOS/Messaging (github)",
     "https://grapheneos.org/ (humanweb)"
    ],
    "gh": {
@@ -2536,7 +2554,7 @@
     "build your own x",
     "build from scratch"
    ],
-   "total": 354,
+   "total": 356,
    "examples": [
     "https://nesdoug.com/ (humanweb)",
     "https://wyag.thb.lt/ (humanweb)",
@@ -2570,8 +2588,11 @@
     "api change",
     "breaking change"
    ],
-   "total": 0,
-   "examples": [],
+   "total": 3,
+   "examples": [
+    "Titan-Systems/titan (github)",
+    "star7th/coolmonitor (github)"
+   ],
    "gh": {
     "total": 37,
     "top": "orlabs/orange (2,305★, last push 2023-08-25)"
@@ -2583,11 +2604,11 @@
     "free for dev",
     "developer freebies"
    ],
-   "total": 1245,
+   "total": 1249,
    "examples": [
+    "rociiu/talorys (github)",
     "https://ip.city (humanweb)",
-    "https://cdox.ca (humanweb)",
-    "The-PR-Agent/pr-agent (github)"
+    "https://cdox.ca (humanweb)"
    ],
    "gh": {
     "total": 207,

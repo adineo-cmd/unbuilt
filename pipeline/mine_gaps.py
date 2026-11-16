@@ -272,6 +272,16 @@ def main():
         print(f"{cid:<18} {len(rows):>5}  {exs[:90]}")
 
     conn.close()
+    # preserve GitHub signals collected earlier — they are catalog-independent
+    try:
+        with open(OUT, encoding="utf-8") as fh:
+            prev = json.load(fh)
+        for cid, chk in checks.items():
+            old_gh = prev.get("checks", {}).get(cid, {}).get("gh")
+            if old_gh is not None:
+                chk["gh"] = old_gh
+    except Exception:
+        pass
     payload = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "catalog_total": catalog_total,

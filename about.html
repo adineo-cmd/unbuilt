@@ -98,15 +98,18 @@
     research repositories. Google Play contributes capped, popularity-ranked searches: Play has
     no bulk API, and scraping all of it would violate its terms, so the pipeline stops at
     capped results. The raw snapshots live in <code>data/raw/</code>, the full merged
-    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships a
-    capped index at <code>assets/catalog.json</code>. Rerun <code>pipeline/ingest.py</code> and
-    <code>pipeline/build_site_index.py</code> to refresh it — the census of ideas is
-    editorial, but the shelves are measured.
+    catalog in <code>data/catalog.db</code> (with a full-text index), and the site ships the
+    browseable index in shards under <code>assets/catalog/</code> (438,062 listings,
+    loaded progressively so the shelves stay fast). Every field page also shows ten real
+    listings pulled from that catalog — classified by <code>pipeline/classify.py</code>.
+    Rerun <code>pipeline/ingest.py</code>, <code>pipeline/build_site_index.py</code> and
+    <code>pipeline/classify.py</code> to refresh them — the census of ideas is editorial,
+    but the shelves are measured.
   </p>
   <p>
     Every not-built and half-built card also carries a <strong>shelves check</strong>: a
-    deterministic, whole-token search for the idea's key terms across all 92,463 catalog
-    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our ten
+    deterministic, whole-token search for the idea's key terms across all 438,062 catalog
+    entries, run by <code>pipeline/mine_gaps.py</code>. A zero means no listing in our 13
     catalogs matched — which is evidence of an empty shelf in the stores we measured, not
     proof that nothing exists anywhere. A non-zero check lists the closest listings we
     found, so you can judge the distance yourself.
