@@ -574,6 +574,7 @@ def nav_links(prefix, active):
         ("search.html", "Search"),
         ("shelves.html", "Shelves"),
         ("zeros.html", "Zeros"),
+        ("ideas.html", "Ideas"),
         ("about.html", "About"),
     ]
     out = []
@@ -629,6 +630,7 @@ def site_footer(prefix):
         <a href="{prefix}search.html">Search the census</a>
         <a href="{prefix}shelves.html">Search the shelves</a>
         <a href="{prefix}zeros.html">The measured zeros</a>
+        <a href="{prefix}ideas.html">The idea atlas</a>
         <a href="{prefix}about.html">Methodology</a>
       </div>
     </nav>
@@ -832,7 +834,7 @@ def tiles(prefix, rich=False):
     return "\n".join(out)
 
 
-def page(title, desc, prefix, active, main_html):
+def page(title, desc, prefix, active, main_html, extra_scripts=""):
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -845,6 +847,7 @@ def page(title, desc, prefix, active, main_html):
 </main>
 {site_footer(prefix)}
 <script src="{prefix}assets/census.js"></script>
+{extra_scripts}
 <script src="{prefix}assets/app.js"></script>
 </body>
 </html>
@@ -1143,6 +1146,33 @@ def build_zeros():
         "The measured zeros — Unbuilt",
         f"{zero_count} ideas with no listing in ten catalogs and no GitHub repository — the measured empty shelves.",
         "", "Zeros", main)
+
+
+# ---------------------------------------------------------------- ideas page
+def build_ideas():
+    main = """<section class="hero slim">
+  <div class="wrap">
+    <h1>The idea atlas</h1>
+    <p class="lede">The census asks “is someone already building this?” The atlas asks the wider question: what do we already know, what are we still arguing about, and what is genuinely unknown. <em>855 ideas</em>, folded into one place.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="howto-more">Three states, carried over from the atlas: <b>Known</b> is settled — don't rebuild it. <b>Debated</b> is a live argument. <b>Undiscovered</b> is an open frontier. Filter by state or field, or search across all of them.</p>
+    <div class="srcchips" id="idea-status" aria-label="Filter by state"></div>
+    <div class="srcchips" id="idea-cats" aria-label="Filter by field"></div>
+    <div class="toolbar-page">
+      <input id="idea-q" type="search" placeholder="Search 855 ideas — try “superconductor”, “free will”, “embeddings”…" aria-label="Search the idea atlas">
+      <span class="shown" id="idea-shown" aria-live="polite"></span>
+    </div>
+    <div class="results" id="idea-results" aria-label="Idea atlas results"></div>
+  </div>
+</section>"""
+    return page(
+        "Idea atlas — Unbuilt",
+        "855 known, debated and undiscovered ideas merged from the Idea Atlas into the census of human making.",
+        "", "Ideas", main,
+        extra_scripts='<script src="assets/ideas-data.js"></script>')
 
 
 # ---------------------------------------------------------------- about page
@@ -1572,6 +1602,11 @@ footer p{font-size:.92rem;max-width:44ch}
 .colophon{border-top:1px solid #4A4E42}
 .colophon .wrap{padding-top:1.2rem;padding-bottom:1.6rem;font-size:.8rem;color:var(--footer-dim)}
 
+/* ---------- idea atlas tab ---------- */
+#idea-status, #idea-cats{margin-top:1rem}
+#idea-cats{margin-top:.45rem}
+.howto-more b{color:var(--ink)}
+
 /* ---------- responsive ---------- */
 @media (max-width:880px){
   .cols{grid-template-columns:1fr}
@@ -1672,6 +1707,112 @@ APP_JS = """(function () {
     }
   }
   input.addEventListener("input", render);
+  render();
+})();
+
+/* Idea Atlas tab — searchable + filterable merged atlas */
+(function () {
+  "use strict";
+  var q = document.getElementById("idea-q");
+  var results = document.getElementById("idea-results");
+  var shown = document.getElementById("idea-shown");
+  if (!q || !results || !shown || !window.IDEAS) return;
+
+  var ALL = window.IDEAS;
+  var LABEL = { known: "known", debated: "debated", undiscovered: "undiscovered" };
+  var CODE = { known: "b", debated: "h", undiscovered: "u" };
+  var CATS = {
+    physics: "Physics", software: "Software", math: "Math", bio: "Biology",
+    art: "Arts & humanities", vectors: "High-dim vectors", space: "Astronomy & space",
+    mind: "Mind & psychology", chemistry: "Chemistry", economics: "Economics & society"
+  };
+  var activeState = "all";
+  var activeCat = "all";
+
+  function chips(host, values, current, label, onPick) {
+    values.forEach(function (v) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (v === current ? " on" : "");
+      b.setAttribute("aria-pressed", String(v === current));
+      b.textContent = label(v);
+      b.addEventListener("click", function () {
+        host.querySelectorAll(".chip").forEach(function (c) {
+          c.classList.remove("on");
+          c.setAttribute("aria-pressed", "false");
+        });
+        b.classList.add("on");
+        b.setAttribute("aria-pressed", "true");
+        onPick(v);
+      });
+      host.appendChild(b);
+    });
+  }
+
+  chips(document.getElementById("idea-status"),
+    ["all", "known", "debated", "undiscovered"],
+    activeState,
+    function (v) { return v === "all" ? "All states" : LABEL[v]; },
+    function (v) { activeState = v; render(); });
+
+  var catVals = ["all"];
+  ALL.forEach(function (it) { if (catVals.indexOf(it.category) === -1) catVals.push(it.category); });
+  catVals.sort(function (a, b) {
+    if (a === "all") return -1;
+    if (b === "all") return 1;
+    return (CATS[a] || a).localeCompare(CATS[b] || b);
+  });
+  chips(document.getElementById("idea-cats"), catVals, activeCat,
+    function (v) { return v === "all" ? "All fields" : (CATS[v] || v); },
+    function (v) { activeCat = v; render(); });
+
+  function render() {
+    var term = q.value.trim().toLowerCase();
+    var hits = ALL.filter(function (it) {
+      if (activeState !== "all" && it.status !== activeState) return false;
+      if (activeCat !== "all" && it.category !== activeCat) return false;
+      if (!term) return true;
+      return (it.title + " " + it.category + " " + it.source + " " + (it.note || "") + " " + (it.era || ""))
+        .toLowerCase().indexOf(term) !== -1;
+    });
+    shown.textContent = hits.length + " of " + ALL.length + " ideas";
+    results.innerHTML = "";
+    if (!hits.length) {
+      var none = document.createElement("p");
+      none.className = "shown-more";
+      none.textContent = "Nothing matches those filters — try widening the search.";
+      results.appendChild(none);
+      return;
+    }
+    hits.slice(0, 120).forEach(function (it) {
+      var a = document.createElement("a");
+      a.className = "result";
+      a.href = it.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      var side = document.createElement("span");
+      side.className = "r-side " + CODE[it.status];
+      side.textContent = LABEL[it.status];
+      var title = document.createElement("span");
+      title.className = "r-title";
+      title.textContent = it.title;
+      var fld = document.createElement("span");
+      fld.className = "r-field";
+      fld.textContent = CATS[it.category] || it.category;
+      var meta = document.createElement("span");
+      meta.className = "r-what";
+      meta.textContent = "Source: " + it.source + (it.era ? " · " + it.era : "") + (it.note ? " · " + it.note : "");
+      a.appendChild(side); a.appendChild(title); a.appendChild(fld); a.appendChild(meta);
+      results.appendChild(a);
+    });
+    if (hits.length > 120) {
+      var more = document.createElement("p");
+      more.className = "shown-more";
+      more.textContent = "First 120 shown — refine the search to narrow further.";
+      results.appendChild(more);
+    }
+  }
+  q.addEventListener("input", render);
   render();
 })();
 """
@@ -1829,6 +1970,14 @@ SHELVES_JS = """(function () {
 """
 
 
+def ideas_js():
+    """Expose the merged Idea Atlas data to the Ideas tab."""
+    import json
+    with open(os.path.join(OUT, "data", "ideas.json"), encoding="utf-8") as fh:
+        ideas = json.load(fh)
+    return "window.IDEAS = " + json.dumps(ideas, ensure_ascii=False, separators=(",", ":")) + ";\n"
+
+
 def census_js():
     fields = []
     for f in FIELDS:
@@ -1860,6 +2009,7 @@ def main():
     write("search.html", build_search())
     write("shelves.html", build_shelves())
     write("zeros.html", build_zeros())
+    write("ideas.html", build_ideas())
     write("about.html", build_about())
     write("404.html", build_404())
     for i, f in enumerate(FIELDS):
@@ -1867,6 +2017,7 @@ def main():
     write("assets/style.css", STYLE_CSS)
     write("assets/app.js", APP_JS)
     write("assets/census.js", census_js())
+    write("assets/ideas-data.js", ideas_js())
     print(f"Done: {TOTAL} ideas, {TOTAL_BUILT} built, {TOTAL_HALF} half-built, {TOTAL_UNBUILT} unbuilt, {len(FIELDS)} fields.")
 
 

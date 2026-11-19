@@ -83,3 +83,109 @@
   input.addEventListener("input", render);
   render();
 })();
+
+/* Idea Atlas tab — searchable + filterable merged atlas */
+(function () {
+  "use strict";
+  var q = document.getElementById("idea-q");
+  var results = document.getElementById("idea-results");
+  var shown = document.getElementById("idea-shown");
+  if (!q || !results || !shown || !window.IDEAS) return;
+
+  var ALL = window.IDEAS;
+  var LABEL = { known: "known", debated: "debated", undiscovered: "undiscovered" };
+  var CODE = { known: "b", debated: "h", undiscovered: "u" };
+  var CATS = {
+    physics: "Physics", software: "Software", math: "Math", bio: "Biology",
+    art: "Arts & humanities", vectors: "High-dim vectors", space: "Astronomy & space",
+    mind: "Mind & psychology", chemistry: "Chemistry", economics: "Economics & society"
+  };
+  var activeState = "all";
+  var activeCat = "all";
+
+  function chips(host, values, current, label, onPick) {
+    values.forEach(function (v) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (v === current ? " on" : "");
+      b.setAttribute("aria-pressed", String(v === current));
+      b.textContent = label(v);
+      b.addEventListener("click", function () {
+        host.querySelectorAll(".chip").forEach(function (c) {
+          c.classList.remove("on");
+          c.setAttribute("aria-pressed", "false");
+        });
+        b.classList.add("on");
+        b.setAttribute("aria-pressed", "true");
+        onPick(v);
+      });
+      host.appendChild(b);
+    });
+  }
+
+  chips(document.getElementById("idea-status"),
+    ["all", "known", "debated", "undiscovered"],
+    activeState,
+    function (v) { return v === "all" ? "All states" : LABEL[v]; },
+    function (v) { activeState = v; render(); });
+
+  var catVals = ["all"];
+  ALL.forEach(function (it) { if (catVals.indexOf(it.category) === -1) catVals.push(it.category); });
+  catVals.sort(function (a, b) {
+    if (a === "all") return -1;
+    if (b === "all") return 1;
+    return (CATS[a] || a).localeCompare(CATS[b] || b);
+  });
+  chips(document.getElementById("idea-cats"), catVals, activeCat,
+    function (v) { return v === "all" ? "All fields" : (CATS[v] || v); },
+    function (v) { activeCat = v; render(); });
+
+  function render() {
+    var term = q.value.trim().toLowerCase();
+    var hits = ALL.filter(function (it) {
+      if (activeState !== "all" && it.status !== activeState) return false;
+      if (activeCat !== "all" && it.category !== activeCat) return false;
+      if (!term) return true;
+      return (it.title + " " + it.category + " " + it.source + " " + (it.note || "") + " " + (it.era || ""))
+        .toLowerCase().indexOf(term) !== -1;
+    });
+    shown.textContent = hits.length + " of " + ALL.length + " ideas";
+    results.innerHTML = "";
+    if (!hits.length) {
+      var none = document.createElement("p");
+      none.className = "shown-more";
+      none.textContent = "Nothing matches those filters — try widening the search.";
+      results.appendChild(none);
+      return;
+    }
+    hits.slice(0, 120).forEach(function (it) {
+      var a = document.createElement("a");
+      a.className = "result";
+      a.href = it.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      var side = document.createElement("span");
+      side.className = "r-side " + CODE[it.status];
+      side.textContent = LABEL[it.status];
+      var title = document.createElement("span");
+      title.className = "r-title";
+      title.textContent = it.title;
+      var fld = document.createElement("span");
+      fld.className = "r-field";
+      fld.textContent = CATS[it.category] || it.category;
+      var meta = document.createElement("span");
+      meta.className = "r-what";
+      meta.textContent = "Source: " + it.source + (it.era ? " · " + it.era : "") + (it.note ? " · " + it.note : "");
+      a.appendChild(side); a.appendChild(title); a.appendChild(fld); a.appendChild(meta);
+      results.appendChild(a);
+    });
+    if (hits.length > 120) {
+      var more = document.createElement("p");
+      more.className = "shown-more";
+      more.textContent = "First 120 shown — refine the search to narrow further.";
+      results.appendChild(more);
+    }
+  }
+  q.addEventListener("input", render);
+  render();
+})();

@@ -30,6 +30,7 @@ rather than vibes.
 | 🚦 | **Three states** | Solid: stop adding. Outlined: finish it. Dashed: the empty lane. |
 | 📚 | **Shelves catalog** | Real apps and devices from Flathub, F-Droid, the App Store, npm and iFixit. |
 | 🧩 | **First-class reasoning** | Every idea names the blocker that keeps it open. |
+| 🗺️ | **Idea atlas tab** | 855 known, debated and undiscovered ideas merged from the Idea Atlas — filter by state or field, or search them all. |
 
 ## How it works
 

@@ -285,6 +285,11 @@ footer p{font-size:.92rem;max-width:44ch}
 .colophon{border-top:1px solid #4A4E42}
 .colophon .wrap{padding-top:1.2rem;padding-bottom:1.6rem;font-size:.8rem;color:var(--footer-dim)}
 
+/* ---------- idea atlas tab ---------- */
+#idea-status, #idea-cats{margin-top:1rem}
+#idea-cats{margin-top:.45rem}
+.howto-more b{color:var(--ink)}
+
 /* ---------- responsive ---------- */
 @media (max-width:880px){
   .cols{grid-template-columns:1fr}
